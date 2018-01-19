@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-public class Runner extends Application {
+public class Runner extends Application { 
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
