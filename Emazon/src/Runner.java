@@ -2,12 +2,14 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 public class Runner extends Application {
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -34,19 +36,28 @@ public class Runner extends Application {
 		});
 		
 		GridPane gridPane = new GridPane();
-	    gridPane.setAlignment(Pos.CENTER);
-	    gridPane.setHgap(20);
-	    gridPane.setVgap(20);
+	    gridPane.setAlignment(Pos.TOP_CENTER);
+	    gridPane.setHgap(10);
+	    gridPane.setVgap(10);
+	    gridPane.setPadding(new Insets(10));
+	    gridPane.setGridLinesVisible(true);
 	    
-	    gridPane.add(shoppingCartButton, 0, 0);
+	    
+	    gridPane.add(shoppingCartButton, 3, 2);
+	    gridPane.add(carsButton, 3, 0);
+	    gridPane.add(audioBookButton, 1, 0);
+	    gridPane.add(technology, 2, 0);
+	    gridPane.add(shoes, 4, 0);
+	    gridPane.add(clothing, 5, 0);
 	    
 	    VBox root = new VBox();
 		
-	    root.setAlignment(Pos.CENTER);
+	   
 	    root.setSpacing(50);
 	    root.getChildren().add(gridPane);
-	    
-        Scene scene = new Scene(root, 550, 400);
+	    GridPane.setHalignment(shoppingCartButton, HPos.CENTER);
+	    GridPane.setValignment(shoppingCartButton, VPos.BASELINE);
+        Scene scene = new Scene(root, 450, 700);
         primaryStage.setTitle("Emazon");
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
