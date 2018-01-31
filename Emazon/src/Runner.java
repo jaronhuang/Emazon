@@ -59,12 +59,46 @@ public class Runner extends Application {
 		    	
 		    }
 		});
-		
-		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
+		VBox homePage = new VBox();
+		technology.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
+		    	homePage.getChildren().clear();
 		    	
-		    }
+		    	
+		  }
+		});
+		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	homePage.getChildren().clear();
+		    	
+		    	
+		  }
+		});
+		clothing.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	homePage.getChildren().clear();
+		    	
+		    	
+		  }
+		});
+		carsButton.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	homePage.getChildren().clear();
+		    	
+		    	
+		  }
+		});
+		shoes.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	homePage.getChildren().clear();
+		    	
+		    	
+		  }
 		});
 		
 		
@@ -79,7 +113,7 @@ public class Runner extends Application {
 	    VBox root = new VBox();
 		//root.setStyle("-fx-border-color: #0000cc; -fx-border-width: 5px;");
 		
-		VBox homePage = new VBox();
+		
 		homePage.setStyle("-fx-border-color: #00cc00; -fx-border-width: 5px;");
 		homePage.setPrefHeight(700);
 		homePage.setPrefWidth(200);
