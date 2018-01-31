@@ -1,4 +1,6 @@
-import java.awt.Label;
+//import java.awt.Label;
+import javafx.scene.control.Label;
+import java.io.FileInputStream;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -8,6 +10,8 @@ import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -101,6 +105,11 @@ public class Runner extends Application {
 		  }
 		});
 		
+		FileInputStream input = new FileInputStream("earth.png");
+		Image image = new Image(input);
+		ImageView imageView = new ImageView(image);
+		Label label = new Label("My Label", imageView);
+		
 		
 		StackPane stack = new StackPane();
 		stack.getChildren().add(shoppingCartButton);
@@ -118,6 +127,7 @@ public class Runner extends Application {
 		homePage.setPrefHeight(700);
 		homePage.setPrefWidth(200);
 		homePage.getChildren().add(dummy);
+		homePage.getChildren().add(label);
 		
 	    root.setSpacing(50);
 	    root.getChildren().add(stack);
