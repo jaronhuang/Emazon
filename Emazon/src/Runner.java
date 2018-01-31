@@ -68,7 +68,8 @@ public class Runner extends Application {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
-		    	
+		    	Label technologyLabel = new Label("Technology");
+		    	homePage.getChildren().add(technologyLabel);
 		    	
 		  }
 		});
@@ -76,7 +77,8 @@ public class Runner extends Application {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
-		    	
+		    	Label audioBookLabel = new Label("Audio Book");
+		    	homePage.getChildren().add(audioBookLabel);
 		    	
 		  }
 		});
@@ -84,7 +86,8 @@ public class Runner extends Application {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
-		    	
+		    	Label clothingLabel = new Label("Clothing");
+		    	homePage.getChildren().add(clothingLabel);
 		    	
 		  }
 		});
@@ -92,7 +95,8 @@ public class Runner extends Application {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
-		    	
+		    	Label carsLabel = new Label("Cars");
+		    	homePage.getChildren().add(carsLabel);
 		    	
 		  }
 		});
@@ -100,7 +104,8 @@ public class Runner extends Application {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
-		    	
+		    	Label shoesLabel = new Label("Shoes");
+		    	homePage.getChildren().add(shoesLabel);
 		    	
 		  }
 		});
@@ -108,7 +113,7 @@ public class Runner extends Application {
 		FileInputStream input = new FileInputStream("earth.png");
 		Image image = new Image(input);
 		ImageView imageView = new ImageView(image);
-		Label label = new Label("My Label", imageView);
+		Label label = new Label("image", imageView);
 		
 		
 		StackPane stack = new StackPane();
