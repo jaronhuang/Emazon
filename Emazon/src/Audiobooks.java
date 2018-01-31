@@ -19,7 +19,7 @@ public class Audiobooks implements Items{
 	public String name;
 	public double rating;
 	public String soundFile;
-	public int lenght;
+	public int length;
 
 	/*public class Main extends Application {
 
@@ -49,14 +49,14 @@ public class Audiobooks implements Items{
 	    }
 	}*/
 	public Audiobooks(double price, int quantity, String name,
-			double rating, String soundFile, int lenght)
+			double rating, String soundFile, int length)
 	{
 		this.price = price;
 		this.quantity = quantity;
 		this.name = name;
 		this.rating = rating;
 		this.soundFile = soundFile;
-		this.lenght = lenght;
+		this.length = length;
 	}
 	public double getPrice() {
 		return price;
@@ -73,8 +73,8 @@ public class Audiobooks implements Items{
 	public String getSoundFile() {
 		return soundFile;
 	}
-	public int getLenght() {
-		return lenght;
+	public int getLength() {
+		return length;
 	}
 	
 }

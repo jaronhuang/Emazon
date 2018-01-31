@@ -5,10 +5,10 @@ public class Clothing implements Items{
 	public String name;
 	public double rating;
 	public String color;
-	public int size;
+	public String size;
 	
 	public Clothing(double price, int quantity, String name,
-			double rating, String color, int size)
+			double rating, String color, String size)
 	{
 		this.price = price;
 		this.quantity = quantity;
@@ -33,7 +33,7 @@ public class Clothing implements Items{
 	public String getColor() {
 		return color;
 	}
-	public int getSize() {
+	public String getSize() {
 		return size;
 	}
 
