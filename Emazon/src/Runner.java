@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,8 +16,18 @@ import javafx.scene.layout.VBox;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 public class Runner extends Application { 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Application.launch(args);
+		
+		File inventory = new File("inventory.csv");
+		CSVUtilities inv = new CSVUtilities(inventory);
+		
+		File cart = new File("cart.csv");
+		CSVUtilities kart = new CSVUtilities(cart);
+		
+		File purchase = new File("phistory.csv");
+		CSVUtilities history = new CSVUtilities(purchase);
+		
 	}
 	
 	@Override
