@@ -1,3 +1,5 @@
+import java.awt.Label;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +14,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+
+
 public class Runner extends Application { 
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -25,20 +29,36 @@ public class Runner extends Application {
 		
 		Button shoppingCartButton = new Button("Cart");
 		shoppingCartButton.setTranslateY(30);
+		//clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		
 		Button carsButton = new Button("Cars");
 		carsButton.setTranslateX(-200);
+		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
 		Button audioBookButton = new Button("Audio Books");
 		audioBookButton.setTranslateX(-100);
+		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
 		Button technology = new Button("Technology");
+		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
 		Button clothing = new Button("Clothing");
 		clothing.setTranslateX(100);
+		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
 		Button shoes = new Button("Shoes");
 		shoes.setTranslateX(200);
+		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		
+		Button dummy = new Button("DUMMY");
+		//dummy.setTranslateY(300);
+		
+		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	
+		    }
+		});
 		
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -57,15 +77,17 @@ public class Runner extends Application {
 		stack.getChildren().add(shoes);
 		
 	    VBox root = new VBox();
-		root.setStyle("-fx-border-color: #0000cc; -fx-border-width: 5px;");
+		//root.setStyle("-fx-border-color: #0000cc; -fx-border-width: 5px;");
 		
 		VBox homePage = new VBox();
 		homePage.setStyle("-fx-border-color: #00cc00; -fx-border-width: 5px;");
-		homePage.setPrefHeight(300);
+		homePage.setPrefHeight(700);
 		homePage.setPrefWidth(200);
+		homePage.getChildren().add(dummy);
 		
 	    root.setSpacing(50);
 	    root.getChildren().add(stack);
+	    root.getChildren().add(homePage);
         Scene scene = new Scene(root, 450, 700);
         primaryStage.setTitle("Emazon");
 	    primaryStage.setScene(scene);
