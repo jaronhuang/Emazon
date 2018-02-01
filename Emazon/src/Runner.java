@@ -1,6 +1,9 @@
 //import java.awt.Label;
 import javafx.scene.control.Label;
+
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -23,9 +26,18 @@ import javafx.geometry.Orientation;
 
 
 public class Runner extends Application { 
-	public static void main(String[] args) {
-		Application.launch(args);
-	}
+	public static void main(String[] args) throws IOException {
+ 		Application.launch(args);
+		
+		File inventory = new File("inventory.csv");
+		CSVUtilities inv = new CSVUtilities(inventory);
+		
+		File cart = new File("cart.csv");
+		CSVUtilities kart = new CSVUtilities(cart);
+	
+		File purchase = new File("phistory.csv");
+		CSVUtilities history = new CSVUtilities(purchase);		
+ 	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -113,10 +125,6 @@ public class Runner extends Application {
 		  }
 		});
 		
-		FileInputStream input = new FileInputStream("earth.png");
-		Image image = new Image(input);
-		ImageView imageView = new ImageView(image);
-		Label label = new Label("image", imageView);
 		
 	/*	
 		StackPane stack = new StackPane();
@@ -155,7 +163,14 @@ public class Runner extends Application {
 		homePage.setPrefHeight(700);
 		homePage.setPrefWidth(200);
 		homePage.getChildren().add(dummy);
-		homePage.getChildren().add(label);
+		
+		
+		FileInputStream input = new FileInputStream("earth.png");
+		Image image = new Image(input);
+		ImageView imageView = new ImageView(image);
+		imageView.setFitHeight(400);
+		imageView.setFitWidth(400);
+		homePage.getChildren().add(imageView);
 		
 	    root.setSpacing(50);
 	    root.getChildren().add(tile);
