@@ -1,4 +1,3 @@
-//import java.awt.Label;
 import javafx.scene.control.Label;
 import java.io.FileInputStream;
 
