@@ -1,5 +1,9 @@
+//import java.awt.Label;
 import javafx.scene.control.Label;
+
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -15,16 +19,25 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox; 
+import javafx.scene.layout.VBox;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 
 
 public class Runner extends Application { 
-	public static void main(String[] args) {
-		Application.launch(args);
-	}
+	public static void main(String[] args) throws IOException {
+ 		Application.launch(args);
+		
+		File inventory = new File("inventory.csv");
+		CSVUtilities inv = new CSVUtilities(inventory);
+		
+		File cart = new File("cart.csv");
+		CSVUtilities kart = new CSVUtilities(cart);
+	
+		File purchase = new File("phistory.csv");
+		CSVUtilities history = new CSVUtilities(purchase);		
+ 	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
