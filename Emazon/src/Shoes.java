@@ -1,4 +1,4 @@
 
-public class Shoes {
+public class Shoes extends Clothing{
 
 }
