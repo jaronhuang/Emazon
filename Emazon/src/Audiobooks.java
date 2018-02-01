@@ -14,6 +14,13 @@ import javafx.geometry.Insets;
 
 public class Audiobooks implements Items{
 
+	public double price;
+	public int quantity;
+	public String name;
+	public double rating;
+	public String soundFile;
+	public int length;
+
 	/*public class Main extends Application {
 
 	    @Override
@@ -41,9 +48,33 @@ public class Audiobooks implements Items{
 	         launch(args);
 	    }
 	}*/
-	public class Audiobooks()
+	public Audiobooks(double price, int quantity, String name,
+			double rating, String soundFile, int length)
 	{
-		
+		this.price = price;
+		this.quantity = quantity;
+		this.name = name;
+		this.rating = rating;
+		this.soundFile = soundFile;
+		this.length = length;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public String getName() {
+		return name;
+	}
+	public double getRating() {
+		return rating;
+	}
+	public String getSoundFile() {
+		return soundFile;
+	}
+	public int getLength() {
+		return length;
 	}
 	
 }
