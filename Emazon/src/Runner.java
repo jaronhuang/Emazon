@@ -1,4 +1,6 @@
-//import java.awt.Label;
+/**
+ * By: Jaron Huang, Jefferson Bernard, Edward Yaroslavsky, Muhammad Usman, Kelvin Chen
+ */
 import javafx.scene.control.Label;
 
 import java.io.File;

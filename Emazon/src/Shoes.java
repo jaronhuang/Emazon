@@ -1,4 +1,6 @@
-
+/**
+ * By: Jaron Huang and Kelvin Chen
+ */
 public class Shoes implements Items{
 
 	public double price;

@@ -1,4 +1,6 @@
-
+/**
+ * By: Jaron Huang and Kelvin Chen
+ */
 public class Clothing implements Items{
 	public double price;
 	public int quantity;
