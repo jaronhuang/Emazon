@@ -164,28 +164,27 @@ public class Runner extends Application {
 		stack.getChildren().add(shoes);
 	*/
 		
-		TilePane tile = new TilePane(Orientation.HORIZONTAL);
-		tile.setPadding(new Insets(0, 0, 0, 0));
-		tile.setHgap(10.0);
-		tile.setVgap(8.0);
-		
 		clothing.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		carsButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		audioBookButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		technology.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		shoes.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		
-		tile.getChildren().add(shoppingCartButton);
+		TilePane tile = new TilePane(Orientation.HORIZONTAL);
+		tile.setPadding(new Insets(20, 10, 20, 0));
+		tile.setHgap(0.0);
+		tile.setVgap(8.0);
+		
+		tile.getChildren().add(shoes);
 		tile.getChildren().add(carsButton);
 		tile.getChildren().add(audioBookButton);
 		tile.getChildren().add(technology);
 		tile.getChildren().add(clothing);
-		tile.getChildren().add(shoes);
+		tile.getChildren().add(shoppingCartButton);
+		shoppingCartButton.setTranslateX(173);
 		
-	    VBox root = new VBox();
-	    root.setPrefWidth(200);
-	    technology.setMinWidth(root.getPrefWidth());
-	    carsButton.setMinWidth(root.getPrefWidth());
+	    	VBox root = new VBox();
+	   	//root.setPrefWidth(200);
 		
 		homePage.setStyle("-fx-border-color: #00cc00; -fx-border-width: 5px;");
 		homePage.setPrefHeight(700);
@@ -206,7 +205,7 @@ public class Runner extends Application {
 		homeText.setTranslateY(50);
 		homePage.getChildren().add(homeText);
 		
-	    root.setSpacing(50);
+	    //root.setSpacing(50);
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
         Scene scene = new Scene(root, 450, 700);
