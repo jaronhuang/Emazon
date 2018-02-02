@@ -25,6 +25,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.Text;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -85,12 +89,27 @@ public class Runner extends Application {
 		    	
 		    }
 		});
+		
 		VBox homePage = new VBox();
+		
 		technology.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label technologyLabel = new Label("Technology");
+		    	
+/*		    	FileInputStream input = new FileInputStream("earth.png");
+				Image image = new Image(input);
+				ImageView imageView = new ImageView(image);
+				imageView.setFitHeight(400);
+				imageView.setFitWidth(400);
+				imageView.setTranslateX(20);
+				homePage.getChildren().add(imageView); */
+		    	
+/*		    	FileInputStream tech = new FileInputStream("");
+		    	Image techImage = new Image(tech);
+		    	ImageView techImageView = new ImageView(techImage); */
+		    	
 		    	homePage.getChildren().add(technologyLabel);
 		    	
 		  }
@@ -171,17 +190,20 @@ public class Runner extends Application {
 		homePage.setStyle("-fx-border-color: #00cc00; -fx-border-width: 5px;");
 		homePage.setPrefHeight(700);
 		homePage.setPrefWidth(200);
-		homePage.getChildren().add(dummy);
-		homePage.getChildren().add(label);
 		
 		FileInputStream input = new FileInputStream("earth.png");
 		Image image = new Image(input);
 		ImageView imageView = new ImageView(image);
 		imageView.setFitHeight(400);
 		imageView.setFitWidth(400);
+		imageView.setTranslateX(20);
 		homePage.getChildren().add(imageView);
 		
-		Label homeText = new Label("We work hard... Except Kelvin Chen");
+		Text homeText = new Text("EmaZon: Making Shopping EZ");
+		homeText.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
+		homeText.setFill(Color.BLUEVIOLET);
+		homeText.setTranslateX(70);
+		homeText.setTranslateY(50);
 		homePage.getChildren().add(homeText);
 		
 	    root.setSpacing(50);
