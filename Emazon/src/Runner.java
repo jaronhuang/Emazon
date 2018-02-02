@@ -35,12 +35,13 @@ import javafx.geometry.Orientation;
 
 
 public class Runner extends Application { 
+	
+	
 	public static void main(String[] args) throws IOException {
  		Application.launch(args);
-		
 
 		File inventory = new File("inventory.csv");
-
+		
 		CSVUtilities inv = new CSVUtilities(inventory);
 		
 		File cart = new File("cart.csv");
@@ -57,30 +58,24 @@ public class Runner extends Application {
 		primaryStage.setTitle("Emazon");
 		
 		Button shoppingCartButton = new Button("Cart");
-		//shoppingCartButton.setTranslateY(30);
 		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		
 		Button carsButton = new Button("Cars");
-		//carsButton.setTranslateX(-200);
 		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		//carsButton.
 		
 		Button audioBookButton = new Button("Audio Books");
-		//audioBookButton.setTranslateX(-100);
 		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
 		Button technology = new Button("Technology");
 		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
 		Button clothing = new Button("Clothing");
-		//clothing.setTranslateX(100);
 		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
 		Button shoes = new Button("Shoes");
-		//shoes.setTranslateX(200);
 		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
-		Button dummy = new Button("DUMMY");
+		
 		
 		
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -114,7 +109,8 @@ public class Runner extends Application {
 		    	
 		  }
 		});
-
+		
+		
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -152,18 +148,10 @@ public class Runner extends Application {
 		  }
 		});
 
-		
-
-	/*	
-		StackPane stack = new StackPane();
-		stack.getChildren().add(shoppingCartButton);
-		stack.getChildren().add(carsButton);
-		stack.getChildren().add(audioBookButton);
-		stack.getChildren().add(technology);
-		stack.getChildren().add(clothing);
-		stack.getChildren().add(shoes);
-	*/
-		
+		/*
+		 * TilePane for the row of buttons that lead to other pages.
+		 * Uses setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE) to automatically even out widths of buttons horizontally.
+		 */
 		clothing.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		carsButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		audioBookButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
