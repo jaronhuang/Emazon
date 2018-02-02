@@ -181,6 +181,9 @@ public class Runner extends Application {
 		imageView.setFitWidth(400);
 		homePage.getChildren().add(imageView);
 		
+		Label homeText = new Label("We work hard... Except Kelvin Chen");
+		homePage.getChildren().add(homeText);
+		
 	    root.setSpacing(50);
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
