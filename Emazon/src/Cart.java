@@ -1,3 +1,6 @@
+/**
+ * By: Jaron Huang and Kelvin Chen
+ */
 import java.util.ArrayList;
 
 public class Cart {

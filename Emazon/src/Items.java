@@ -1,4 +1,6 @@
-
+/**
+ * By: Kelvin Chen
+ */
 public interface Items 
 {
 	public abstract double getPrice();

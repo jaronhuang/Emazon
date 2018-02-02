@@ -1,3 +1,9 @@
+
+/**
+ * By: Jaron Huang, Jefferson Bernard, Edward Yaroslavsky, Muhammad Usman, Kelvin Chen
+ */
+
+
 import javafx.scene.control.Label;
 
 import java.io.File;
@@ -28,7 +34,9 @@ public class Runner extends Application {
 	public static void main(String[] args) throws IOException {
  		Application.launch(args);
 		
-		File inventory = new File("inventory.csv")
+
+		File inventory = new File("inventory.csv");
+
 		CSVUtilities inv = new CSVUtilities(inventory);
 		
 		File cart = new File("cart.csv");
@@ -87,6 +95,7 @@ public class Runner extends Application {
 		    	
 		  }
 		});
+
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -125,6 +134,7 @@ public class Runner extends Application {
 		});
 
 		
+
 	/*	
 		StackPane stack = new StackPane();
 		stack.getChildren().add(shoppingCartButton);
@@ -162,6 +172,7 @@ public class Runner extends Application {
 		homePage.setPrefHeight(700);
 		homePage.setPrefWidth(200);
 		homePage.getChildren().add(dummy);
+		homePage.getChildren().add(label);
 		
 		FileInputStream input = new FileInputStream("earth.png");
 		Image image = new Image(input);
