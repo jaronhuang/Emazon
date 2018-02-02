@@ -9,7 +9,6 @@ public class Cars implements Items
 	public String color;
 	public double milage;
 	
-	
 	public Cars(double price, int quantity, String name,
 			double rating, String model, String color, double milage)
 	{
