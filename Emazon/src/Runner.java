@@ -1,6 +1,9 @@
+
 /**
  * By: Jaron Huang, Jefferson Bernard, Edward Yaroslavsky, Muhammad Usman, Kelvin Chen
  */
+
+
 import javafx.scene.control.Label;
 
 import java.io.File;
@@ -31,7 +34,9 @@ public class Runner extends Application {
 	public static void main(String[] args) throws IOException {
  		Application.launch(args);
 		
+
 		File inventory = new File("inventory.csv");
+
 		CSVUtilities inv = new CSVUtilities(inventory);
 		
 		File cart = new File("cart.csv");
@@ -90,6 +95,7 @@ public class Runner extends Application {
 		    	
 		  }
 		});
+
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -126,12 +132,9 @@ public class Runner extends Application {
 		    	
 		  }
 		});
+
 		
-		FileInputStream input = new FileInputStream("earth.png");
-		Image image = new Image(input);
-		ImageView imageView = new ImageView(image);
-		Label label = new Label("image", imageView);
-		
+
 	/*	
 		StackPane stack = new StackPane();
 		stack.getChildren().add(shoppingCartButton);
@@ -170,6 +173,13 @@ public class Runner extends Application {
 		homePage.setPrefWidth(200);
 		homePage.getChildren().add(dummy);
 		homePage.getChildren().add(label);
+		
+		FileInputStream input = new FileInputStream("earth.png");
+		Image image = new Image(input);
+		ImageView imageView = new ImageView(image);
+		imageView.setFitHeight(400);
+		imageView.setFitWidth(400);
+		homePage.getChildren().add(imageView);
 		
 	    root.setSpacing(50);
 	    root.getChildren().add(tile);
