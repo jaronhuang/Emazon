@@ -1,3 +1,6 @@
+/**
+ * By: Jaron Huang and Kelvin Chen
+ */
 import javafx.scene.media.Media;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

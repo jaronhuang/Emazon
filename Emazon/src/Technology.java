@@ -1,3 +1,6 @@
+/**
+ * By: Jaron Huang and Kelvin Chen
+ */
 import java.io.File;
 
 public class Technology implements Items{
