@@ -8,7 +8,10 @@ import javafx.scene.control.Label;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,20 +37,51 @@ import javafx.geometry.Orientation;
 
 
 public class Runner extends Application { 
-	
+	static ArrayList<String> itemNames = new ArrayList<String>();
+	static ArrayList<Integer> quantity = new ArrayList<Integer>();
+	static ArrayList<Double> price = new ArrayList<Double>();
+	static ArrayList<Double> rating = new ArrayList<Double>();
+	static ArrayList<String> model = new ArrayList<String>();
+	static ArrayList<String> color = new ArrayList<String>();
+	static ArrayList<Double> size = new ArrayList<Double>();
+	static ArrayList<String> type = new ArrayList<String>();
+	static ArrayList<Double> batteryLife = new ArrayList<Double>();
+	static ArrayList<Double> mileage = new ArrayList<Double>();
+	static ArrayList<Integer> length = new ArrayList<Integer>();
+	static ArrayList<String> audioFile = new ArrayList<String>();
+	static ArrayList<String> imageFiles = new ArrayList<String>();
 	
 	public static void main(String[] args) throws IOException {
- 		Application.launch(args);
-
 		File inventory = new File("inventory.csv");
-		
 		CSVUtilities inv = new CSVUtilities(inventory);
+		itemNames = inv.getDataString(0);
+		quantity = inv.getDataInteger(1);
+		price = inv.getDataDouble(2);
+		rating = inv.getDataDouble(3);
+		model = inv.getDataString(4);
+		color = inv.getDataString(5);
+		size = inv.getDataDouble(6);
+		type = inv.getDataString(7);
+		batteryLife = inv.getDataDouble(8);
+		mileage = inv.getDataDouble(9);
+		length = inv.getDataInteger(10);
+		audioFile = inv.getDataString(11);
+		imageFiles = inv.getDataString(12);
 		
 		File cart = new File("cart.csv");
 		CSVUtilities kart = new CSVUtilities(cart);
 	
 		File purchase = new File("phistory.csv");
 		CSVUtilities history = new CSVUtilities(purchase);		
+		
+		//System.out.println(imageFiles.get(0));
+		
+		//CONSTRUCTORS
+		
+		
+		Application.launch(args);
+
+		
  	}
 	
 	@Override
@@ -75,7 +109,6 @@ public class Runner extends Application {
 		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
 		
-		
 		VBox homePage = new VBox();
 		
 		technology.setOnAction(new EventHandler<ActionEvent>() {
@@ -83,21 +116,24 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label technologyLabel = new Label("Technology");
+		    	homePage.getChildren().add(technologyLabel);
 		    	
-/*		    	FileInputStream input = new FileInputStream("earth.png");
+		    	FileInputStream input = null;
+				try {
+					input = new FileInputStream(imageFiles.get(4));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				Image image = new Image(input);
 				ImageView imageView = new ImageView(image);
 				imageView.setFitHeight(400);
 				imageView.setFitWidth(400);
 				imageView.setTranslateX(20);
-				homePage.getChildren().add(imageView); */
-		    	
-/*		    	FileInputStream tech = new FileInputStream("");
-		    	Image techImage = new Image(tech);
-		    	ImageView techImageView = new ImageView(techImage); */
-		    	
-		    	homePage.getChildren().add(technologyLabel);
-		    	
+				homePage.getChildren().add(imageView);
+				
+				Label techPrice = new Label(""+price.get(4));
+				homePage.getChildren().add(techPrice);
 		  }
 		});
 		
@@ -109,6 +145,24 @@ public class Runner extends Application {
 		    	Label audioBookLabel = new Label("Audio Book");
 		    	homePage.getChildren().add(audioBookLabel);
 		    	
+		    	FileInputStream input = null;
+				try {
+					input = new FileInputStream(imageFiles.get(0));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image = new Image(input);
+				ImageView imageView = new ImageView(image);
+				imageView.setFitHeight(400);
+				imageView.setFitWidth(400);
+				imageView.setTranslateX(20);
+				homePage.getChildren().add(imageView);
+				
+				Label bookPrice = new Label(""+price.get(0));
+				homePage.getChildren().add(bookPrice);
+		    
+		    	
 		  }
 		});
 		clothing.setOnAction(new EventHandler<ActionEvent>() {
@@ -118,6 +172,22 @@ public class Runner extends Application {
 		    	Label clothingLabel = new Label("Clothing");
 		    	homePage.getChildren().add(clothingLabel);
 		    	
+		    	FileInputStream input = null;
+				try {
+					input = new FileInputStream(imageFiles.get(2));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image = new Image(input);
+				ImageView imageView = new ImageView(image);
+				imageView.setFitHeight(400);
+				imageView.setFitWidth(400);
+				imageView.setTranslateX(20);
+				homePage.getChildren().add(imageView);
+		    	
+				Label clothPrice = new Label(""+price.get(2));
+				homePage.getChildren().add(clothPrice);
 		  }
 		});
 		carsButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -127,6 +197,22 @@ public class Runner extends Application {
 		    	Label carsLabel = new Label("Cars");
 		    	homePage.getChildren().add(carsLabel);
 		    	
+		    	FileInputStream input = null;
+				try {
+					input = new FileInputStream(imageFiles.get(1));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image = new Image(input);
+				ImageView imageView = new ImageView(image);
+				imageView.setFitHeight(400);
+				imageView.setFitWidth(400);
+				imageView.setTranslateX(20);
+				homePage.getChildren().add(imageView);
+		    	
+				Label carPrice = new Label(""+price.get(1));
+				homePage.getChildren().add(carPrice);
 		  }
 		});
 		shoes.setOnAction(new EventHandler<ActionEvent>() {
@@ -136,8 +222,25 @@ public class Runner extends Application {
 		    	Label shoesLabel = new Label("Shoes");
 		    	homePage.getChildren().add(shoesLabel);
 		    	
+		    	FileInputStream input = null;
+				try {
+					input = new FileInputStream(imageFiles.get(3));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image = new Image(input);
+				ImageView imageView = new ImageView(image);
+				imageView.setFitHeight(400);
+				imageView.setFitWidth(400);
+				imageView.setTranslateX(20);
+				homePage.getChildren().add(imageView);
+		    	
+				Label shoePrice = new Label(""+price.get(3));
+				homePage.getChildren().add(shoePrice);
 		  }
 		});
+		
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
