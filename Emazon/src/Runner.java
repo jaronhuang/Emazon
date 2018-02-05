@@ -1,42 +1,34 @@
-
 /**
  * By: Jaron Huang, Jefferson Bernard, Edward Yaroslavsky, Muhammad Usman, Kelvin Chen
  */
 
 
 import javafx.scene.control.Label;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 
 
 public class Runner extends Application { 
+	//ARRAY LISTS CONTAINING EACH INFORMATION FROM EACH COLUMN IN THE INVENTORY.
 	static ArrayList<String> itemNames = new ArrayList<String>();
 	static ArrayList<Integer> quantity = new ArrayList<Integer>();
 	static ArrayList<Double> price = new ArrayList<Double>();
@@ -52,6 +44,7 @@ public class Runner extends Application {
 	static ArrayList<String> imageFiles = new ArrayList<String>();
 	
 	public static void main(String[] args) throws IOException {
+		//INVENTORY FILE
 		File inventory = new File("inventory.csv");
 		CSVUtilities inv = new CSVUtilities(inventory);
 		itemNames = inv.getDataString(0);
@@ -68,59 +61,63 @@ public class Runner extends Application {
 		audioFile = inv.getDataString(11);
 		imageFiles = inv.getDataString(12);
 		
+		//CART FILE
 		File cart = new File("cart.csv");
 		CSVUtilities kart = new CSVUtilities(cart);
 	
+		//PURCHASE HISTORY FILE
 		File purchase = new File("phistory.csv");
-		CSVUtilities history = new CSVUtilities(purchase);		
-		
-		//System.out.println(imageFiles.get(0));
-		
-		//CONSTRUCTORS
-		
+		CSVUtilities history = new CSVUtilities(purchase);	
 		
 		Application.launch(args);
-
-		
  	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Runner runner = new Runner();
-		
 		primaryStage.setTitle("Emazon");
-		
-		Button shoppingCartButton = new Button("Cart");
-		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
-		
-		Button carsButton = new Button("Cars");
-		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		
-		Button audioBookButton = new Button("Audio Books");
-		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		
-		Button technology = new Button("Technology");
-		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		
-		Button clothing = new Button("Clothing");
-		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		
-		Button shoes = new Button("Shoes");
-		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		
-		
 		VBox homePage = new VBox();
 		
-		technology.setOnAction(new EventHandler<ActionEvent>() {
+		//CART BUTTON
+		Button shoppingCartButton = new Button("Cart");
+		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
-		    	Label technologyLabel = new Label("Technology");
-		    	homePage.getChildren().add(technologyLabel);
+		    	Label shoppingCartLabel = new Label("Shopping Cart");
+		    	homePage.getChildren().add(shoppingCartLabel);
+		    	
+		    	Button checkoutButton = new Button("Checkout");
+		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		    	
+		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() {
+				    @Override
+				    public void handle(ActionEvent event) {
+				    	homePage.getChildren().clear();
+				    	Label checkoutLabel = new Label("Checkout");
+				    	homePage.getChildren().add(checkoutLabel);
+				    	
+				  }
+				});
+		    	
+		    	homePage.getChildren().add(checkoutButton);
+		    }
+		});
+		
+		//CARS BUTTON
+		Button carsButton = new Button("Cars");
+		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		carsButton.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	homePage.getChildren().clear();
+		    	Label carsLabel = new Label("Cars");
+		    	homePage.getChildren().add(carsLabel);
 		    	
 		    	FileInputStream input = null;
 				try {
-					input = new FileInputStream(imageFiles.get(4));
+					input = new FileInputStream(imageFiles.get(1));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -131,13 +128,15 @@ public class Runner extends Application {
 				imageView.setFitWidth(400);
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
-				
-				Label techPrice = new Label(""+price.get(4));
-				homePage.getChildren().add(techPrice);
+		    	
+				Label carPrice = new Label(""+price.get(1));
+				homePage.getChildren().add(carPrice);
 		  }
 		});
 		
-		
+		//AUDIO BOOK BUTTON
+		Button audioBookButton = new Button("Audio Books");
+		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -165,6 +164,39 @@ public class Runner extends Application {
 		    	
 		  }
 		});
+		
+		//TECHNOLOGY BUTTON
+		Button technology = new Button("Technology");
+		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		technology.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	homePage.getChildren().clear();
+		    	Label technologyLabel = new Label("Technology");
+		    	homePage.getChildren().add(technologyLabel);
+		    	
+		    	FileInputStream input = null;
+				try {
+					input = new FileInputStream(imageFiles.get(4));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image = new Image(input);
+				ImageView imageView = new ImageView(image);
+				imageView.setFitHeight(400);
+				imageView.setFitWidth(400);
+				imageView.setTranslateX(20);
+				homePage.getChildren().add(imageView);
+				
+				Label techPrice = new Label(""+price.get(4));
+				homePage.getChildren().add(techPrice);
+		  }
+		});
+		
+		//CLOTHING BUTTON
+		Button clothing = new Button("Clothing");
+		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		clothing.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -190,31 +222,10 @@ public class Runner extends Application {
 				homePage.getChildren().add(clothPrice);
 		  }
 		});
-		carsButton.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override
-		    public void handle(ActionEvent event) {
-		    	homePage.getChildren().clear();
-		    	Label carsLabel = new Label("Cars");
-		    	homePage.getChildren().add(carsLabel);
-		    	
-		    	FileInputStream input = null;
-				try {
-					input = new FileInputStream(imageFiles.get(1));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image = new Image(input);
-				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(400);
-				imageView.setFitWidth(400);
-				imageView.setTranslateX(20);
-				homePage.getChildren().add(imageView);
-		    	
-				Label carPrice = new Label(""+price.get(1));
-				homePage.getChildren().add(carPrice);
-		  }
-		});
+		
+		//SHOES BUTTON
+		Button shoes = new Button("Shoes");
+		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		shoes.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -240,30 +251,6 @@ public class Runner extends Application {
 				homePage.getChildren().add(shoePrice);
 		  }
 		});
-		
-		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override
-		    public void handle(ActionEvent event) {
-		    	homePage.getChildren().clear();
-		    	Label shoppingCartLabel = new Label("Shopping Cart");
-		    	homePage.getChildren().add(shoppingCartLabel);
-		    	
-		    	Button checkoutButton = new Button("Checkout");
-		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
-		    	
-		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() {
-				    @Override
-				    public void handle(ActionEvent event) {
-				    	homePage.getChildren().clear();
-				    	Label checkoutLabel = new Label("Checkout");
-				    	homePage.getChildren().add(checkoutLabel);
-				    	
-				  }
-				});
-		    	
-		    	homePage.getChildren().add(checkoutButton);
-		    }
-		});
 
 		/*
 		 * TilePane for the row of buttons that lead to other pages.
@@ -288,7 +275,7 @@ public class Runner extends Application {
 		tile.getChildren().add(shoppingCartButton);
 		shoppingCartButton.setTranslateX(173);
 		
-	    	VBox root = new VBox();
+	    VBox root = new VBox();
 	   	//root.setPrefWidth(200);
 		
 		homePage.setStyle("-fx-border-color: #00cc00; -fx-border-width: 5px;");
