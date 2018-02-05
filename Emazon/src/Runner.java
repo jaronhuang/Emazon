@@ -76,14 +76,6 @@ public class Runner extends Application {
 		
 		
 		
-		
-		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override
-		    public void handle(ActionEvent event) {
-		    	
-		    }
-		});
-		
 		VBox homePage = new VBox();
 		
 		technology.setOnAction(new EventHandler<ActionEvent>() {
@@ -145,6 +137,29 @@ public class Runner extends Application {
 		    	homePage.getChildren().add(shoesLabel);
 		    	
 		  }
+		});
+		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	homePage.getChildren().clear();
+		    	Label shoppingCartLabel = new Label("Shopping Cart");
+		    	homePage.getChildren().add(shoppingCartLabel);
+		    	
+		    	Button checkoutButton = new Button("Checkout");
+		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		    	
+		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() {
+				    @Override
+				    public void handle(ActionEvent event) {
+				    	homePage.getChildren().clear();
+				    	Label checkoutLabel = new Label("Checkout");
+				    	homePage.getChildren().add(checkoutLabel);
+				    	
+				  }
+				});
+		    	
+		    	homePage.getChildren().add(checkoutButton);
+		    }
 		});
 
 		/*
