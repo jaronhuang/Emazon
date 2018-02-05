@@ -13,7 +13,8 @@ public class Cart {
 		for(int x = 0; x < cart.size();x++)
 		{
 			cartList.concat(cart.get(x).getName());
-		}
+		}  
+		
 		return cartList;
 	}
 }
