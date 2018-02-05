@@ -7,10 +7,10 @@ public class Cars implements Items
 	public double rating;
 	public String model;
 	public String color;
-	public double milage;
+	public double mileage;
 	
 	public Cars(double price, int quantity, String name,
-			double rating, String model, String color, double milage)
+			double rating, String model, String color, double mileage)
 	{
 		this.price = price;
 		this.quantity = quantity;
@@ -18,7 +18,7 @@ public class Cars implements Items
 		this.rating = rating;
 		this.model = model;
 		this.color = color;
-		this.milage = milage;
+		this.mileage = mileage;
 	}
 	public double getPrice() {
 		return price;
@@ -45,7 +45,7 @@ public class Cars implements Items
 	}
 
 	public double getMilage() {
-		return milage;
+		return mileage;
 	}
 
 }
