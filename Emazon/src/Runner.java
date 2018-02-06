@@ -352,6 +352,17 @@ public class Runner extends Application {
 				{
 					@Override
 					public void handle(ActionEvent event) {
+					if (name.getCharacters().length() == 0 || address.getCharacters().length() == 0
+						|| email.getCharacters().length() == 0 || card.getCharacters().length() == 0
+						|| expiration.getCharacters().length() == 0) {
+					    Text CheckoutNameError = new Text("*Enter the required fields*");
+					    CheckoutNameError.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+					    CheckoutNameError.setFill(Color.RED);
+					    CheckoutNameError.setTranslateY(25);
+					    homePage.getChildren().add(CheckoutNameError);
+				        }	
+					else
+					{
 					homePage.getChildren().clear();
 						    	
 					Text thanks = new Text("Thank you for shopping with Emazon!" 
@@ -377,6 +388,7 @@ public class Runner extends Application {
 					imageView.setTranslateX(-50);
 					imageView.setTranslateY(100);
 					homePage.getChildren().add(imageView);
+					}
 				}
 			});  
 		}
