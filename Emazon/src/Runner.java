@@ -146,6 +146,8 @@ public class Runner extends Application {
 		    	
 				Label carPrice = new Label(""+price.get(1));
 				homePage.getChildren().add(carPrice);
+				
+				//Button 
 		  }
 		});
 		

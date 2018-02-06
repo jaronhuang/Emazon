@@ -46,7 +46,7 @@ public class CSVUtilities
 		return Arrays.asList(CSVData.get(0).split(","));
 	}
 	
-	public List<String> getDataString(int column)
+	public ArrayList<String> getDataString(int column)
 	{
 		ArrayList<String> data = new ArrayList<String>();
 		for (int i = 1; i < CSVData.size(); i++)
@@ -57,7 +57,7 @@ public class CSVUtilities
 		return data;
 	}
 	
-	public List<Integer> getDataInteger(int column)
+	public ArrayList<Integer> getDataInteger(int column)
 	{
 		ArrayList<Integer> data = new ArrayList<Integer>();
 		for (int i = 1; i < CSVData.size(); i++)
@@ -68,7 +68,7 @@ public class CSVUtilities
 		return data;
 	}
 	
-	public List<Double> getDataDouble(int column)
+	public ArrayList<Double> getDataDouble(int column)
 	{
 		ArrayList<Double> data = new ArrayList<Double>();
 		for (int i = 1; i < CSVData.size(); i++)
