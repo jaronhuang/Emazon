@@ -146,6 +146,16 @@ public class Runner extends Application {
 		    	
 				Label carPrice = new Label(""+price.get(1));
 				homePage.getChildren().add(carPrice);
+				
+				Button addToCart = new Button("ADD TO CART");
+				addToCart.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(1), 1, price.get(1),imageFiles.get(1));
+					}
+				});
+				homePage.getChildren().add(addToCart);
 		  }
 		});
 		
