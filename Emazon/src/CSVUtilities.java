@@ -83,7 +83,7 @@ public class CSVUtilities
 	}
 		 
 	static File file = new File("cart.csv");
-	public static void writeCSV(String name, int quantity, double price)
+	public static void writeCSV(String name, int quantity, double price, String image)
 	{
 		CSVUtilities csv = null;
 		try 
@@ -95,8 +95,8 @@ public class CSVUtilities
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		int line = 0;
-		csv.getCSVData().add(line, name + "," + quantity + "," + (price * quantity));
+		int line = 1;
+		csv.getCSVData().add(line, name + "," + quantity + "," + (price * quantity) + "," + image);
 		try 
 		{
 			Files.write(Paths.get("cart.csv"), csv.getCSVData());
