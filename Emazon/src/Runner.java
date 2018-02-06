@@ -49,6 +49,8 @@ public class Runner extends Application {
 	static ArrayList<String> audioFile = new ArrayList<String>();
 	static ArrayList<String> imageFiles = new ArrayList<String>();
 	
+	static ArrayList<String> cartImageFiles = new ArrayList<String>();
+	
 	public static void main(String[] args) throws IOException {
 		//INVENTORY FILE
 		File inventory = new File("inventory.csv");
@@ -66,6 +68,7 @@ public class Runner extends Application {
 		length = inv.getDataInteger(10);
 		audioFile = inv.getDataString(11);
 		imageFiles = inv.getDataString(12);
+		
 		
 		//CART FILE
 		File cart = new File("cart.csv");
@@ -288,6 +291,9 @@ public class Runner extends Application {
 		    	
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		    	
+		    	//IMAGE OF CAR IN CART
+		    	
 		    	
 		    	homePage.getChildren().add(checkoutButton);
 		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() 
