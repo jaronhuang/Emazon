@@ -151,6 +151,13 @@ public class Runner extends Application {
 		
 		//AUDIO BOOK BUTTON
 		Button audioBookButton = new Button("Audio Books");
+		FileInputStream  audioImage = new FileInputStream("audiobooks.png") ; //
+		Image imageAudio = new Image(audioImage) ;//
+		ImageView imageAudioView = new ImageView(imageAudio) ;//
+		imageAudioView.setFitHeight(40);//
+		imageAudioView.setFitWidth(40) ; //
+     
+		audioBookButton.setGraphic(imageAudioView);//
 		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -182,6 +189,13 @@ public class Runner extends Application {
 		
 		//TECHNOLOGY BUTTON
 		Button technology = new Button("Technology");
+		FileInputStream  techImage = new FileInputStream("tech icon.png") ; //
+		Image imageTech = new Image(techImage) ;//
+		ImageView imageTechView = new ImageView(imageTech) ;//
+		imageTechView.setFitHeight(40);//
+		imageTechView.setFitWidth(40) ; //
+     
+		technology.setGraphic(imageTechView);//
 		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		technology.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -211,7 +225,13 @@ public class Runner extends Application {
 		
 		//CLOTHING BUTTON
 		Button clothing = new Button("Clothing");
-		
+		FileInputStream  clothingImage = new FileInputStream("shirts.png") ; //
+		Image imageClothes = new Image(clothingImage) ;//
+		ImageView imageClothesView = new ImageView(imageClothes) ;//
+		imageClothesView.setFitHeight(40);//
+		imageClothesView.setFitWidth(40) ; //
+     
+		clothing.setGraphic(imageClothesView);//
 		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		clothing.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -241,6 +261,12 @@ public class Runner extends Application {
 		
 		//SHOES BUTTON
 		Button shoes = new Button("Shoes");
+		FileInputStream  shoesImage = new FileInputStream("shoes.png") ; //
+		Image imageShoes = new Image(shoesImage) ;//
+		ImageView imageShoesView = new ImageView(imageShoes) ;//
+		imageShoesView.setFitHeight(40);//
+		imageShoesView.setFitWidth(40) ; //
+		shoes.setGraphic(imageShoesView);//
 		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		shoes.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
