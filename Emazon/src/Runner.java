@@ -4,6 +4,7 @@
 
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,20 +13,25 @@ import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-
 
 public class Runner extends Application { 
 	//ARRAY LISTS CONTAINING EACH INFORMATION FROM EACH COLUMN IN THE INVENTORY.
@@ -109,18 +115,13 @@ public class Runner extends Application {
 		//CARS BUTTON
 	   
 		Button carsButton = new Button("Cars");// do the same for each category
-		
-		
-     FileInputStream  carImage = new FileInputStream("resources/car.png") ; //
-	Image imageCar = new Image(carImage) ;//
-	ImageView imageCarView = new ImageView(imageCar) ;//
-     imageCarView.setFitHeight(40);//
-     imageCarView.setFitWidth(40) ; //
+		FileInputStream  carImage = new FileInputStream("car.png") ; //
+		Image imageCar = new Image(carImage) ;//
+		ImageView imageCarView = new ImageView(imageCar) ;//
+		imageCarView.setFitHeight(40);//
+		imageCarView.setFitWidth(40) ; //
      
-	 carsButton.setGraphic(imageCarView);//
-	
-	
-	
+		carsButton.setGraphic(imageCarView);//
 		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		carsButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -268,83 +269,94 @@ public class Runner extends Application {
 		});
 		
 		//SHOPPING CART AND CHECKOUT
-		checkoutButton.setOnAction(new EventHandler<ActionEvent>() 
-		{
-			@Override
-			public void handle(ActionEvent event) {
-			homePage.getChildren().clear();
-			Label checkoutLabel = new Label("Checkout");
-			homePage.getChildren().add(checkoutLabel);
-				    	
-			Label checkoutName = new Label("Name:");
-			TextField name = new TextField();
-			name.setMaxSize(250, 20);
-			name.setPromptText("Enter your name here.");
-		    	homePage.getChildren().addAll(checkoutName, name);			    	
-			Label checkoutAddress = new Label("Address:");
-			TextField address = new TextField();
-			address.setMaxSize(250, 20);
-			address.setPromptText("Enter your address here.");
-			homePage.getChildren().addAll(checkoutAddress, address);
-				    	
-			Label checkoutEmail = new Label("Email:");
-			TextField email = new TextField();
-			email.setMaxSize(250, 20);
-			email.setPromptText("Enter your email here.");
-			homePage.getChildren().addAll(checkoutEmail, email);
-				    	
-			Label checkoutCard = new Label("Card #:");
-			TextField card = new TextField();
-			card.setMaxSize(250, 20);
-			card.setPromptText("Enter your card number here.");
-			homePage.getChildren().addAll(checkoutCard, card);
-				    	
-			Label checkoutExpiration = new Label("EXP. Date:");
-			TextField expiration = new TextField();
-			expiration.setMaxSize(250, 20);
-			expiration.setPromptText("Enter your expiration date here.");
-			homePage.getChildren().addAll(checkoutExpiration, expiration);
-				    	
-			Button payButton = new Button("Pay & Ship");
-			payButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
-			payButton.setTranslateY(10);
-			homePage.getChildren().add(payButton);
-				    	
-			payButton.setOnAction(new EventHandler<ActionEvent>() 
-			{
-				@Override
-				public void handle(ActionEvent event) {
-				homePage.getChildren().clear();
-						    	
-				Text thanks = new Text("Thank you for shopping with Emazon!" 
-						    		+ "\nYou are a highly valued customer!");
-				thanks.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
-				thanks.setFill(Color.BLUEVIOLET);
-				thanks.setTranslateX(25);
-				thanks.setTranslateY(50);
-				homePage.getChildren().add(thanks);
-						    	
-				FileInputStream input = null;
-				try {
-					input = new FileInputStream("thumbsUp.png");
-				} 
-				catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image = new Image(input);
-				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(400);
-				imageView.setFitWidth(400);
-				imageView.setTranslateX(-50);
-				imageView.setTranslateY(100);
-				homePage.getChildren().add(imageView);
-			}
-		});  
-	}
-	});
+		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	homePage.getChildren().clear();
+		    	Label shoppingCartLabel = new Label("Shopping Cart");
+		    	homePage.getChildren().add(shoppingCartLabel);
 		    	
+		    	Button checkoutButton = new Button("Checkout");
+		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		    	
+		    	homePage.getChildren().add(checkoutButton);
+		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() 
+		    	{
+		    		@Override
+		    		public void handle(ActionEvent event) {
+		    			homePage.getChildren().clear();
+		    			Label checkoutLabel = new Label("Checkout");
+		    			homePage.getChildren().add(checkoutLabel);
+				    	
+		    			Label checkoutName = new Label("Name:");
+		    			TextField name = new TextField();
+		    			name.setMaxSize(250, 20);
+		    			name.setPromptText("Enter your name here.");
+		    			homePage.getChildren().addAll(checkoutName, name);			    	
+		    			Label checkoutAddress = new Label("Address:");
+		    			TextField address = new TextField();
+		    			address.setMaxSize(250, 20);
+		    			address.setPromptText("Enter your address here.");
+		    			homePage.getChildren().addAll(checkoutAddress, address);
+				    	
+		    			Label checkoutEmail = new Label("Email:");
+		    			TextField email = new TextField();
+		    			email.setMaxSize(250, 20);
+		    			email.setPromptText("Enter your email here.");
+		    			homePage.getChildren().addAll(checkoutEmail, email);
+				    	
+		    			Label checkoutCard = new Label("Card #:");
+		    			TextField card = new TextField();
+		    			card.setMaxSize(250, 20);
+		    			card.setPromptText("Enter your card number here.");
+		    			homePage.getChildren().addAll(checkoutCard, card);
+				    	
+		    			Label checkoutExpiration = new Label("EXP. Date:");
+		    			TextField expiration = new TextField();
+		    			expiration.setMaxSize(250, 20);
+				expiration.setPromptText("Enter your expiration date here.");
+				homePage.getChildren().addAll(checkoutExpiration, expiration);
+				    	
+				Button payButton = new Button("Pay & Ship");
+				payButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+				payButton.setTranslateY(10);
+				homePage.getChildren().add(payButton);
+				    	
+				payButton.setOnAction(new EventHandler<ActionEvent>() 
+				{
+					@Override
+					public void handle(ActionEvent event) {
+					homePage.getChildren().clear();
+						    	
+					Text thanks = new Text("Thank you for shopping with Emazon!" 
+							    		+ "\nYou are a highly valued customer!");
+					thanks.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
+					thanks.setFill(Color.BLUEVIOLET);
+					thanks.setTranslateX(25);
+					thanks.setTranslateY(50);
+					homePage.getChildren().add(thanks);
+							    	
+					FileInputStream input = null;
+					try {
+						input = new FileInputStream("thumbsUp.png");
+					} 
+					catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Image image = new Image(input);
+					ImageView imageView = new ImageView(image);
+					imageView.setFitHeight(400);
+					imageView.setFitWidth(400);
+					imageView.setTranslateX(-50);
+					imageView.setTranslateY(100);
+					homePage.getChildren().add(imageView);
+				}
+			});  
 		}
+		});
+			    	
+			}
 		});
 
 		/*
