@@ -5,6 +5,7 @@
 
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,7 +55,7 @@ public class Runner extends Application {
 	public static void main(String[] args) throws IOException {
 		File inventory = new File("inventory.csv");
 		CSVUtilities inv = new CSVUtilities(inventory);
-		itemNames = inv.getDataString(0);
+/*		itemNames = inv.getDataString(0);
 		quantity = inv.getDataInteger(1);
 		price = inv.getDataDouble(2);
 		rating = inv.getDataDouble(3);
@@ -66,7 +67,7 @@ public class Runner extends Application {
 		mileage = inv.getDataDouble(9);
 		length = inv.getDataInteger(10);
 		audioFile = inv.getDataString(11);
-		imageFiles = inv.getDataString(12);
+		imageFiles = inv.getDataString(12); */
 		
 		File cart = new File("cart.csv");
 		CSVUtilities kart = new CSVUtilities(cart);
@@ -251,6 +252,8 @@ public class Runner extends Application {
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
+		    	homePage.getChildren().add(checkoutButton);
+		    	
 		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() {
 				    @Override
 				    public void handle(ActionEvent event) {
@@ -258,10 +261,43 @@ public class Runner extends Application {
 				    	Label checkoutLabel = new Label("Checkout");
 				    	homePage.getChildren().add(checkoutLabel);
 				    	
+				    	Label checkoutName = new Label("Name:");
+				    	TextField name = new TextField();
+				    	name.setMaxSize(250, 20);
+				    	name.setPromptText("Enter your name here.");
+				    	homePage.getChildren().addAll(checkoutName, name);
+				    	
+				    	Label checkoutAddress = new Label("Address:");
+				    	TextField address = new TextField();
+				    	address.setMaxSize(250, 20);
+				    	address.setPromptText("Enter your address here.");
+				    	homePage.getChildren().addAll(checkoutAddress, address);
+				    	
+				    	Label checkoutEmail = new Label("Email:");
+				    	TextField email = new TextField();
+				    	email.setMaxSize(250, 20);
+				    	email.setPromptText("Enter your email here.");
+				    	homePage.getChildren().addAll(checkoutEmail, email);
+				    	
+				    	Label checkoutCard = new Label("Card #:");
+				    	TextField card = new TextField();
+				    	card.setMaxSize(250, 20);
+				    	card.setPromptText("Enter your card number here.");
+				    	homePage.getChildren().addAll(checkoutCard, card);
+				    	
+				    	Label checkoutExpiration = new Label("EXP. Date:");
+				    	TextField expiration = new TextField();
+				    	expiration.setMaxSize(250, 20);
+				    	expiration.setPromptText("Enter your expiration date here.");
+				    	homePage.getChildren().addAll(checkoutExpiration, expiration);
+				    	
+				    	Button payButton = new Button("Pay & Ship");
+				    	payButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+				    	payButton.setTranslateY(10);
+				    	homePage.getChildren().add(payButton);
 				  }
 				});
 		    	
-		    	homePage.getChildren().add(checkoutButton);
 		    }
 		});
 
