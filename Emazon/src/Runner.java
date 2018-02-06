@@ -295,6 +295,36 @@ public class Runner extends Application {
 				    	payButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 				    	payButton.setTranslateY(10);
 				    	homePage.getChildren().add(payButton);
+				    	
+				    	payButton.setOnAction(new EventHandler<ActionEvent>() {
+						    @Override
+						    public void handle(ActionEvent event) {
+						    	homePage.getChildren().clear();
+						    	
+						    	Text thanks = new Text("Thank you for shopping with Emazon!" 
+						    			+ "\nYou are a highly valued customer!");
+								thanks.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
+								thanks.setFill(Color.BLUEVIOLET);
+								thanks.setTranslateX(25);
+								thanks.setTranslateY(50);
+						    	homePage.getChildren().add(thanks);
+						    	
+						    	FileInputStream input = null;
+								try {
+									input = new FileInputStream("thumbsUp.png");
+								} catch (FileNotFoundException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								Image image = new Image(input);
+								ImageView imageView = new ImageView(image);
+								imageView.setFitHeight(400);
+								imageView.setFitWidth(400);
+								imageView.setTranslateX(-50);
+								imageView.setTranslateY(100);
+								homePage.getChildren().add(imageView);
+						    }
+				    	});  
 				  }
 				});
 		    	
