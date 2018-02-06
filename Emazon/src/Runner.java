@@ -266,6 +266,86 @@ public class Runner extends Application {
 				homePage.getChildren().add(shoePrice);
 		  }
 		});
+		
+		//SHOPPING CART AND CHECKOUT
+		checkoutButton.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			@Override
+			public void handle(ActionEvent event) {
+			homePage.getChildren().clear();
+			Label checkoutLabel = new Label("Checkout");
+			homePage.getChildren().add(checkoutLabel);
+				    	
+			Label checkoutName = new Label("Name:");
+			TextField name = new TextField();
+			name.setMaxSize(250, 20);
+			name.setPromptText("Enter your name here.");
+		    	homePage.getChildren().addAll(checkoutName, name);			    	
+			Label checkoutAddress = new Label("Address:");
+			TextField address = new TextField();
+			address.setMaxSize(250, 20);
+			address.setPromptText("Enter your address here.");
+			homePage.getChildren().addAll(checkoutAddress, address);
+				    	
+			Label checkoutEmail = new Label("Email:");
+			TextField email = new TextField();
+			email.setMaxSize(250, 20);
+			email.setPromptText("Enter your email here.");
+			homePage.getChildren().addAll(checkoutEmail, email);
+				    	
+			Label checkoutCard = new Label("Card #:");
+			TextField card = new TextField();
+			card.setMaxSize(250, 20);
+			card.setPromptText("Enter your card number here.");
+			homePage.getChildren().addAll(checkoutCard, card);
+				    	
+			Label checkoutExpiration = new Label("EXP. Date:");
+			TextField expiration = new TextField();
+			expiration.setMaxSize(250, 20);
+			expiration.setPromptText("Enter your expiration date here.");
+			homePage.getChildren().addAll(checkoutExpiration, expiration);
+				    	
+			Button payButton = new Button("Pay & Ship");
+			payButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+			payButton.setTranslateY(10);
+			homePage.getChildren().add(payButton);
+				    	
+			payButton.setOnAction(new EventHandler<ActionEvent>() 
+			{
+				@Override
+				public void handle(ActionEvent event) {
+				homePage.getChildren().clear();
+						    	
+				Text thanks = new Text("Thank you for shopping with Emazon!" 
+						    		+ "\nYou are a highly valued customer!");
+				thanks.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
+				thanks.setFill(Color.BLUEVIOLET);
+				thanks.setTranslateX(25);
+				thanks.setTranslateY(50);
+				homePage.getChildren().add(thanks);
+						    	
+				FileInputStream input = null;
+				try {
+					input = new FileInputStream("thumbsUp.png");
+				} 
+				catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image = new Image(input);
+				ImageView imageView = new ImageView(image);
+				imageView.setFitHeight(400);
+				imageView.setFitWidth(400);
+				imageView.setTranslateX(-50);
+				imageView.setTranslateY(100);
+				homePage.getChildren().add(imageView);
+			}
+		});  
+	}
+	});
+		    	
+		}
+		});
 
 		/*
 		 * TilePane for the row of buttons that lead to other pages.
