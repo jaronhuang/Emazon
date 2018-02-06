@@ -79,6 +79,7 @@ public class Runner extends Application {
 		VBox homePage = new VBox();
 		
 		//CART BUTTON
+		
 		Button shoppingCartButton = new Button("Cart");
 		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -106,7 +107,20 @@ public class Runner extends Application {
 		});
 		
 		//CARS BUTTON
-		Button carsButton = new Button("Cars");
+	   
+		Button carsButton = new Button("Cars");// do the same for each category
+		
+		
+     FileInputStream  carImage = new FileInputStream("resources/car.png") ; //
+	Image imageCar = new Image(carImage) ;//
+	ImageView imageCarView = new ImageView(imageCar) ;//
+     imageCarView.setFitHeight(40);//
+     imageCarView.setFitWidth(40) ; //
+     
+	 carsButton.setGraphic(imageCarView);//
+	
+	
+	
 		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		carsButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -196,6 +210,7 @@ public class Runner extends Application {
 		
 		//CLOTHING BUTTON
 		Button clothing = new Button("Clothing");
+		
 		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		clothing.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
