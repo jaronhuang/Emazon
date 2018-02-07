@@ -88,7 +88,6 @@ public class Runner extends Application {
 		VBox homePage = new VBox();
 		
 		//CARS BUTTON
-	   
 		Button carsButton = new Button("Cars");// do the same for each category
 		FileInputStream  carImage = new FileInputStream("car.png") ; //
 		Image imageCar = new Image(carImage) ;//
@@ -128,6 +127,7 @@ public class Runner extends Application {
 					public void handle(ActionEvent arg0) {
 						// TODO Auto-generated method stub
 						CSVUtilities.writeCSV(itemNames.get(1), 1, price.get(1),imageFiles.get(1));
+						cartImageFiles.add(imageFiles.get(1));
 					}
 				});
 				homePage.getChildren().add(addToCart);
@@ -167,8 +167,17 @@ public class Runner extends Application {
 				
 				Label bookPrice = new Label(""+price.get(0));
 				homePage.getChildren().add(bookPrice);
-		    
-		    	
+				
+				Button addToCart = new Button("ADD TO CART");
+				addToCart.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(0), 1, price.get(0),imageFiles.get(0));
+						cartImageFiles.add(imageFiles.get(0));
+					}
+				});
+				homePage.getChildren().add(addToCart);
 		  }
 		});
 		
@@ -205,6 +214,17 @@ public class Runner extends Application {
 				
 				Label techPrice = new Label(""+price.get(4));
 				homePage.getChildren().add(techPrice);
+				
+				Button addToCart = new Button("ADD TO CART");
+				addToCart.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(4), 1, price.get(4),imageFiles.get(4));
+						cartImageFiles.add(imageFiles.get(4));
+					}
+				});
+				homePage.getChildren().add(addToCart);
 		  }
 		});
 		
@@ -241,6 +261,17 @@ public class Runner extends Application {
 		    	
 				Label clothPrice = new Label(""+price.get(2));
 				homePage.getChildren().add(clothPrice);
+				
+				Button addToCart = new Button("ADD TO CART");
+				addToCart.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(2), 1, price.get(2),imageFiles.get(2));
+						cartImageFiles.add(imageFiles.get(2));
+					}
+				});
+				homePage.getChildren().add(addToCart);
 		  }
 		});
 		
@@ -276,6 +307,17 @@ public class Runner extends Application {
 		    	
 				Label shoePrice = new Label(""+price.get(3));
 				homePage.getChildren().add(shoePrice);
+				
+				Button addToCart = new Button("ADD TO CART");
+				addToCart.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(3), 1, price.get(3),imageFiles.get(3));
+						cartImageFiles.add(imageFiles.get(3));
+					}
+				});
+				homePage.getChildren().add(addToCart);
 		  }
 		});
 		
@@ -293,7 +335,27 @@ public class Runner extends Application {
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
 		    	//IMAGE OF CAR IN CART
-		    	
+		    	if (cartImageFiles.size()>0)
+		    	{
+		    		FileInputStream input = null;
+		    		try {
+		    			input = new FileInputStream(cartImageFiles.get(0));
+		    		} catch (FileNotFoundException e) {
+		    			// TODO Auto-generated catch block
+		    			e.printStackTrace();
+					}
+					Image image = new Image(cartImageFiles.get(0));
+					ImageView imageView = new ImageView(image);
+					imageView.setFitHeight(400);
+					imageView.setFitWidth(400);
+					imageView.setTranslateX(20);
+					homePage.getChildren().add(imageView);
+		    	}
+		    	else
+		    	{
+		    		Label cartMessage = new Label("No Items in Cart");
+		    		homePage.getChildren().add(cartMessage);
+		    	}
 		    	
 		    	homePage.getChildren().add(checkoutButton);
 		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() 
