@@ -267,6 +267,7 @@ public class Runner extends Application {
 		});
 		
 		//SHOPPING CART AND CHECKOUT
+		VBox cartPage = new VBox();
 		Button shoppingCartButton = new Button("Cart");
 		FileInputStream  cartImage = new FileInputStream("cart.png") ; //
 		Image imageCart = new Image(cartImage) ;//
@@ -282,6 +283,30 @@ public class Runner extends Application {
 		    	Label shoppingCartLabel = new Label("Shopping Cart");
 		    	homePage.getChildren().add(shoppingCartLabel);
 		    	
+			cartPage.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px;");
+		    	cartPage.setPrefHeight(400);
+		    	cartPage.setPrefWidth(200);
+		    	homePage.getChildren().add(cartPage);
+		    	
+		    	Text itemName = new Text("Item");
+		    	itemName.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+		    	itemName.setFill(Color.DARKSLATEGRAY);
+		    	itemName.setTranslateX(20);
+		    	itemName.setTranslateY(0);
+		    	cartPage.getChildren().add(itemName);
+		    	Text quantity = new Text("Quantity");
+		    	quantity.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+		    	quantity.setFill(Color.DARKSLATEGRAY);
+		    	quantity.setTranslateX(175);
+		    	quantity.setTranslateY(-20);
+		    	cartPage.getChildren().add(quantity);
+		    	Text price = new Text("Price");
+		    	price.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+		    	price.setFill(Color.DARKSLATEGRAY);
+		    	price.setTranslateX(350);
+		    	price.setTranslateY(-40);
+		    	cartPage.getChildren().add(price);    
+			    
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
