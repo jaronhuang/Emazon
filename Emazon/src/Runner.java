@@ -268,7 +268,7 @@ public class Runner extends Application {
 		
 		//SHOPPING CART AND CHECKOUT
 		Button shoppingCartButton = new Button("Cart");
-		FileInputStream  cartImage = new FileInputStream("shop.png") ; //
+		FileInputStream  cartImage = new FileInputStream("cart.png") ; //
 		Image imageCart = new Image(cartImage) ;//
 		ImageView imageCartView = new ImageView(imageCart) ;//
 		imageCartView.setFitHeight(40);//
