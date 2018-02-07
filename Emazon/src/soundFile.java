@@ -16,14 +16,18 @@ public class soundFile extends Application {
 
 	  @Override
 	  public void start(Stage primaryStage) {
-	    Media media = new Media("file://test.mp3");
+	   /* Media media = new Media("file://test.mp3");
 	    MediaPlayer mediaPlayer = new MediaPlayer(media);
-	    mediaPlayer.play();
+	    mediaPlayer.play();*/
+		  String bip = "test.mp3";
+		  Media hit = new Media(new File(bip).toURI().toString());
+		  MediaPlayer mediaPlayer = new MediaPlayer(hit);
+		  mediaPlayer.play();
 
-	    primaryStage.setTitle("Audio Player 1");
+	   /* primaryStage.setTitle("Audio Player 1");
 	    primaryStage.setWidth(200);
 	    primaryStage.setHeight(200);
-	    primaryStage.show();
+	    primaryStage.show();*/
 	  }
 	}
 
