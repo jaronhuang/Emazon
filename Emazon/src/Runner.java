@@ -25,6 +25,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -167,9 +169,25 @@ public class Runner extends Application {
 				
 				Label bookPrice = new Label(""+price.get(0));
 				homePage.getChildren().add(bookPrice);
+				
+				Button sound = new Button("play");
+				sound.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				  public void handle(ActionEvent event) {
+					  
+					  String bip = "test.mp3";
+					  Media hit = new Media(new File(bip).toURI().toString());
+					  MediaPlayer mediaPlayer = new MediaPlayer(hit);
+					  mediaPlayer.play();
+				  }
 		    
-		    	
-		  }
+			
+				
+				
+				});
+				homePage.getChildren().add(sound);
+		    }
+		    
 		});
 		
 		//TECHNOLOGY BUTTON
