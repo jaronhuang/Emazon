@@ -268,6 +268,12 @@ public class Runner extends Application {
 		
 		//SHOPPING CART AND CHECKOUT
 		Button shoppingCartButton = new Button("Cart");
+		FileInputStream  cartImage = new FileInputStream("shop.png") ; //
+		Image imageCart = new Image(cartImage) ;//
+		ImageView imageCartView = new ImageView(imageCart) ;//
+		imageCartView.setFitHeight(40);//
+		imageCartView.setFitWidth(40) ; //
+		shoppingCartButton.setGraphic(imageCartView);//
 		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
