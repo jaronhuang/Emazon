@@ -87,34 +87,6 @@ public class Runner extends Application {
 		primaryStage.setTitle("Emazon");
 		VBox homePage = new VBox();
 		
-		//CART BUTTON
-		
-		Button shoppingCartButton = new Button("Cart");
-		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
-		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override
-		    public void handle(ActionEvent event) {
-		    	homePage.getChildren().clear();
-		    	Label shoppingCartLabel = new Label("Shopping Cart");
-		    	homePage.getChildren().add(shoppingCartLabel);
-		    	
-		    	Button checkoutButton = new Button("Checkout");
-		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
-		    	
-		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() {
-				    @Override
-				    public void handle(ActionEvent event) {
-				    	homePage.getChildren().clear();
-				    	Label checkoutLabel = new Label("Checkout");
-				    	homePage.getChildren().add(checkoutLabel);
-				    	
-				  }
-				});
-		    	
-		    	homePage.getChildren().add(checkoutButton);
-		    }
-		});
-		
 		//CARS BUTTON
 	   
 		Button carsButton = new Button("Cars");// do the same for each category
@@ -164,6 +136,13 @@ public class Runner extends Application {
 		
 		//AUDIO BOOK BUTTON
 		Button audioBookButton = new Button("Audio Books");
+		FileInputStream  audioImage = new FileInputStream("audiobooks.png") ; //
+		Image imageAudio = new Image(audioImage) ;//
+		ImageView imageAudioView = new ImageView(imageAudio) ;//
+		imageAudioView.setFitHeight(40);//
+		imageAudioView.setFitWidth(40) ; //
+     
+		audioBookButton.setGraphic(imageAudioView);//
 		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -195,6 +174,13 @@ public class Runner extends Application {
 		
 		//TECHNOLOGY BUTTON
 		Button technology = new Button("Technology");
+		FileInputStream  techImage = new FileInputStream("tech icon.png") ; //
+		Image imageTech = new Image(techImage) ;//
+		ImageView imageTechView = new ImageView(imageTech) ;//
+		imageTechView.setFitHeight(40);//
+		imageTechView.setFitWidth(40) ; //
+     
+		technology.setGraphic(imageTechView);//
 		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		technology.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -224,7 +210,13 @@ public class Runner extends Application {
 		
 		//CLOTHING BUTTON
 		Button clothing = new Button("Clothing");
-		
+		FileInputStream  clothingImage = new FileInputStream("shirts.png") ; //
+		Image imageClothes = new Image(clothingImage) ;//
+		ImageView imageClothesView = new ImageView(imageClothes) ;//
+		imageClothesView.setFitHeight(40);//
+		imageClothesView.setFitWidth(40) ; //
+     
+		clothing.setGraphic(imageClothesView);//
 		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		clothing.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -254,6 +246,12 @@ public class Runner extends Application {
 		
 		//SHOES BUTTON
 		Button shoes = new Button("Shoes");
+		FileInputStream  shoesImage = new FileInputStream("shoes.png") ; //
+		Image imageShoes = new Image(shoesImage) ;//
+		ImageView imageShoesView = new ImageView(imageShoes) ;//
+		imageShoesView.setFitHeight(40);//
+		imageShoesView.setFitWidth(40) ; //
+		shoes.setGraphic(imageShoesView);//
 		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		shoes.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -282,6 +280,8 @@ public class Runner extends Application {
 		});
 		
 		//SHOPPING CART AND CHECKOUT
+		Button shoppingCartButton = new Button("Cart");
+		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -330,49 +330,63 @@ public class Runner extends Application {
 		    			Label checkoutExpiration = new Label("EXP. Date:");
 		    			TextField expiration = new TextField();
 		    			expiration.setMaxSize(250, 20);
-				expiration.setPromptText("Enter your expiration date here.");
-				homePage.getChildren().addAll(checkoutExpiration, expiration);
-				    	
-				Button payButton = new Button("Pay & Ship");
-				payButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
-				payButton.setTranslateY(10);
-				homePage.getChildren().add(payButton);
-				    	
-				payButton.setOnAction(new EventHandler<ActionEvent>() 
-				{
-					@Override
-					public void handle(ActionEvent event) {
-					homePage.getChildren().clear();
+						expiration.setPromptText("Enter your expiration date here.");
+						homePage.getChildren().addAll(checkoutExpiration, expiration);
 						    	
-					Text thanks = new Text("Thank you for shopping with Emazon!" 
-							    		+ "\nYou are a highly valued customer!");
-					thanks.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
-					thanks.setFill(Color.BLUEVIOLET);
-					thanks.setTranslateX(25);
-					thanks.setTranslateY(50);
-					homePage.getChildren().add(thanks);
-							    	
-					FileInputStream input = null;
-					try {
-						input = new FileInputStream("thumbsUp.png");
-					} 
-					catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					Image image = new Image(input);
-					ImageView imageView = new ImageView(image);
-					imageView.setFitHeight(400);
-					imageView.setFitWidth(400);
-					imageView.setTranslateX(-50);
-					imageView.setTranslateY(100);
-					homePage.getChildren().add(imageView);
-				}
-			});  
-		}
-		});
+						Button payButton = new Button("Pay & Ship");
+						payButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+						payButton.setTranslateY(10);
+						homePage.getChildren().add(payButton);
+						    
+						Text CheckoutNameError = new Text("*Enter all the required fields*");
+						
+						payButton.setOnAction(new EventHandler<ActionEvent>() 
+						{
+							@Override
+							public void handle(ActionEvent event) {
+								homePage.getChildren().remove(CheckoutNameError);
+								if (name.getCharacters().length() == 0 || address.getCharacters().length() == 0
+									|| email.getCharacters().length() == 0 || card.getCharacters().length() == 0
+									|| expiration.getCharacters().length() == 0) {
+								    CheckoutNameError.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+								    CheckoutNameError.setFill(Color.RED);
+								    CheckoutNameError.setTranslateY(25);
+								    homePage.getChildren().add(CheckoutNameError);
+								}	
+								else
+								{
+									homePage.getChildren().clear();
+										    	
+									Text thanks = new Text("Thank you for shopping with Emazon!" 
+											    		+ "\nYou are a highly valued customer!");
+									thanks.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
+									thanks.setFill(Color.BLUEVIOLET);
+									thanks.setTranslateX(25);
+									thanks.setTranslateY(50);
+									homePage.getChildren().add(thanks);
+											    	
+									FileInputStream input = null;
+									try {
+										input = new FileInputStream("thumbsUp.png");
+									} 
+									catch (FileNotFoundException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									Image image = new Image(input);
+									ImageView imageView = new ImageView(image);
+									imageView.setFitHeight(400);
+									imageView.setFitWidth(400);
+									imageView.setTranslateX(-50);
+									imageView.setTranslateY(70);
+									homePage.getChildren().add(imageView);
+								}
+							}
+						});  
+		    		}
+		    	});
 			    	
-			}
+		    }
 		});
 
 		/*
@@ -396,7 +410,7 @@ public class Runner extends Application {
 		tile.getChildren().add(technology);
 		tile.getChildren().add(clothing);
 		tile.getChildren().add(shoppingCartButton);
-		shoppingCartButton.setTranslateX(173);
+//		shoppingCartButton.setTranslateX(173);
 		
 	    VBox root = new VBox();
 	   	//root.setPrefWidth(200);
