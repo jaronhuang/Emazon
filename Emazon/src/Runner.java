@@ -75,9 +75,9 @@ public class Runner extends Application {
 		//CART FILE
 		File cart = new File("cart.csv");
 		CSVUtilities kart = new CSVUtilities(cart);	
-		if (kart.getCSVData().size()!=0)
+		if (kart.getCSVData().size()!=1)
 		{
-			//cartImageFiles = kart.getDataString(2);
+			cartImageFiles = kart.getDataString(3);
 		}
 		
 		//PURCHASE HISTORY FILE
@@ -217,6 +217,9 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label technologyLabel = new Label("Technology");
+		    	technologyLabel.setStyle("-fx-font");
+		    	
+		    	
 		    	homePage.getChildren().add(technologyLabel);
 		    	
 		    	FileInputStream input = null;
@@ -487,7 +490,7 @@ public class Runner extends Application {
 											    	
 									FileInputStream input = null;
 									try {
-										input = new FileInputStream("thumbsUp.png");
+										input = new FileInputStream("lavar2.jpg");
 									} 
 									catch (FileNotFoundException e) {
 										// TODO Auto-generated catch block
@@ -495,9 +498,9 @@ public class Runner extends Application {
 									}
 									Image image = new Image(input);
 									ImageView imageView = new ImageView(image);
-									imageView.setFitHeight(400);
+									imageView.setFitHeight(200);
 									imageView.setFitWidth(400);
-									imageView.setTranslateX(-50);
+									imageView.setTranslateX(18);
 									imageView.setTranslateY(70);
 									homePage.getChildren().add(imageView);
 								}
@@ -558,6 +561,7 @@ public class Runner extends Application {
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
         Scene scene = new Scene(root, 450, 700);
+        scene.getStylesheets().add("/Emazon/stylesheet.css");
         primaryStage.setTitle("Emazon");
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
