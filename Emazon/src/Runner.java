@@ -180,10 +180,10 @@ public class Runner extends Application {
 					  Media hit = new Media(new File(bip).toURI().toString());
 					  MediaPlayer mediaPlayer = new MediaPlayer(hit);
 					  mediaPlayer.play();
-          }
-				});
+				}
+			});
 				homePage.getChildren().add(sound);
-		    }
+		    
 		    
 
 				Button addToCart = new Button("ADD TO CART");
@@ -195,9 +195,8 @@ public class Runner extends Application {
 						cartImageFiles.add(imageFiles.get(0));
 					}
 				});
-				homePage.getChildren().add(addToCart);
-		  }
-
+				homePage.getChildren().add(addToCart); 
+		    } 
 		});
 		
 		//TECHNOLOGY BUTTON
