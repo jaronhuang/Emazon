@@ -97,6 +97,7 @@ public class Runner extends Application {
      
 		carsButton.setGraphic(imageCarView);//
 		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		carsButton.setTranslateX(25);
 		carsButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -144,6 +145,7 @@ public class Runner extends Application {
      
 		audioBookButton.setGraphic(imageAudioView);//
 		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		audioBookButton.setTranslateX(25);
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -191,6 +193,7 @@ public class Runner extends Application {
      
 		technology.setGraphic(imageTechView);//
 		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		technology.setTranslateX(25);
 		technology.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -238,6 +241,7 @@ public class Runner extends Application {
      
 		clothing.setGraphic(imageClothesView);//
 		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		clothing.setTranslateX(25);
 		clothing.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -284,6 +288,7 @@ public class Runner extends Application {
 		imageShoesView.setFitWidth(40) ; //
 		shoes.setGraphic(imageShoesView);//
 		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		shoes.setTranslateX(25);
 		shoes.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -331,6 +336,7 @@ public class Runner extends Application {
 		imageCartView.setFitWidth(40) ; //
 		shoppingCartButton.setGraphic(imageCartView);//
 		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		shoppingCartButton.setTranslateX(25);
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
