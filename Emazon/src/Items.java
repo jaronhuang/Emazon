@@ -7,4 +7,5 @@ public interface Items
 	public abstract int getQuantity();
 	public abstract String getName();
 	public abstract double getRating();
+	public abstract String getImage();
 }

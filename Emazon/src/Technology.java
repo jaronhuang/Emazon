@@ -11,9 +11,10 @@ public class Technology implements Items{
 	public double rating;
 	public String type;
 	public double batteryLife;
+	public String image;
 	
 	public Technology(double price, int quantity, String name,
-			double rating, String type, double batteryLife)
+			double rating, String type, double batteryLife, String image)
 	{
 		this.price = price;
 		this.quantity = quantity;
@@ -21,6 +22,7 @@ public class Technology implements Items{
 		this.rating = rating;
 		this.type = type;
 		this.batteryLife = batteryLife;
+		this.image = image;
 	}
 	
 	public double getPrice()
@@ -47,5 +49,8 @@ public class Technology implements Items{
 	public double getBatteryLife()
 	{
 		return batteryLife;
+	}
+	public String getImage() {
+		return image;
 	}
 }

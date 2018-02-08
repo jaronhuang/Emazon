@@ -8,9 +8,11 @@ public class Cars implements Items
 	public String model;
 	public String color;
 	public double mileage;
+	public String image;
 	
 	public Cars(double price, int quantity, String name,
-			double rating, String model, String color, double mileage)
+			double rating, String model, String color, double mileage,
+			String image)
 	{
 		this.price = price;
 		this.quantity = quantity;
@@ -19,6 +21,8 @@ public class Cars implements Items
 		this.model = model;
 		this.color = color;
 		this.mileage = mileage;
+		this.image = image;
+		
 	}
 	public double getPrice() {
 		return price;
@@ -47,5 +51,7 @@ public class Cars implements Items
 	public double getMilage() {
 		return mileage;
 	}
-
+	public String getImage() {
+		return image;
+	}
 }
