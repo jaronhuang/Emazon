@@ -3,6 +3,7 @@
  */
 import java.util.ArrayList;
 
+
 public class Cart {
 
 	ArrayList<Items> cart = new ArrayList<Items>();
@@ -19,6 +20,6 @@ public class Cart {
 	}
 	public void addItem(Items x)
 	{
-		cart.add(x);
+		CSVUtilities.writeCSV(x.getName(), x.getQuantity(), x.getPrice(), x.getImage() );
 	}
 }
