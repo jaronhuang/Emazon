@@ -88,7 +88,7 @@ public class Runner extends Application {
 		VBox homePage = new VBox();
 		
 		//CARS BUTTON
-		Button carsButton = new Button("Cars");// do the same for each category
+		Button carsButton = new Button("");// do the same for each category
 		FileInputStream  carImage = new FileInputStream("car.png") ; //
 		Image imageCar = new Image(carImage) ;//
 		ImageView imageCarView = new ImageView(imageCar) ;//
@@ -113,8 +113,8 @@ public class Runner extends Application {
 				}
 				Image image = new Image(input);
 				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(400);
-				imageView.setFitWidth(400);
+				imageView.setFitHeight(150);
+				imageView.setFitWidth(150);
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
@@ -135,7 +135,7 @@ public class Runner extends Application {
 		});
 		
 		//AUDIO BOOK BUTTON
-		Button audioBookButton = new Button("Audio Books");
+		Button audioBookButton = new Button("");
 		FileInputStream  audioImage = new FileInputStream("audiobooks.png") ; //
 		Image imageAudio = new Image(audioImage) ;//
 		ImageView imageAudioView = new ImageView(imageAudio) ;//
@@ -160,8 +160,8 @@ public class Runner extends Application {
 				}
 				Image image = new Image(input);
 				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(400);
-				imageView.setFitWidth(400);
+				imageView.setFitHeight(150);
+				imageView.setFitWidth(150);
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 				
@@ -182,7 +182,7 @@ public class Runner extends Application {
 		});
 		
 		//TECHNOLOGY BUTTON
-		Button technology = new Button("Technology");
+		Button technology = new Button("");
 		FileInputStream  techImage = new FileInputStream("tech icon.png") ; //
 		Image imageTech = new Image(techImage) ;//
 		ImageView imageTechView = new ImageView(imageTech) ;//
@@ -207,8 +207,8 @@ public class Runner extends Application {
 				}
 				Image image = new Image(input);
 				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(400);
-				imageView.setFitWidth(400);
+				imageView.setFitHeight(150);
+				imageView.setFitWidth(150);
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 				
@@ -229,7 +229,7 @@ public class Runner extends Application {
 		});
 		
 		//CLOTHING BUTTON
-		Button clothing = new Button("Clothing");
+		Button clothing = new Button("");
 		FileInputStream  clothingImage = new FileInputStream("shirts.png") ; //
 		Image imageClothes = new Image(clothingImage) ;//
 		ImageView imageClothesView = new ImageView(imageClothes) ;//
@@ -254,8 +254,8 @@ public class Runner extends Application {
 				}
 				Image image = new Image(input);
 				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(400);
-				imageView.setFitWidth(400);
+				imageView.setFitHeight(150);
+				imageView.setFitWidth(150);
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
@@ -276,7 +276,7 @@ public class Runner extends Application {
 		});
 		
 		//SHOES BUTTON
-		Button shoes = new Button("Shoes");
+		Button shoes = new Button("");
 		FileInputStream  shoesImage = new FileInputStream("shoes.png") ; //
 		Image imageShoes = new Image(shoesImage) ;//
 		ImageView imageShoesView = new ImageView(imageShoes) ;//
@@ -300,8 +300,8 @@ public class Runner extends Application {
 				}
 				Image image = new Image(input);
 				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(400);
-				imageView.setFitWidth(400);
+				imageView.setFitHeight(150);
+				imageView.setFitWidth(150);
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
@@ -322,7 +322,14 @@ public class Runner extends Application {
 		});
 		
 		//SHOPPING CART AND CHECKOUT
-		Button shoppingCartButton = new Button("Cart");
+		VBox cartPage = new VBox();
+		Button shoppingCartButton = new Button("");
+		FileInputStream  cartImage = new FileInputStream("cart.png") ; //
+		Image imageCart = new Image(cartImage) ;//
+		ImageView imageCartView = new ImageView(imageCart) ;//
+		imageCartView.setFitHeight(40);//
+		imageCartView.setFitWidth(40) ; //
+		shoppingCartButton.setGraphic(imageCartView);//
 		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -331,6 +338,31 @@ public class Runner extends Application {
 		    	Label shoppingCartLabel = new Label("Shopping Cart");
 		    	homePage.getChildren().add(shoppingCartLabel);
 		    	
+		    	cartPage.getChildren().clear();
+		    	cartPage.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px;");
+		    	cartPage.setPrefHeight(400);
+		    	cartPage.setPrefWidth(200);
+		    	homePage.getChildren().add(cartPage);
+		    	
+		    	Text itemName = new Text("Item");
+		    	itemName.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+		    	itemName.setFill(Color.DARKSLATEGRAY);
+		    	itemName.setTranslateX(20);
+		    	itemName.setTranslateY(0);
+		    	cartPage.getChildren().add(itemName);
+		    	Text quantity = new Text("Quantity");
+		    	quantity.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+		    	quantity.setFill(Color.DARKSLATEGRAY);
+		    	quantity.setTranslateX(175);
+		    	quantity.setTranslateY(-20);
+		    	cartPage.getChildren().add(quantity);
+		    	Text price = new Text("Price");
+		    	price.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+		    	price.setFill(Color.DARKSLATEGRAY);
+		    	price.setTranslateX(350);
+		    	price.setTranslateY(-40);
+		    	cartPage.getChildren().add(price);    
+			    
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
