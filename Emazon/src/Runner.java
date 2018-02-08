@@ -74,8 +74,12 @@ public class Runner extends Application {
 		
 		//CART FILE
 		File cart = new File("cart.csv");
-		CSVUtilities kart = new CSVUtilities(cart);
-	
+		CSVUtilities kart = new CSVUtilities(cart);	
+		if (kart.getCSVData().size()!=0)
+		{
+			//cartImageFiles = kart.getDataString(2);
+		}
+		
 		//PURCHASE HISTORY FILE
 		File purchase = new File("phistory.csv");
 		CSVUtilities history = new CSVUtilities(purchase);	
@@ -175,7 +179,6 @@ public class Runner extends Application {
 				sound.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				  public void handle(ActionEvent event) {
-					  
 					  String bip = "test.mp3";
 					  Media hit = new Media(new File(bip).toURI().toString());
 					  MediaPlayer mediaPlayer = new MediaPlayer(hit);
@@ -387,6 +390,7 @@ public class Runner extends Application {
 		    	//IMAGE OF CAR IN CART
 		    	if (cartImageFiles.size()>0)
 		    	{
+		    		
 		    		FileInputStream input = null;
 		    		try {
 		    			input = new FileInputStream(cartImageFiles.get(0));
@@ -394,12 +398,16 @@ public class Runner extends Application {
 		    			// TODO Auto-generated catch block
 		    			e.printStackTrace();
 					}
-					Image image = new Image(cartImageFiles.get(0));
-					ImageView imageView = new ImageView(image);
-					imageView.setFitHeight(400);
-					imageView.setFitWidth(400);
-					imageView.setTranslateX(20);
-					homePage.getChildren().add(imageView);
+		    		for (int i = 0; i <cartImageFiles.size(); i++)
+		    		{
+		    			Image image = new Image(cartImageFiles.get(i));
+		    			ImageView imageView = new ImageView(image);
+		    			imageView.setFitHeight(100);
+		    			imageView.setFitWidth(100);
+		    			imageView.setTranslateX(20);
+		    			imageView.setTranslateY(- i*50);
+		    			cartPage.getChildren().add(imageView);
+		    		}
 		    	}
 		    	else
 		    	{
