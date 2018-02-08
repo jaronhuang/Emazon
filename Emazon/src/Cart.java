@@ -17,4 +17,8 @@ public class Cart {
 		
 		return cartList;
 	}
+	public void addItem(Items x)
+	{
+		cart.add(x);
+	}
 }
