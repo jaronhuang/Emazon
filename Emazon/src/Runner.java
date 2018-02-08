@@ -283,7 +283,8 @@ public class Runner extends Application {
 		    	Label shoppingCartLabel = new Label("Shopping Cart");
 		    	homePage.getChildren().add(shoppingCartLabel);
 		    	
-			cartPage.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px;");
+		    	cartPage.getChildren().clear();
+		    	cartPage.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px;");
 		    	cartPage.setPrefHeight(400);
 		    	cartPage.setPrefWidth(200);
 		    	homePage.getChildren().add(cartPage);
