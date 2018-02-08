@@ -4,7 +4,10 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -78,5 +81,57 @@ public class CSVUtilities
 		}
 		return data;
 	}
+		 
+	static File file = new File("cart.csv");
+	public static void writeCSV(String name, int quantity, double price, String image)
+	{
+		CSVUtilities csv = null;
+		try 
+		{
+			csv = new CSVUtilities(file);
+		} 
+		catch (IOException e1) 
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		int line = 1;
+		csv.getCSVData().add(line, name + "," + quantity + "," + (price * quantity) + "," + image);
+		try 
+		{
+			Files.write(Paths.get("cart.csv"), csv.getCSVData());
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
+	public static void clearCSV(int items)
+	{
+		CSVUtilities csv = null;
+		try 
+		{
+			csv = new CSVUtilities(file);
+		} 
+		catch (IOException e1) 
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		for (int i = items; i > 0; i--)
+		{
+			csv.getCSVData().add(i, "");	
+		}
+		try 
+		{
+			Files.write(Paths.get("cart.csv"), csv.getCSVData());
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
+
