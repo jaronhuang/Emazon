@@ -106,6 +106,32 @@ public class CSVUtilities
 			e.printStackTrace();
 		}
 	}
+	
+	public static void clearCSV(int items)
+	{
+		CSVUtilities csv = null;
+		try 
+		{
+			csv = new CSVUtilities(file);
+		} 
+		catch (IOException e1) 
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		for (int i = items; i > 0; i--)
+		{
+			csv.getCSVData().add(i, "");	
+		}
+		try 
+		{
+			Files.write(Paths.get("cart.csv"), csv.getCSVData());
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
 
