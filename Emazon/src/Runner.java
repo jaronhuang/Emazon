@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -53,6 +56,8 @@ public class Runner extends Application {
 	
 	static ArrayList<String> cartImageFiles = new ArrayList<String>();
 	
+	static CSVUtilities kart = null;
+	
 	public static void main(String[] args) throws IOException {
 		//INVENTORY FILE
 		File inventory = new File("inventory.csv");
@@ -74,7 +79,7 @@ public class Runner extends Application {
 		
 		//CART FILE
 		File cart = new File("cart.csv");
-		CSVUtilities kart = new CSVUtilities(cart);	
+		kart = new CSVUtilities(cart);	
 		if (kart.getCSVData().size()!=1)
 		{
 			cartImageFiles = kart.getDataString(3);
@@ -394,6 +399,34 @@ public class Runner extends Application {
 		    	clearCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    		public void handle(ActionEvent event)
 		    		{
+		    			//kart.clearCSV(cartImageFiles.size());
+		    			File cart = new File("cart.csv");
+		    			try {
+							kart = new CSVUtilities(cart);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		    			kart.getCSVData().add("Name" + "," + "Quantity" + "," + "Price" + "," + "Image");
+		    			try 
+		    			{
+		    				Files.write(Paths.get("cart.csv"), kart.getCSVData());
+		    			} 
+		    			catch (IOException e) {
+		    				// TODO Auto-generated catch block
+		    				e.printStackTrace();
+		    			}
+		    			StringBuilder sb = new StringBuilder();
+		    			sb.append("Name,Quantity,Price,Image");
+		    			PrintWriter cartPW = null;
+		    			try {
+							cartPW = new PrintWriter(cart);
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		    			cartPW.write(sb.toString());
+		    			cartPW.flush();
 		    			cartPage.getChildren().clear();
 		    			cartImageFiles.clear();
 		    		}
@@ -490,8 +523,8 @@ public class Runner extends Application {
 								{
 									homePage.getChildren().clear();
 										    	
-									Text thanks = new Text("Thank you for shopping with Emazon!" 
-											    		+ "\nYou are a highly valued customer!");
+									Text thanks = new Text("Thank you for shopping with" + "\nBig Baller Brand!" 
+											    		+ "\nSTAY IN YO LANE!");
 									thanks.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
 									thanks.setFill(Color.BLUEVIOLET);
 									thanks.setTranslateX(25);
