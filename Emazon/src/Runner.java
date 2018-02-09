@@ -33,6 +33,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -108,11 +109,14 @@ public class Runner extends Application {
      
 		carsButton.setGraphic(imageCarView);//
 		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		carsButton.setTranslateX(25);
 		carsButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label carsLabel = new Label("Cars");
+		    	carsLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	
 		    	homePage.getChildren().add(carsLabel);
 		    	
 		    	FileInputStream input = null;
@@ -155,11 +159,15 @@ public class Runner extends Application {
      
 		audioBookButton.setGraphic(imageAudioView);//
 		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		audioBookButton.setTranslateX(25);
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label audioBookLabel = new Label("Audio Book");
+		    	
+		    	audioBookLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	
 		    	homePage.getChildren().add(audioBookLabel);
 		    	
 		    	FileInputStream input = null;
@@ -217,14 +225,17 @@ public class Runner extends Application {
      
 		technology.setGraphic(imageTechView);//
 		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		technology.setTranslateX(25);
 		technology.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label technologyLabel = new Label("Technology");
-		    	//technologyLabel.setStyle("-fx-font");
-		    	
+
+		    	technologyLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+
 		    	homePage.getChildren().add(technologyLabel);
+		    	
 		    	
 		    	FileInputStream input = null;
 				try {
@@ -266,11 +277,13 @@ public class Runner extends Application {
      
 		clothing.setGraphic(imageClothesView);//
 		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		clothing.setTranslateX(25);
 		clothing.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label clothingLabel = new Label("Clothing");
+		    	clothingLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	homePage.getChildren().add(clothingLabel);
 		    	
 		    	FileInputStream input = null;
@@ -312,11 +325,13 @@ public class Runner extends Application {
 		imageShoesView.setFitWidth(40) ; //
 		shoes.setGraphic(imageShoesView);//
 		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		shoes.setTranslateX(25);
 		shoes.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label shoesLabel = new Label("Shoes");
+		    	shoesLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	homePage.getChildren().add(shoesLabel);
 		    	
 		    	FileInputStream input = null;
@@ -359,11 +374,13 @@ public class Runner extends Application {
 		imageCartView.setFitWidth(40) ; //
 		shoppingCartButton.setGraphic(imageCartView);//
 		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		shoppingCartButton.setTranslateX(25);
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label shoppingCartLabel = new Label("Shopping Cart");
+		    	shoppingCartLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	homePage.getChildren().add(shoppingCartLabel);
 		    	
 		    	cartPage.getChildren().clear();
