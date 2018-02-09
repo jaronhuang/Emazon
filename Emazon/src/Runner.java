@@ -28,6 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -103,6 +104,8 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label carsLabel = new Label("Cars");
+		    	carsLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	
 		    	homePage.getChildren().add(carsLabel);
 		    	
 		    	FileInputStream input = null;
@@ -151,6 +154,9 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label audioBookLabel = new Label("Audio Book");
+		    	
+		    	audioBookLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	
 		    	homePage.getChildren().add(audioBookLabel);
 		    	
 		    	FileInputStream input = null;
@@ -199,7 +205,9 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label technologyLabel = new Label("Technology");
+		    	technologyLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	homePage.getChildren().add(technologyLabel);
+		    	
 		    	
 		    	FileInputStream input = null;
 				try {
@@ -247,6 +255,7 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label clothingLabel = new Label("Clothing");
+		    	clothingLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	homePage.getChildren().add(clothingLabel);
 		    	
 		    	FileInputStream input = null;
@@ -294,6 +303,7 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label shoesLabel = new Label("Shoes");
+		    	shoesLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	homePage.getChildren().add(shoesLabel);
 		    	
 		    	FileInputStream input = null;
@@ -342,6 +352,7 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label shoppingCartLabel = new Label("Shopping Cart");
+		    	shoppingCartLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	homePage.getChildren().add(shoppingCartLabel);
 		    	
 		    	cartPage.getChildren().clear();
