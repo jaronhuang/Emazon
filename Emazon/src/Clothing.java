@@ -8,9 +8,10 @@ public class Clothing implements Items{
 	public double rating;
 	public String color;
 	public String size;
+	public String image;
 	
 	public Clothing(double price, int quantity, String name,
-			double rating, String color, String size)
+			double rating, String color, String size, String image)
 	{
 		this.price = price;
 		this.quantity = quantity;
@@ -39,6 +40,9 @@ public class Clothing implements Items{
 		return size;
 	}
 
+	public String getImage() {
+		return image;
+	}
 	
 
 }

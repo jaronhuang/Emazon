@@ -14,7 +14,7 @@ import java.util.List;
 
 public class CSVUtilities 
 {
-	private ArrayList<String> CSVData = new ArrayList<String>();
+	public ArrayList<String> CSVData = new ArrayList<String>();
 	private int numColumns;
 	
 	public CSVUtilities(File csv) throws IOException
