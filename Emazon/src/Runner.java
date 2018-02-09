@@ -446,6 +446,25 @@ public class Runner extends Application {
 		    			cartPW.flush();
 		    			cartPage.getChildren().clear();
 		    			cartImageFiles.clear();
+		    			
+		    			Text itemName = new Text("Item");
+				    	itemName.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+				    	itemName.setFill(Color.DARKSLATEGRAY);
+				    	itemName.setTranslateX(20);
+				    	itemName.setTranslateY(0);
+				    	cartPage.getChildren().add(itemName);
+				    	Text quantity = new Text("Quantity");
+				    	quantity.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+				    	quantity.setFill(Color.DARKSLATEGRAY);
+				    	quantity.setTranslateX(175);
+				    	quantity.setTranslateY(-20);
+				    	cartPage.getChildren().add(quantity);
+				    	Text price = new Text("Price");
+				    	price.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+				    	price.setFill(Color.DARKSLATEGRAY);
+				    	price.setTranslateX(350);
+				    	price.setTranslateY(-40);
+				    	cartPage.getChildren().add(price);    
 		    		}
 		    	});
 		    	homePage.getChildren().add(clearCartButton);
