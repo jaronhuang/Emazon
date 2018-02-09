@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -25,6 +28,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -52,6 +57,8 @@ public class Runner extends Application {
 	
 	static ArrayList<String> cartImageFiles = new ArrayList<String>();
 	
+	static CSVUtilities kart = null;
+	
 	public static void main(String[] args) throws IOException {
 		//INVENTORY FILE
 		File inventory = new File("inventory.csv");
@@ -73,8 +80,12 @@ public class Runner extends Application {
 		
 		//CART FILE
 		File cart = new File("cart.csv");
-		CSVUtilities kart = new CSVUtilities(cart);
-	
+		kart = new CSVUtilities(cart);	
+		if (kart.getCSVData().size()!=1)
+		{
+			cartImageFiles = kart.getDataString(3);
+		}
+		
 		//PURCHASE HISTORY FILE
 		File purchase = new File("phistory.csv");
 		CSVUtilities history = new CSVUtilities(purchase);	
@@ -176,6 +187,21 @@ public class Runner extends Application {
 				Label bookPrice = new Label(""+price.get(0));
 				homePage.getChildren().add(bookPrice);
 				
+
+				Button sound = new Button("play");
+				sound.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				  public void handle(ActionEvent event) {
+					  String bip = "test.mp3";
+					  Media hit = new Media(new File(bip).toURI().toString());
+					  MediaPlayer mediaPlayer = new MediaPlayer(hit);
+					  mediaPlayer.play();
+				}
+			});
+				homePage.getChildren().add(sound);
+		    
+		    
+
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -185,8 +211,8 @@ public class Runner extends Application {
 						cartImageFiles.add(imageFiles.get(0));
 					}
 				});
-				homePage.getChildren().add(addToCart);
-		  }
+				homePage.getChildren().add(addToCart); 
+		    } 
 		});
 		
 		//TECHNOLOGY BUTTON
@@ -205,7 +231,9 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label technologyLabel = new Label("Technology");
+
 		    	technologyLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+
 		    	homePage.getChildren().add(technologyLabel);
 		    	
 		    	
@@ -357,7 +385,7 @@ public class Runner extends Application {
 		    	
 		    	cartPage.getChildren().clear();
 		    	cartPage.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px;");
-		    	cartPage.setPrefHeight(400);
+		    	cartPage.setPrefHeight(600);
 		    	cartPage.setPrefWidth(200);
 		    	homePage.getChildren().add(cartPage);
 		    	
@@ -383,9 +411,49 @@ public class Runner extends Application {
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
+		    	Button clearCartButton = new Button("Clear Cart");
+		    	clearCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		    	clearCartButton.setOnAction(new EventHandler<ActionEvent>() {
+		    		public void handle(ActionEvent event)
+		    		{
+		    			//kart.clearCSV(cartImageFiles.size());
+		    			File cart = new File("cart.csv");
+		    			try {
+							kart = new CSVUtilities(cart);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		    			kart.getCSVData().add("Name" + "," + "Quantity" + "," + "Price" + "," + "Image");
+		    			try 
+		    			{
+		    				Files.write(Paths.get("cart.csv"), kart.getCSVData());
+		    			} 
+		    			catch (IOException e) {
+		    				// TODO Auto-generated catch block
+		    				e.printStackTrace();
+		    			}
+		    			StringBuilder sb = new StringBuilder();
+		    			sb.append("Name,Quantity,Price,Image");
+		    			PrintWriter cartPW = null;
+		    			try {
+							cartPW = new PrintWriter(cart);
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		    			cartPW.write(sb.toString());
+		    			cartPW.flush();
+		    			cartPage.getChildren().clear();
+		    			cartImageFiles.clear();
+		    		}
+		    	});
+		    	homePage.getChildren().add(clearCartButton);
+		    	
 		    	//IMAGE OF CAR IN CART
 		    	if (cartImageFiles.size()>0)
 		    	{
+		    		
 		    		FileInputStream input = null;
 		    		try {
 		    			input = new FileInputStream(cartImageFiles.get(0));
@@ -393,12 +461,16 @@ public class Runner extends Application {
 		    			// TODO Auto-generated catch block
 		    			e.printStackTrace();
 					}
-					Image image = new Image(cartImageFiles.get(0));
-					ImageView imageView = new ImageView(image);
-					imageView.setFitHeight(400);
-					imageView.setFitWidth(400);
-					imageView.setTranslateX(20);
-					homePage.getChildren().add(imageView);
+		    		for (int i = 0; i <cartImageFiles.size(); i++)
+		    		{
+		    			Image image = new Image(cartImageFiles.get(i));
+		    			ImageView imageView = new ImageView(image);
+		    			imageView.setFitHeight(75);
+		    			imageView.setFitWidth(100);
+		    			imageView.setTranslateX(20);
+		    			imageView.setTranslateY((i-2)*17);
+		    			cartPage.getChildren().add(imageView);
+		    		}
 		    	}
 		    	else
 		    	{
@@ -468,8 +540,8 @@ public class Runner extends Application {
 								{
 									homePage.getChildren().clear();
 										    	
-									Text thanks = new Text("Thank you for shopping with Emazon!" 
-											    		+ "\nYou are a highly valued customer!");
+									Text thanks = new Text("Thank you for shopping with" + "\nBig Baller Brand!" 
+											    		+ "\nSTAY IN YO LANE!");
 									thanks.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
 									thanks.setFill(Color.BLUEVIOLET);
 									thanks.setTranslateX(25);
@@ -478,7 +550,7 @@ public class Runner extends Application {
 											    	
 									FileInputStream input = null;
 									try {
-										input = new FileInputStream("thumbsUp.png");
+										input = new FileInputStream("lavar2.jpg");
 									} 
 									catch (FileNotFoundException e) {
 										// TODO Auto-generated catch block
@@ -486,9 +558,9 @@ public class Runner extends Application {
 									}
 									Image image = new Image(input);
 									ImageView imageView = new ImageView(image);
-									imageView.setFitHeight(400);
+									imageView.setFitHeight(200);
 									imageView.setFitWidth(400);
-									imageView.setTranslateX(-50);
+									imageView.setTranslateX(18);
 									imageView.setTranslateY(70);
 									homePage.getChildren().add(imageView);
 								}
@@ -549,6 +621,7 @@ public class Runner extends Application {
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
         Scene scene = new Scene(root, 450, 700);
+        //scene.getStylesheets().add("/Emazon/stylesheet.css");
         primaryStage.setTitle("Emazon");
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
