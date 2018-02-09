@@ -124,6 +124,7 @@ public class Runner extends Application {
 		    	
 				Label carPrice = new Label(""+price.get(1));
 				homePage.getChildren().add(carPrice);
+				carPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
@@ -175,7 +176,7 @@ public class Runner extends Application {
 				
 				Label bookPrice = new Label(""+price.get(0));
 				homePage.getChildren().add(bookPrice);
-				
+				bookPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -225,7 +226,7 @@ public class Runner extends Application {
 				
 				Label techPrice = new Label(""+price.get(4));
 				homePage.getChildren().add(techPrice);
-				
+				techPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -274,7 +275,7 @@ public class Runner extends Application {
 		    	
 				Label clothPrice = new Label(""+price.get(2));
 				homePage.getChildren().add(clothPrice);
-				
+				clothPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -322,6 +323,7 @@ public class Runner extends Application {
 		    	
 				Label shoePrice = new Label(""+price.get(3));
 				homePage.getChildren().add(shoePrice);
+				shoePrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
