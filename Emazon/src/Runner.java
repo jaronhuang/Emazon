@@ -217,8 +217,7 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label technologyLabel = new Label("Technology");
-		    	technologyLabel.setStyle("-fx-font");
-		    	
+		    	//technologyLabel.setStyle("-fx-font");
 		    	
 		    	homePage.getChildren().add(technologyLabel);
 		    	
@@ -364,7 +363,7 @@ public class Runner extends Application {
 		    	
 		    	cartPage.getChildren().clear();
 		    	cartPage.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px;");
-		    	cartPage.setPrefHeight(400);
+		    	cartPage.setPrefHeight(600);
 		    	cartPage.setPrefWidth(200);
 		    	homePage.getChildren().add(cartPage);
 		    	
@@ -390,6 +389,17 @@ public class Runner extends Application {
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
+		    	Button clearCartButton = new Button("Clear Cart");
+		    	clearCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		    	clearCartButton.setOnAction(new EventHandler<ActionEvent>() {
+		    		public void handle(ActionEvent event)
+		    		{
+		    			cartPage.getChildren().clear();
+		    			cartImageFiles.clear();
+		    		}
+		    	});
+		    	homePage.getChildren().add(clearCartButton);
+		    	
 		    	//IMAGE OF CAR IN CART
 		    	if (cartImageFiles.size()>0)
 		    	{
@@ -405,10 +415,10 @@ public class Runner extends Application {
 		    		{
 		    			Image image = new Image(cartImageFiles.get(i));
 		    			ImageView imageView = new ImageView(image);
-		    			imageView.setFitHeight(100);
+		    			imageView.setFitHeight(75);
 		    			imageView.setFitWidth(100);
 		    			imageView.setTranslateX(20);
-		    			imageView.setTranslateY(- i*50);
+		    			imageView.setTranslateY((i-2)*17);
 		    			cartPage.getChildren().add(imageView);
 		    		}
 		    	}
@@ -561,7 +571,7 @@ public class Runner extends Application {
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
         Scene scene = new Scene(root, 450, 700);
-        scene.getStylesheets().add("/Emazon/stylesheet.css");
+        //scene.getStylesheets().add("/Emazon/stylesheet.css");
         primaryStage.setTitle("Emazon");
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
