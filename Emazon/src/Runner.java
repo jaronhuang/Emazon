@@ -152,7 +152,7 @@ public class Runner extends Application {
 		
 		//AUDIO BOOK BUTTON
 		Button audioBookButton = new Button("");
-		FileInputStream  audioImage = new FileInputStream("audiobooks.png") ; //
+		FileInputStream  audioImage = new FileInputStream("music.png") ; //
 		Image imageAudio = new Image(audioImage) ;//
 		ImageView imageAudioView = new ImageView(imageAudio) ;//
 		imageAudioView.setFitHeight(40);//
@@ -187,16 +187,16 @@ public class Runner extends Application {
 				
 				Label bookPrice = new Label(""+price.get(0));
 				homePage.getChildren().add(bookPrice);
-<<<<<<< HEAD
+//<<<<<<< HEAD
 				bookPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-=======
+//=======
 				
 
 				Button sound = new Button("play");
 				sound.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				  public void handle(ActionEvent event) {
-					  String bip = "test.mp3";
+					  String bip = "supersaiyan.mp3";
 					  Media hit = new Media(new File(bip).toURI().toString());
 					  MediaPlayer mediaPlayer = new MediaPlayer(hit);
 					  mediaPlayer.play();
@@ -206,7 +206,7 @@ public class Runner extends Application {
 		    
 		    
 
->>>>>>> branch 'Frontend' of https://github.com/jaronhuang/Emazon.git
+//>>>>>>> branch 'Frontend' of https://github.com/jaronhuang/Emazon.git
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -604,22 +604,23 @@ public class Runner extends Application {
 	    VBox root = new VBox();
 	   	//root.setPrefWidth(200);
 		
-		homePage.setStyle("-fx-border-color: #00cc00; -fx-border-width: 5px;");
+		homePage.setStyle("-fx-border-color: #cc0000; -fx-border-width: 10px;");
 		homePage.setPrefHeight(700);
 		homePage.setPrefWidth(200);
 		
-		FileInputStream input = new FileInputStream("earth.png");
+		FileInputStream input = new FileInputStream("bbb.jpg");
 		Image image = new Image(input);
 		ImageView imageView = new ImageView(image);
-		imageView.setFitHeight(400);
-		imageView.setFitWidth(400);
-		imageView.setTranslateX(20);
+		imageView.setFitHeight(425);
+		imageView.setFitWidth(425);
+		imageView.setTranslateX(2);
+		imageView.setTranslateY(20);
 		homePage.getChildren().add(imageView);
 		
-		Text homeText = new Text("EmaZon: Making Shopping EZ");
-		homeText.setFont(Font.font("Comic Sans",FontPosture.ITALIC,24));
+		Text homeText = new Text("Big Baller Brand");
+		homeText.setFont(Font.font("Comic Sans",FontWeight.BOLD,FontPosture.ITALIC,30));
 		homeText.setFill(Color.BLUEVIOLET);
-		homeText.setTranslateX(70);
+		homeText.setTranslateX(100);
 		homeText.setTranslateY(50);
 		homePage.getChildren().add(homeText);
 		
