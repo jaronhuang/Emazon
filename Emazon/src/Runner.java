@@ -56,6 +56,8 @@ public class Runner extends Application {
 	static ArrayList<String> imageFiles = new ArrayList<String>();
 	
 	static ArrayList<String> cartImageFiles = new ArrayList<String>();
+	static ArrayList<ArrayList<String>> cartPages = new ArrayList<ArrayList<String>>();
+	static int pageNumber = 0;
 	
 	static CSVUtilities kart = null;
 	
@@ -469,33 +471,75 @@ public class Runner extends Application {
 		    	});
 		    	homePage.getChildren().add(clearCartButton);
 		    	
-		    	//IMAGE OF CAR IN CART
+		    	//CREATING CART PAGES
+		    	int lengthCartImg = cartImageFiles.size();
+		    	int indexPic = 0;
+		    	int j = 0;
+		    	while (j*5<cartImageFiles.size())
+		    	{	
+		    		ArrayList<String> page = new ArrayList<String>();
+		    		int sizeFuture = indexPic+5;
+		    		for (int i=indexPic; i<sizeFuture; i++)
+		    		{
+		    			if (!(i>=lengthCartImg))
+		    			{
+		    				page.add(cartImageFiles.get(i));
+		    			}
+		    		}
+		    		cartPages.add(page);
+		    		j++;
+		    	}
+		    	System.out.println(cartPages.size());
+		    	
+		    	//CREATING BUTTONS
+		    	pageNumber = 1;
+		    	while (pageNumber<cartPages.size()+1)
+		    	{
+		    		Button pageButton = new Button(pageNumber+"");
+		    		pageButton.setOnAction(new EventHandler<ActionEvent>() {
+			    		public void handle(ActionEvent event)
+			    		{	
+			    			cartPage.getChildren().clear();
+			    			ArrayList<String> pageNow = cartPages.get(pageNumber-1);
+			    			for (int k = 0; k <pageNow.size(); k++)
+			    			{
+			    				Image image = new Image(pageNow.get(k));
+			    				ImageView imageView = new ImageView(image);
+			    				imageView.setFitHeight(75);
+			    				imageView.setFitWidth(100);
+			    				imageView.setTranslateX(20);
+			    				imageView.setTranslateY((k-2)*17);
+			    				cartPage.getChildren().add(imageView);
+			    			}
+			    		}
+			    	});
+		    		homePage.getChildren().add(pageButton);		
+		    		pageNumber++;
+		    	}
+		    	pageNumber = 1;
+		    	
+		    	//DISPLAYING FIRST PAGE
 		    	if (cartImageFiles.size()>0)
 		    	{
-		    		
-		    		FileInputStream input = null;
-		    		try {
-		    			input = new FileInputStream(cartImageFiles.get(0));
-		    		} catch (FileNotFoundException e) {
-		    			// TODO Auto-generated catch block
-		    			e.printStackTrace();
-					}
 		    		for (int i = 0; i <cartImageFiles.size(); i++)
 		    		{
-		    			Image image = new Image(cartImageFiles.get(i));
-		    			ImageView imageView = new ImageView(image);
-		    			imageView.setFitHeight(75);
-		    			imageView.setFitWidth(100);
-		    			imageView.setTranslateX(20);
-		    			imageView.setTranslateY((i-2)*17);
-		    			cartPage.getChildren().add(imageView);
+		    			if (i<5)
+		    			{
+			    			Image image = new Image(cartImageFiles.get(i));
+			    			ImageView imageView = new ImageView(image);
+			    			imageView.setFitHeight(75);
+			    			imageView.setFitWidth(100);
+			    			imageView.setTranslateX(20);
+			    			imageView.setTranslateY((i-2)*17);
+			    			cartPage.getChildren().add(imageView);
+		    			}
 		    		}
 		    	}
 		    	else
 		    	{
 		    		Label cartMessage = new Label("No Items in Cart");
 		    		homePage.getChildren().add(cartMessage);
-		    	}
+		    	} 
 		    	
 		    	homePage.getChildren().add(checkoutButton);
 		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() 
