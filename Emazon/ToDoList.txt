@@ -1,0 +1,4 @@
+1. Rebranding EmaZon - Edward Yaroslavsky & Muhammad Usman
+2. Adding information into purchase history - Jaron Huang
+3. Adding multiple pages to the cart - Jefferson Bernard 
+4. Stacking multiple items into a single item and displaying quantity in cart - Kelvin Chen 
