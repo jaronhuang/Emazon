@@ -107,25 +107,24 @@ public class CSVUtilities
 		}
 	}
 	
-	public static void clearCSV(int items)
+	static File pFile = new File("phistory.csv");
+	public static void writePHistory(String name, String email, String itemname, int quantity, int price)
 	{
 		CSVUtilities csv = null;
 		try 
 		{
-			csv = new CSVUtilities(file);
+			csv = new CSVUtilities(pFile);
 		} 
 		catch (IOException e1) 
 		{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		for (int i = items; i > 0; i--)
-		{
-			csv.getCSVData().add(i, "");	
-		}
+		int line = 1;
+		csv.getCSVData().add(line, name + "," + email + "," + itemname + "," + quantity + "," + (price * quantity));
 		try 
 		{
-			Files.write(Paths.get("cart.csv"), csv.getCSVData());
+			Files.write(Paths.get("phistory.csv"), csv.getCSVData());
 		} 
 		catch (IOException e) {
 			// TODO Auto-generated catch block
