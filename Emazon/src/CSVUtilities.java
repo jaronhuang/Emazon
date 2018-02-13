@@ -1,10 +1,9 @@
 /**
- * By: Jaron Huang 
- */
+  * By: Jaron Huang 
+  */
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,7 +14,6 @@ import java.util.List;
 public class CSVUtilities 
 {
 	public ArrayList<String> CSVData = new ArrayList<String>();
-	private int numColumns;
 	
 	public CSVUtilities(File csv) throws IOException
 	{
@@ -108,7 +106,7 @@ public class CSVUtilities
 	}
 	
 	static File pFile = new File("phistory.csv");
-	public static void writePHistory(String name, String email, String itemname, int quantity, int price)
+	public static void writePHistory(String name, String email, String itemname, int quantity, double price)
 	{
 		CSVUtilities csv = null;
 		try 

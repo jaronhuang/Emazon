@@ -16,16 +16,11 @@ import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -35,7 +30,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 
@@ -56,6 +50,9 @@ public class Runner extends Application {
 	static ArrayList<String> imageFiles = new ArrayList<String>();
 	
 	static ArrayList<String> cartImageFiles = new ArrayList<String>();
+	static ArrayList<String> cartItemNames = new ArrayList<String>();
+	static ArrayList<Integer> cartItemQuantity = new ArrayList<Integer>();
+	static ArrayList<Double> cartItemPrice = new ArrayList<Double>();
 	static ArrayList<ArrayList<String>> cartPages = new ArrayList<ArrayList<String>>();
 	static int pageNumber = 0;
 	
@@ -86,6 +83,9 @@ public class Runner extends Application {
 		if (kart.getCSVData().size()!=1)
 		{
 			cartImageFiles = kart.getDataString(3);
+			cartItemNames = kart.getDataString(0);
+			cartItemQuantity = kart.getDataInteger(1);
+			cartItemPrice = kart.getDataDouble(2);
 		}
 		
 		//PURCHASE HISTORY FILE
@@ -601,6 +601,15 @@ public class Runner extends Application {
 								}	
 								else
 								{
+									String bName = name.getText();
+									String bEmail = email.getText();
+									for (int i = 0; i < cartItemNames.size(); i++)
+									{
+										String itemN = cartItemNames.get(i);
+										int itemQ = cartItemQuantity.get(i);
+										double itemP = cartItemPrice.get(i);
+										CSVUtilities.writePHistory(bName, bEmail, itemN, itemQ, itemP);
+									}
 									homePage.getChildren().clear();
 										    	
 									Text thanks = new Text("Thank you for shopping with" + "\nBig Baller Brand!" 
