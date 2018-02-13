@@ -209,6 +209,39 @@ public class Runner extends Application {
 				addToCart3.setTranslateX(250);
 				addToCart3.setTranslateY(-400);
 				homePage.getChildren().add(addToCart3);
+				FileInputStream input4 = null;
+				try {
+					input4 = new FileInputStream(imageFiles.get(7));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image4 = new Image(input4);
+				ImageView imageView4 = new ImageView(image4);
+				imageView4.setFitHeight(150);
+				imageView4.setFitWidth(150);
+				imageView4.setTranslateX(250);
+				imageView4.setTranslateY(-400);
+				homePage.getChildren().add(imageView4);
+				
+				Label carPrice4 = new Label("$"+price.get(7));
+				homePage.getChildren().add(carPrice4);
+				carPrice4.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				carPrice4.setTranslateX(250);
+				carPrice4.setTranslateY(-400);
+				
+				Button addToCart4 = new Button("ADD TO CART");
+				addToCart4.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(7), 1, price.get(7),imageFiles.get(7));
+						cartImageFiles.add(imageFiles.get(7));
+					}
+				});
+				addToCart4.setTranslateX(250);
+				addToCart4.setTranslateY(-400);
+				homePage.getChildren().add(addToCart4);
 		  }
 		});
 		
@@ -279,6 +312,52 @@ public class Runner extends Application {
 					}
 				});
 				homePage.getChildren().add(addToCart); 
+				FileInputStream input2 = null;
+				try {
+					input2 = new FileInputStream(imageFiles.get(8));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image2 = new Image(input2);
+				ImageView imageView2 = new ImageView(image2);
+				imageView2.setFitHeight(150);
+				imageView2.setFitWidth(150);
+				imageView2.setTranslateX(20);
+				homePage.getChildren().add(imageView2);
+				
+				Label bookPrice2 = new Label("$"+price.get(8));
+				homePage.getChildren().add(bookPrice2);
+//<<<<<<< HEAD
+				bookPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+//=======
+				
+
+				Button sound2 = new Button("play");
+				sound2.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				  public void handle(ActionEvent event) {
+					  String bip2 = "getofflonzo.mp3";
+					  Media hit2 = new Media(new File(bip2).toURI().toString());
+					  MediaPlayer mediaPlayer2 = new MediaPlayer(hit2);
+					  mediaPlayer2.play();
+				}
+			});
+				homePage.getChildren().add(sound2);
+		    
+		    
+
+//>>>>>>> branch 'Frontend' of https://github.com/jaronhuang/Emazon.git
+				Button addToCart2 = new Button("ADD TO CART");
+				addToCart2.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(8), 1, price.get(8),imageFiles.get(8));
+						cartImageFiles.add(imageFiles.get(8));
+					}
+				});
+				homePage.getChildren().add(addToCart2); 
 		    } 
 		});
 		
