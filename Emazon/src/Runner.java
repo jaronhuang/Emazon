@@ -16,11 +16,16 @@ import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -30,6 +35,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 
@@ -50,11 +56,9 @@ public class Runner extends Application {
 	static ArrayList<String> imageFiles = new ArrayList<String>();
 	
 	static ArrayList<String> cartImageFiles = new ArrayList<String>();
-	static ArrayList<String> cartItemNames = new ArrayList<String>();
-	static ArrayList<Integer> cartItemQuantity = new ArrayList<Integer>();
-	static ArrayList<Double> cartItemPrice = new ArrayList<Double>();
 	static ArrayList<ArrayList<String>> cartPages = new ArrayList<ArrayList<String>>();
 	static int pageNumber = 0;
+	static int tempPage = 0;
 	
 	static CSVUtilities kart = null;
 	
@@ -83,9 +87,6 @@ public class Runner extends Application {
 		if (kart.getCSVData().size()!=1)
 		{
 			cartImageFiles = kart.getDataString(3);
-			cartItemNames = kart.getDataString(0);
-			cartItemQuantity = kart.getDataInteger(1);
-			cartItemPrice = kart.getDataDouble(2);
 		}
 		
 		//PURCHASE HISTORY FILE
@@ -409,10 +410,15 @@ public class Runner extends Application {
 		    	price.setTranslateX(350);
 		    	price.setTranslateY(-40);
 		    	cartPage.getChildren().add(price);    
+		    	
+		    	//CART PAGE BUTTON HBOX
+		    	HBox cartPageButton = new HBox();
+		    	homePage.getChildren().add(cartPageButton);
 			    
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
+		    	//CLEAR BUTTON
 		    	Button clearCartButton = new Button("Clear Cart");
 		    	clearCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	clearCartButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -448,6 +454,7 @@ public class Runner extends Application {
 		    			cartPW.flush();
 		    			cartPage.getChildren().clear();
 		    			cartImageFiles.clear();
+		    			cartPages.clear();
 		    			
 		    			Text itemName = new Text("Item");
 				    	itemName.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
@@ -472,27 +479,63 @@ public class Runner extends Application {
 		    	homePage.getChildren().add(clearCartButton);
 		    	
 		    	//CREATING CART PAGES
+		    	pageNumber = 1;
+		    	cartPages.clear();
 		    	int lengthCartImg = cartImageFiles.size();
-		    	int indexPic = 0;
-		    	int j = 0;
-		    	while (j*5<cartImageFiles.size())
-		    	{	
+		    	for (int i = 0; i<lengthCartImg; i+=5)
+		    	{
 		    		ArrayList<String> page = new ArrayList<String>();
-		    		int sizeFuture = indexPic+5;
-		    		for (int i=indexPic; i<sizeFuture; i++)
+		    		for (int x = i; x<i+5; x++)
 		    		{
-		    			if (!(i>=lengthCartImg))
+		    			if (x<lengthCartImg)
 		    			{
-		    				page.add(cartImageFiles.get(i));
+		    				page.add(cartImageFiles.get(x));
 		    			}
 		    		}
 		    		cartPages.add(page);
-		    		j++;
+		    		
+		    		if (i%5==0 && i>0)
+		    		{
+		    			pageNumber++;
+		    		}
+		    		
+		    		Button pageButton = new Button(pageNumber+"");
+		    			
+		    		pageButton.setOnAction(new EventHandler<ActionEvent>() {
+			    		public void handle(ActionEvent event)
+			    		{	
+			    			System.out.println("PageNumber="+pageNumber);
+			    			cartPage.getChildren().clear();
+			    			ArrayList<String> pageNow = cartPages.get(pageNumber-1);
+			    			for (int k = 0; k <pageNow.size(); k++)
+			    			{
+			    				Image image = new Image(pageNow.get(k));
+			    				ImageView imageView = new ImageView(image);
+			    				imageView.setFitHeight(75);
+			    				imageView.setFitWidth(100);
+			    				imageView.setTranslateX(20);
+			    				imageView.setTranslateY((k-2)*17);
+			    				cartPage.getChildren().add(imageView);
+			    			}
+			    		}
+			    	});
+		    		cartPageButton.getChildren().add(pageButton);
 		    	}
-		    	System.out.println(cartPages.size());
+		
+		    	System.out.println("Size of CartPages: "+cartPages.size());
+		    	for (int i=0; i<cartPages.size(); i++)
+		    	{
+		    		System.out.print("(");
+		    		for (int x=0; x<cartPages.get(i).size(); x++)
+		    		{
+		    			System.out.print(cartPages.get(i).get(x) +",");
+		    		}
+		    		System.out.print(")");
+	    			System.out.println();
+		    	}
 		    	
 		    	//CREATING BUTTONS
-		    	pageNumber = 1;
+		    /*	pageNumber = 1;
 		    	while (pageNumber<cartPages.size()+1)
 		    	{
 		    		Button pageButton = new Button(pageNumber+"");
@@ -511,12 +554,13 @@ public class Runner extends Application {
 			    				imageView.setTranslateY((k-2)*17);
 			    				cartPage.getChildren().add(imageView);
 			    			}
+			    			pageNumber=1;
 			    		}
 			    	});
 		    		homePage.getChildren().add(pageButton);		
 		    		pageNumber++;
 		    	}
-		    	pageNumber = 1;
+		    	pageNumber = 1; */
 		    	
 		    	//DISPLAYING FIRST PAGE
 		    	if (cartImageFiles.size()>0)
@@ -601,15 +645,6 @@ public class Runner extends Application {
 								}	
 								else
 								{
-									String bName = name.getText();
-									String bEmail = email.getText();
-									for (int i = 0; i < cartItemNames.size(); i++)
-									{
-										String itemN = cartItemNames.get(i);
-										int itemQ = cartItemQuantity.get(i);
-										double itemP = cartItemPrice.get(i);
-										CSVUtilities.writePHistory(bName, bEmail, itemN, itemQ, itemP);
-									}
 									homePage.getChildren().clear();
 										    	
 									Text thanks = new Text("Thank you for shopping with" + "\nBig Baller Brand!" 
