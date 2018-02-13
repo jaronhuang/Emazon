@@ -133,7 +133,7 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
-				Label carPrice = new Label(""+price.get(1));
+				Label carPrice = new Label("$"+price.get(1));
 				homePage.getChildren().add(carPrice);
 				carPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
@@ -147,6 +147,68 @@ public class Runner extends Application {
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				FileInputStream input2 = null;
+				try {
+					input2 = new FileInputStream(imageFiles.get(5));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image2 = new Image(input2);
+				ImageView imageView2 = new ImageView(image2);
+				imageView2.setFitHeight(150);
+				imageView2.setFitWidth(150);
+				imageView2.setTranslateX(20);
+				homePage.getChildren().add(imageView2);
+				
+				Label carPrice2 = new Label("$"+price.get(5));
+				homePage.getChildren().add(carPrice2);
+				carPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Button addToCart2 = new Button("ADD TO CART");
+				addToCart2.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(5), 1, price.get(5),imageFiles.get(5));
+						cartImageFiles.add(imageFiles.get(5));
+					}
+				});
+				homePage.getChildren().add(addToCart2);
+				FileInputStream input3 = null;
+				try {
+					input3 = new FileInputStream(imageFiles.get(6));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image3 = new Image(input3);
+				ImageView imageView3 = new ImageView(image3);
+				imageView3.setFitHeight(150);
+				imageView3.setFitWidth(150);
+				imageView3.setTranslateX(250);
+				imageView3.setTranslateY(-400);
+				homePage.getChildren().add(imageView3);
+				
+				Label carPrice3 = new Label("$"+price.get(6));
+				homePage.getChildren().add(carPrice3);
+				carPrice3.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				carPrice3.setTranslateX(250);
+				carPrice3.setTranslateY(-400);
+				
+				Button addToCart3 = new Button("ADD TO CART");
+				addToCart3.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(6), 1, price.get(6),imageFiles.get(6));
+						cartImageFiles.add(imageFiles.get(6));
+					}
+				});
+				addToCart3.setTranslateX(250);
+				addToCart3.setTranslateY(-400);
+				homePage.getChildren().add(addToCart3);
 		  }
 		});
 		
@@ -165,7 +227,7 @@ public class Runner extends Application {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
-		    	Label audioBookLabel = new Label("Audio Book");
+		    	Label audioBookLabel = new Label("Music");
 		    	
 		    	audioBookLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	
@@ -185,7 +247,7 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 				
-				Label bookPrice = new Label(""+price.get(0));
+				Label bookPrice = new Label("$"+price.get(0));
 				homePage.getChildren().add(bookPrice);
 //<<<<<<< HEAD
 				bookPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
@@ -256,7 +318,7 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 				
-				Label techPrice = new Label(""+price.get(4));
+				Label techPrice = new Label("$"+price.get(4));
 				homePage.getChildren().add(techPrice);
 				techPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				Button addToCart = new Button("ADD TO CART");
@@ -305,7 +367,7 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
-				Label clothPrice = new Label(""+price.get(2));
+				Label clothPrice = new Label("$"+price.get(2));
 				homePage.getChildren().add(clothPrice);
 				clothPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				Button addToCart = new Button("ADD TO CART");
@@ -353,7 +415,7 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
-				Label shoePrice = new Label(""+price.get(3));
+				Label shoePrice = new Label("$"+price.get(3));
 				homePage.getChildren().add(shoePrice);
 				shoePrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
