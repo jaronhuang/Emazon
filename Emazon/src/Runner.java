@@ -419,6 +419,20 @@ public class Runner extends Application {
 				homePage.getChildren().add(shoePrice);
 				shoePrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
+				Label shoeColor = new Label("Color : "+color.get(3));
+				homePage.getChildren().add(shoeColor);
+				shoeColor.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label shoeSize = new Label("Size : "+size.get(3));
+				homePage.getChildren().add(shoeSize);
+				shoeSize.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label shoeRating = new Label("Rating : "+rating.get(3) + "/ 5.0");
+				homePage.getChildren().add(shoeRating);
+				shoeRating.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				
+				
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
