@@ -341,7 +341,7 @@ public class Runner extends Application {
 					  Media hit2 = new Media(new File(bip2).toURI().toString());
 					  MediaPlayer mediaPlayer2 = new MediaPlayer(hit2);
 					  mediaPlayer2.play();
-				}
+				} 
 			});
 				homePage.getChildren().add(sound2);
 		    
