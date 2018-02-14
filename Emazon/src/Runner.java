@@ -56,6 +56,9 @@ public class Runner extends Application {
 	static ArrayList<String> imageFiles = new ArrayList<String>();
 	
 	static ArrayList<String> cartImageFiles = new ArrayList<String>();
+	static ArrayList<ArrayList<String>> cartPages = new ArrayList<ArrayList<String>>();
+	static int pageNumber = 0;
+	static int tempPage = 0;
 	
 	static CSVUtilities kart = null;
 	
@@ -568,10 +571,15 @@ public class Runner extends Application {
 		    	price.setTranslateX(350);
 		    	price.setTranslateY(-40);
 		    	cartPage.getChildren().add(price);    
+		    	
+		    	//CART PAGE BUTTON HBOX
+		    	HBox cartPageButton = new HBox();
+		    	homePage.getChildren().add(cartPageButton);
 			    
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
+		    	//CLEAR BUTTON
 		    	Button clearCartButton = new Button("Clear Cart");
 		    	clearCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	clearCartButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -607,37 +615,136 @@ public class Runner extends Application {
 		    			cartPW.flush();
 		    			cartPage.getChildren().clear();
 		    			cartImageFiles.clear();
+		    			cartPages.clear();
+		    			
+		    			Text itemName = new Text("Item");
+				    	itemName.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+				    	itemName.setFill(Color.DARKSLATEGRAY);
+				    	itemName.setTranslateX(20);
+				    	itemName.setTranslateY(0);
+				    	cartPage.getChildren().add(itemName);
+				    	Text quantity = new Text("Quantity");
+				    	quantity.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+				    	quantity.setFill(Color.DARKSLATEGRAY);
+				    	quantity.setTranslateX(175);
+				    	quantity.setTranslateY(-20);
+				    	cartPage.getChildren().add(quantity);
+				    	Text price = new Text("Price");
+				    	price.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+				    	price.setFill(Color.DARKSLATEGRAY);
+				    	price.setTranslateX(350);
+				    	price.setTranslateY(-40);
+				    	cartPage.getChildren().add(price);    
 		    		}
 		    	});
 		    	homePage.getChildren().add(clearCartButton);
 		    	
-		    	//IMAGE OF CAR IN CART
+		    	//CREATING CART PAGES
+		    	pageNumber = 1;
+		    	cartPages.clear();
+		    	int lengthCartImg = cartImageFiles.size();
+		    	for (int i = 0; i<lengthCartImg; i+=5)
+		    	{
+		    		ArrayList<String> page = new ArrayList<String>();
+		    		for (int x = i; x<i+5; x++)
+		    		{
+		    			if (x<lengthCartImg)
+		    			{
+		    				page.add(cartImageFiles.get(x));
+		    			}
+		    		}
+		    		cartPages.add(page);
+		    		
+		    		if (i%5==0 && i>0)
+		    		{
+		    			pageNumber++;
+		    		}
+		    		
+		    		Button pageButton = new Button(pageNumber+"");
+		    			
+		    		pageButton.setOnAction(new EventHandler<ActionEvent>() {
+			    		public void handle(ActionEvent event)
+			    		{	
+			    			System.out.println("PageNumber="+pageNumber);
+			    			cartPage.getChildren().clear();
+			    			ArrayList<String> pageNow = cartPages.get(pageNumber-1);
+			    			for (int k = 0; k <pageNow.size(); k++)
+			    			{
+			    				Image image = new Image(pageNow.get(k));
+			    				ImageView imageView = new ImageView(image);
+			    				imageView.setFitHeight(75);
+			    				imageView.setFitWidth(100);
+			    				imageView.setTranslateX(20);
+			    				imageView.setTranslateY((k-2)*17);
+			    				cartPage.getChildren().add(imageView);
+			    			}
+			    		}
+			    	});
+		    		cartPageButton.getChildren().add(pageButton);
+		    	}
+		
+		    	System.out.println("Size of CartPages: "+cartPages.size());
+		    	for (int i=0; i<cartPages.size(); i++)
+		    	{
+		    		System.out.print("(");
+		    		for (int x=0; x<cartPages.get(i).size(); x++)
+		    		{
+		    			System.out.print(cartPages.get(i).get(x) +",");
+		    		}
+		    		System.out.print(")");
+	    			System.out.println();
+		    	}
+		    	
+		    	//CREATING BUTTONS
+		    /*	pageNumber = 1;
+		    	while (pageNumber<cartPages.size()+1)
+		    	{
+		    		Button pageButton = new Button(pageNumber+"");
+		    		pageButton.setOnAction(new EventHandler<ActionEvent>() {
+			    		public void handle(ActionEvent event)
+			    		{	
+			    			cartPage.getChildren().clear();
+			    			ArrayList<String> pageNow = cartPages.get(pageNumber-1);
+			    			for (int k = 0; k <pageNow.size(); k++)
+			    			{
+			    				Image image = new Image(pageNow.get(k));
+			    				ImageView imageView = new ImageView(image);
+			    				imageView.setFitHeight(75);
+			    				imageView.setFitWidth(100);
+			    				imageView.setTranslateX(20);
+			    				imageView.setTranslateY((k-2)*17);
+			    				cartPage.getChildren().add(imageView);
+			    			}
+			    			pageNumber=1;
+			    		}
+			    	});
+		    		homePage.getChildren().add(pageButton);		
+		    		pageNumber++;
+		    	}
+		    	pageNumber = 1; */
+		    	
+		    	//DISPLAYING FIRST PAGE
 		    	if (cartImageFiles.size()>0)
 		    	{
-		    		
-		    		FileInputStream input = null;
-		    		try {
-		    			input = new FileInputStream(cartImageFiles.get(0));
-		    		} catch (FileNotFoundException e) {
-		    			// TODO Auto-generated catch block
-		    			e.printStackTrace();
-					}
 		    		for (int i = 0; i <cartImageFiles.size(); i++)
 		    		{
-		    			Image image = new Image(cartImageFiles.get(i));
-		    			ImageView imageView = new ImageView(image);
-		    			imageView.setFitHeight(75);
-		    			imageView.setFitWidth(100);
-		    			imageView.setTranslateX(20);
-		    			imageView.setTranslateY((i-2)*17);
-		    			cartPage.getChildren().add(imageView);
+		    			if (i<5)
+		    			{
+			    			Image image = new Image(cartImageFiles.get(i));
+			    			ImageView imageView = new ImageView(image);
+			    			imageView.setFitHeight(75);
+			    			imageView.setFitWidth(100);
+			    			imageView.setTranslateX(20);
+			    			imageView.setTranslateY((i-2)*17);
+			    			cartPage.getChildren().add(imageView);
+		    			}
 		    		}
 		    	}
 		    	else
 		    	{
 		    		Label cartMessage = new Label("No Items in Cart");
 		    		homePage.getChildren().add(cartMessage);
-		    	}
+		    	} 
 		    	
 		    	homePage.getChildren().add(checkoutButton);
 		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() 
