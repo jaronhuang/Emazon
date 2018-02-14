@@ -124,7 +124,7 @@ public class Runner extends Application {
 		    	
 		    	FileInputStream input = null;
 				try {
-					input = new FileInputStream(imageFiles.get(1));
+					input = new FileInputStream(imageFiles.get(2));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -136,7 +136,7 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
-				Label carPrice = new Label("$"+price.get(1));
+				Label carPrice = new Label("$"+price.get(2));
 				homePage.getChildren().add(carPrice);
 				carPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
@@ -145,15 +145,15 @@ public class Runner extends Application {
 					@Override
 					public void handle(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(1), 1, price.get(1),imageFiles.get(1));
-						cartImageFiles.add(imageFiles.get(1));
+						CSVUtilities.writeCSV(itemNames.get(2), 1, price.get(2),imageFiles.get(2));
+						cartImageFiles.add(imageFiles.get(2));
 					}
 				});
 				homePage.getChildren().add(addToCart);
 				
 				FileInputStream input2 = null;
 				try {
-					input2 = new FileInputStream(imageFiles.get(5));
+					input2 = new FileInputStream(imageFiles.get(3));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -165,7 +165,7 @@ public class Runner extends Application {
 				imageView2.setTranslateX(20);
 				homePage.getChildren().add(imageView2);
 				
-				Label carPrice2 = new Label("$"+price.get(5));
+				Label carPrice2 = new Label("$"+price.get(3));
 				homePage.getChildren().add(carPrice2);
 				carPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
@@ -174,14 +174,14 @@ public class Runner extends Application {
 					@Override
 					public void handle(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(5), 1, price.get(5),imageFiles.get(5));
-						cartImageFiles.add(imageFiles.get(5));
+						CSVUtilities.writeCSV(itemNames.get(3), 1, price.get(3),imageFiles.get(3));
+						cartImageFiles.add(imageFiles.get(3));
 					}
 				});
 				homePage.getChildren().add(addToCart2);
 				FileInputStream input3 = null;
 				try {
-					input3 = new FileInputStream(imageFiles.get(6));
+					input3 = new FileInputStream(imageFiles.get(4));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -194,7 +194,7 @@ public class Runner extends Application {
 				imageView3.setTranslateY(-400);
 				homePage.getChildren().add(imageView3);
 				
-				Label carPrice3 = new Label("$"+price.get(6));
+				Label carPrice3 = new Label("$"+price.get(4));
 				homePage.getChildren().add(carPrice3);
 				carPrice3.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				carPrice3.setTranslateX(250);
@@ -205,8 +205,8 @@ public class Runner extends Application {
 					@Override
 					public void handle(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(6), 1, price.get(6),imageFiles.get(6));
-						cartImageFiles.add(imageFiles.get(6));
+						CSVUtilities.writeCSV(itemNames.get(4), 1, price.get(4),imageFiles.get(4));
+						cartImageFiles.add(imageFiles.get(4));
 					}
 				});
 				addToCart3.setTranslateX(250);
@@ -214,7 +214,7 @@ public class Runner extends Application {
 				homePage.getChildren().add(addToCart3);
 				FileInputStream input4 = null;
 				try {
-					input4 = new FileInputStream(imageFiles.get(7));
+					input4 = new FileInputStream(imageFiles.get(5));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -227,7 +227,7 @@ public class Runner extends Application {
 				imageView4.setTranslateY(-400);
 				homePage.getChildren().add(imageView4);
 				
-				Label carPrice4 = new Label("$"+price.get(7));
+				Label carPrice4 = new Label("$"+price.get(5));
 				homePage.getChildren().add(carPrice4);
 				carPrice4.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				carPrice4.setTranslateX(250);
@@ -238,8 +238,8 @@ public class Runner extends Application {
 					@Override
 					public void handle(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(7), 1, price.get(7),imageFiles.get(7));
-						cartImageFiles.add(imageFiles.get(7));
+						CSVUtilities.writeCSV(itemNames.get(5), 1, price.get(5),imageFiles.get(5));
+						cartImageFiles.add(imageFiles.get(5));
 					}
 				});
 				addToCart4.setTranslateX(250);
@@ -317,7 +317,7 @@ public class Runner extends Application {
 				homePage.getChildren().add(addToCart); 
 				FileInputStream input2 = null;
 				try {
-					input2 = new FileInputStream(imageFiles.get(8));
+					input2 = new FileInputStream(imageFiles.get(1));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -329,7 +329,7 @@ public class Runner extends Application {
 				imageView2.setTranslateX(20);
 				homePage.getChildren().add(imageView2);
 				
-				Label bookPrice2 = new Label("$"+price.get(8));
+				Label bookPrice2 = new Label("$"+price.get(1));
 				homePage.getChildren().add(bookPrice2);
 //<<<<<<< HEAD
 				bookPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
@@ -356,8 +356,8 @@ public class Runner extends Application {
 					@Override
 					public void handle(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(8), 1, price.get(8),imageFiles.get(8));
-						cartImageFiles.add(imageFiles.get(8));
+						CSVUtilities.writeCSV(itemNames.get(1), 1, price.get(1),imageFiles.get(1));
+						cartImageFiles.add(imageFiles.get(1));
 					}
 				});
 				homePage.getChildren().add(addToCart2); 
@@ -388,7 +388,7 @@ public class Runner extends Application {
 		    	
 		    	FileInputStream input = null;
 				try {
-					input = new FileInputStream(imageFiles.get(4));
+					input = new FileInputStream(imageFiles.get(10));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -400,7 +400,7 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 				
-				Label techPrice = new Label("$"+price.get(4));
+				Label techPrice = new Label("$"+price.get(10));
 				homePage.getChildren().add(techPrice);
 				techPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				Button addToCart = new Button("ADD TO CART");
@@ -408,11 +408,39 @@ public class Runner extends Application {
 					@Override
 					public void handle(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(4), 1, price.get(4),imageFiles.get(4));
-						cartImageFiles.add(imageFiles.get(4));
+						CSVUtilities.writeCSV(itemNames.get(10), 1, price.get(10),imageFiles.get(10));
+						cartImageFiles.add(imageFiles.get(10));
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				FileInputStream input1 = null;
+				try {
+					input1 = new FileInputStream(imageFiles.get(11));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image1 = new Image(input1);
+				ImageView imageView1 = new ImageView(image1);
+				imageView1.setFitHeight(170);
+				imageView1.setFitWidth(150);
+				imageView1.setTranslateX(20);
+				homePage.getChildren().add(imageView1);
+				
+				Label techPrice1 = new Label("$"+price.get(11));
+				homePage.getChildren().add(techPrice1);
+				techPrice1.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				Button addToCart1 = new Button("ADD TO CART");
+				addToCart1.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(11), 1, price.get(11),imageFiles.get(11));
+						cartImageFiles.add(imageFiles.get(11));
+					}
+				});
+				homePage.getChildren().add(addToCart1);
 		  }
 		});
 		
@@ -437,7 +465,7 @@ public class Runner extends Application {
 		    	
 		    	FileInputStream input = null;
 				try {
-					input = new FileInputStream(imageFiles.get(2));
+					input = new FileInputStream(imageFiles.get(8));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -449,7 +477,7 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
-				Label clothPrice = new Label("$"+price.get(2));
+				Label clothPrice = new Label("$"+price.get(8));
 				homePage.getChildren().add(clothPrice);
 				clothPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				Button addToCart = new Button("ADD TO CART");
@@ -457,11 +485,39 @@ public class Runner extends Application {
 					@Override
 					public void handle(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(2), 1, price.get(2),imageFiles.get(2));
-						cartImageFiles.add(imageFiles.get(2));
+						CSVUtilities.writeCSV(itemNames.get(8), 1, price.get(8),imageFiles.get(8));
+						cartImageFiles.add(imageFiles.get(8));
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				FileInputStream input1 = null;
+				try {
+					input1 = new FileInputStream(imageFiles.get(9));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image1 = new Image(input1);
+				ImageView imageView1 = new ImageView(image1);
+				imageView1.setFitHeight(150);
+				imageView1.setFitWidth(150);
+				imageView1.setTranslateX(20);
+				homePage.getChildren().add(imageView1);
+		    	
+				Label clothPrice1 = new Label("$"+price.get(9));
+				homePage.getChildren().add(clothPrice1);
+				clothPrice1.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				Button addToCart1 = new Button("ADD TO CART");
+				addToCart1.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(9), 1, price.get(9),imageFiles.get(9));
+						cartImageFiles.add(imageFiles.get(9));
+					}
+				});
+				homePage.getChildren().add(addToCart1);
 		  }
 		});
 		
@@ -485,7 +541,7 @@ public class Runner extends Application {
 		    	
 		    	FileInputStream input = null;
 				try {
-					input = new FileInputStream(imageFiles.get(3));
+					input = new FileInputStream(imageFiles.get(6));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -497,19 +553,19 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
-				Label shoePrice = new Label("$"+price.get(3));
+				Label shoePrice = new Label("$"+price.get(6));
 				homePage.getChildren().add(shoePrice);
 				shoePrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
-				Label shoeColor = new Label("Color : "+color.get(3));
+				Label shoeColor = new Label("Color : "+color.get(6));
 				homePage.getChildren().add(shoeColor);
 				shoeColor.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
-				Label shoeSize = new Label("Size : "+size.get(3));
+				Label shoeSize = new Label("Size : "+size.get(6));
 				homePage.getChildren().add(shoeSize);
 				shoeSize.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
-				Label shoeRating = new Label("Rating : "+rating.get(3) + "/ 5.0");
+				Label shoeRating = new Label("Rating : "+rating.get(6) + "/ 5.0");
 				homePage.getChildren().add(shoeRating);
 				shoeRating.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
@@ -520,11 +576,52 @@ public class Runner extends Application {
 					@Override
 					public void handle(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(3), 1, price.get(3),imageFiles.get(3));
-						cartImageFiles.add(imageFiles.get(3));
+						CSVUtilities.writeCSV(itemNames.get(6), 1, price.get(6),imageFiles.get(6));
+						cartImageFiles.add(imageFiles.get(6));
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				FileInputStream input1 = null;
+				try {
+					input1 = new FileInputStream(imageFiles.get(7));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image1 = new Image(input1);
+				ImageView imageView1 = new ImageView(image1);
+				imageView1.setFitHeight(150);
+				imageView1.setFitWidth(150);
+				imageView1.setTranslateX(20);
+				homePage.getChildren().add(imageView1);
+		    	
+				Label shoePrice1 = new Label("$"+price.get(7));
+				homePage.getChildren().add(shoePrice1);
+				shoePrice1.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label shoeColor1 = new Label("Color : "+color.get(7));
+				homePage.getChildren().add(shoeColor1);
+				shoeColor1.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label shoeSize1 = new Label("Size : "+size.get(7));
+				homePage.getChildren().add(shoeSize1);
+				shoeSize1.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label shoeRating1 = new Label("Rating : "+rating.get(7) + "/ 5.0");
+				homePage.getChildren().add(shoeRating1);
+				shoeRating1.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Button addToCart1 = new Button("ADD TO CART");
+				addToCart.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						CSVUtilities.writeCSV(itemNames.get(7), 1, price.get(7),imageFiles.get(7));
+						cartImageFiles.add(imageFiles.get(7));
+					}
+				});
+				homePage.getChildren().add(addToCart1);
 		  }
 		});
 		
