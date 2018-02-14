@@ -57,8 +57,7 @@ public class Runner extends Application {
 	
 	static ArrayList<String> cartImageFiles = new ArrayList<String>();
 	static ArrayList<ArrayList<String>> cartPages = new ArrayList<ArrayList<String>>();
-	static int pageNumber = 0;
-	static int tempPage = 0;
+	static ArrayList<Button> cartPageButtonArrayList = new ArrayList<Button>();
 	
 	static CSVUtilities kart = null;
 	
@@ -292,10 +291,12 @@ public class Runner extends Application {
 				homePage.getChildren().add(imageView);
 				
 				Label bookPrice = new Label("$"+price.get(0));
+
 				bookPrice.setTranslateX(190);
 				bookPrice.setTranslateY(-135);
 				homePage.getChildren().add(bookPrice);
 				bookPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));	
+
 
 				Button sound = new Button("play");
 				sound.setOnAction(new EventHandler<ActionEvent>() {
@@ -311,7 +312,6 @@ public class Runner extends Application {
 				sound.setTranslateY(-135);
 				homePage.getChildren().add(sound);
 		    
-				
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -340,6 +340,7 @@ public class Runner extends Application {
 				
 				Label bookPrice2 = new Label("$"+price.get(8));
 				homePage.getChildren().add(bookPrice2);
+
 				bookPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				bookPrice2.setTranslateX(190);
 				bookPrice2.setTranslateY(-135);
@@ -576,29 +577,9 @@ public class Runner extends Application {
 		    	cartPage.setPrefWidth(200);
 		    	homePage.getChildren().add(cartPage);
 		    	
-		    	Text itemName = new Text("Item");
-		    	itemName.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
-		    	itemName.setFill(Color.DARKSLATEGRAY);
-		    	itemName.setTranslateX(20);
-		    	itemName.setTranslateY(0);
-		    	cartPage.getChildren().add(itemName);
-		    	Text quantity = new Text("Quantity");
-		    	quantity.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
-		    	quantity.setFill(Color.DARKSLATEGRAY);
-		    	quantity.setTranslateX(175);
-		    	quantity.setTranslateY(-20);
-		    	cartPage.getChildren().add(quantity);
-		    	Text price = new Text("Price");
-		    	price.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
-		    	price.setFill(Color.DARKSLATEGRAY);
-		    	price.setTranslateX(350);
-		    	price.setTranslateY(-40);
-		    	cartPage.getChildren().add(price);    
+		    	setCartTitle(cartPage);  
 		    	
-		    	//CART PAGE BUTTON HBOX
-		    	HBox cartPageButton = new HBox();
-		    	homePage.getChildren().add(cartPageButton);
-			    
+			 
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
@@ -662,89 +643,10 @@ public class Runner extends Application {
 		    	});
 		    	homePage.getChildren().add(clearCartButton);
 		    	
-		    	//CREATING CART PAGES
-		    	pageNumber = 1;
-		    	cartPages.clear();
-		    	int lengthCartImg = cartImageFiles.size();
-		    	for (int i = 0; i<lengthCartImg; i+=5)
-		    	{
-		    		ArrayList<String> page = new ArrayList<String>();
-		    		for (int x = i; x<i+5; x++)
-		    		{
-		    			if (x<lengthCartImg)
-		    			{
-		    				page.add(cartImageFiles.get(x));
-		    			}
-		    		}
-		    		cartPages.add(page);
-		    		
-		    		if (i%5==0 && i>0)
-		    		{
-		    			pageNumber++;
-		    		}
-		    		
-		    		Button pageButton = new Button(pageNumber+"");
-		    			
-		    		pageButton.setOnAction(new EventHandler<ActionEvent>() {
-			    		public void handle(ActionEvent event)
-			    		{	
-			    			System.out.println("PageNumber="+pageNumber);
-			    			cartPage.getChildren().clear();
-			    			ArrayList<String> pageNow = cartPages.get(pageNumber-1);
-			    			for (int k = 0; k <pageNow.size(); k++)
-			    			{
-			    				Image image = new Image(pageNow.get(k));
-			    				ImageView imageView = new ImageView(image);
-			    				imageView.setFitHeight(75);
-			    				imageView.setFitWidth(100);
-			    				imageView.setTranslateX(20);
-			    				imageView.setTranslateY((k-2)*17);
-			    				cartPage.getChildren().add(imageView);
-			    			}
-			    		}
-			    	});
-		    		cartPageButton.getChildren().add(pageButton);
-		    	}
-		
-		    	System.out.println("Size of CartPages: "+cartPages.size());
-		    	for (int i=0; i<cartPages.size(); i++)
-		    	{
-		    		System.out.print("(");
-		    		for (int x=0; x<cartPages.get(i).size(); x++)
-		    		{
-		    			System.out.print(cartPages.get(i).get(x) +",");
-		    		}
-		    		System.out.print(")");
-	    			System.out.println();
-		    	}
+		    	//CART PAGE BUTTON HBOX
+		    	HBox cartPageButtonHBox = setButtonsPageHBox(cartPage);
+		    	homePage.getChildren().add(cartPageButtonHBox);
 		    	
-		    	//CREATING BUTTONS
-		    /*	pageNumber = 1;
-		    	while (pageNumber<cartPages.size()+1)
-		    	{
-		    		Button pageButton = new Button(pageNumber+"");
-		    		pageButton.setOnAction(new EventHandler<ActionEvent>() {
-			    		public void handle(ActionEvent event)
-			    		{	
-			    			cartPage.getChildren().clear();
-			    			ArrayList<String> pageNow = cartPages.get(pageNumber-1);
-			    			for (int k = 0; k <pageNow.size(); k++)
-			    			{
-			    				Image image = new Image(pageNow.get(k));
-			    				ImageView imageView = new ImageView(image);
-			    				imageView.setFitHeight(75);
-			    				imageView.setFitWidth(100);
-			    				imageView.setTranslateX(20);
-			    				imageView.setTranslateY((k-2)*17);
-			    				cartPage.getChildren().add(imageView);
-			    			}
-			    			pageNumber=1;
-			    		}
-			    	});
-		    		homePage.getChildren().add(pageButton);		
-		    		pageNumber++;
-		    	}
-		    	pageNumber = 1; */
 		    	
 		    	//DISPLAYING FIRST PAGE
 		    	if (cartImageFiles.size()>0)
@@ -921,5 +823,83 @@ public class Runner extends Application {
 		
 	}
 	
+	public static HBox setButtonsPageHBox(VBox cartPage)
+	{
+		cartPageButtonArrayList.clear();
+		//CART PAGE BUTTON HBOX
+    	HBox cartPageButtonHBox = new HBox();
+    	
+    	
+    	//CREATING CART PAGES
+    	int pageNumber = 1;
+    	cartPages.clear();
+    	int lengthCartImg = cartImageFiles.size();
+    	for (int i = 0; i<lengthCartImg; i+=5)
+    	{
+    		ArrayList<String> page = new ArrayList<String>();
+    		for (int x = i; x<i+5; x++)
+    		{
+    			if (x<lengthCartImg)
+    			{
+    				page.add(cartImageFiles.get(x));
+    			}
+    		}
+    		cartPages.add(page);
+    		
+    		CartPageButton pageButtonCart = new CartPageButton(pageNumber);
+    		Button pageButton = pageButtonCart.getButtonPage();
+    		pageButton.setOnAction(new EventHandler<ActionEvent>() {
+	    		public void handle(ActionEvent event)
+	    		{	
+	    			System.out.println("PageNumber="+pageButtonCart.getPageNum());
+	    			cartPage.getChildren().clear();
+	    			ArrayList<String> pageNow = cartPages.get(pageButtonCart.getPageNum()-1);
+	    			setCartTitle(cartPage);
+	    			for (int k = 0; k <pageNow.size(); k++)
+	    			{
+	    				Image image = new Image(pageNow.get(k));
+	    				ImageView imageView = new ImageView(image);
+	    				imageView.setFitHeight(75);
+	    				imageView.setFitWidth(100);
+	    				imageView.setTranslateX(20);
+	    				imageView.setTranslateY((k-2)*17);
+	    				cartPage.getChildren().add(imageView);
+	    			}
+	    		}
+	    	});
+    		cartPageButtonArrayList.add(pageButton);
+    		System.out.println(pageNumber);
+    		pageNumber++;
+    	}
+    	
+    	for (int i=0; i < cartPageButtonArrayList.size(); i++)
+    	{
+    		cartPageButtonHBox.getChildren().add(cartPageButtonArrayList.get(i));
+    	}
+    	
+    	return cartPageButtonHBox;
+	}
+	
+	public static void setCartTitle(VBox cartPage)
+	{
+		Text itemName = new Text("Item");
+    	itemName.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+    	itemName.setFill(Color.DARKSLATEGRAY);
+    	itemName.setTranslateX(20);
+    	itemName.setTranslateY(0);
+    	cartPage.getChildren().add(itemName);
+    	Text quantity = new Text("Quantity");
+    	quantity.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+    	quantity.setFill(Color.DARKSLATEGRAY);
+    	quantity.setTranslateX(175);
+    	quantity.setTranslateY(-20);
+    	cartPage.getChildren().add(quantity);
+    	Text price = new Text("Price");
+    	price.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
+    	price.setFill(Color.DARKSLATEGRAY);
+    	price.setTranslateX(350);
+    	price.setTranslateY(-40);
+    	cartPage.getChildren().add(price);
+	}
 	
 }
