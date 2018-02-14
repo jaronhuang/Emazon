@@ -103,6 +103,11 @@ public class Runner extends Application {
 		VBox homePage = new VBox();
 		
 		//CARS BUTTON
+		
+		Cars car1 = new Cars(price.get(2), quantity.get(2), itemNames.get(2), rating.get(2), model.get(2), color.get(2), mileage.get(2), imageFiles.get(2));
+		Cars car2 = new Cars(price.get(3), quantity.get(3), itemNames.get(3), rating.get(3), model.get(3), color.get(3), mileage.get(3), imageFiles.get(3));
+		Cars car3 = new Cars(price.get(4), quantity.get(4), itemNames.get(4), rating.get(4), model.get(4), color.get(4), mileage.get(4), imageFiles.get(4));
+		Cars car4 = new Cars(price.get(5), quantity.get(5), itemNames.get(5), rating.get(5), model.get(5), color.get(5), mileage.get(5), imageFiles.get(5));
 		Button carsButton = new Button("");// do the same for each category
 		FileInputStream  carImage = new FileInputStream("car.png") ; //
 		Image imageCar = new Image(carImage) ;//
@@ -136,9 +141,25 @@ public class Runner extends Application {
 				imageView.setTranslateX(20);
 				homePage.getChildren().add(imageView);
 		    	
-				Label carPrice = new Label("$"+price.get(2));
+				Label carPrice = new Label("$"+car1.getPrice());
 				homePage.getChildren().add(carPrice);
 				carPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carColor = new Label(car1.getColor());
+				homePage.getChildren().add(carColor);
+				carColor.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carModel = new Label(car1.getModel());
+				homePage.getChildren().add(carModel);
+				carModel.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carMlg = new Label(car1.getMilage() + "miles per gallon");
+				homePage.getChildren().add(carMlg);
+				carMlg.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carRate = new Label(car1.getRating() + " / 5.0");
+				homePage.getChildren().add(carRate);
+				carRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
@@ -165,9 +186,25 @@ public class Runner extends Application {
 				imageView2.setTranslateX(20);
 				homePage.getChildren().add(imageView2);
 				
-				Label carPrice2 = new Label("$"+price.get(3));
+				Label carPrice2 = new Label("$"+car2.getPrice());
 				homePage.getChildren().add(carPrice2);
 				carPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carColor2 = new Label(car2.getColor());
+				homePage.getChildren().add(carColor2);
+				carColor2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carModel2 = new Label(car1.getModel());
+				homePage.getChildren().add(carModel2);
+				carModel2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carMlg2 = new Label(car2.getMilage() + "miles per gallon");
+				homePage.getChildren().add(carMlg2);
+				carMlg2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carRate2 = new Label(car2.getRating() + " / 5.0");
+				homePage.getChildren().add(carRate2);
+				carRate2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 				
 				Button addToCart2 = new Button("ADD TO CART");
 				addToCart2.setOnAction(new EventHandler<ActionEvent>() {
@@ -194,9 +231,26 @@ public class Runner extends Application {
 				imageView3.setTranslateY(-400);
 				homePage.getChildren().add(imageView3);
 				
-				Label carPrice3 = new Label("$"+price.get(4));
+				Label carPrice3 = new Label("$"+car3.getPrice());
 				homePage.getChildren().add(carPrice3);
 				carPrice3.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carColor3 = new Label(car3.getColor());
+				homePage.getChildren().add(carColor3);
+				carColor3.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carModel3 = new Label(car3.getModel());
+				homePage.getChildren().add(carModel3);
+				carModel3.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carMlg3 = new Label(car3.getMilage() + "miles per gallon");
+				homePage.getChildren().add(carMlg3);
+				carMlg3.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carRate3 = new Label(car3.getRating() + " / 5.0");
+				homePage.getChildren().add(carRate3);
+				carRate3.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
 				carPrice3.setTranslateX(250);
 				carPrice3.setTranslateY(-400);
 				
@@ -227,9 +281,26 @@ public class Runner extends Application {
 				imageView4.setTranslateY(-400);
 				homePage.getChildren().add(imageView4);
 				
-				Label carPrice4 = new Label("$"+price.get(5));
+				Label carPrice4 = new Label("$"+car4.getPrice());
 				homePage.getChildren().add(carPrice4);
 				carPrice4.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carColor4 = new Label(car4.getColor());
+				homePage.getChildren().add(carColor4);
+				carColor4.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carModel4 = new Label(car4.getModel());
+				homePage.getChildren().add(carModel4);
+				carModel4.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carMlg4 = new Label(car4.getMilage() + "miles per gallon");
+				homePage.getChildren().add(carMlg4);
+				carMlg4.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
+				Label carRate4 = new Label(car4.getRating() + " / 5.0");
+				homePage.getChildren().add(carRate4);
+				carRate4.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+				
 				carPrice4.setTranslateX(250);
 				carPrice4.setTranslateY(-400);
 				

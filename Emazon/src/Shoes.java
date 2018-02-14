@@ -8,7 +8,7 @@ public class Shoes implements Items{
 	public String name;
 	public double rating;
 	public String color;
-	public int size;
+	public double size;
 	public String image;
 	
 	public Shoes(double price, int quantity, String name,
@@ -36,7 +36,7 @@ public class Shoes implements Items{
 	public String getColor() {
 		return color;
 	}
-	public int getSize()
+	public double getSize()
 	{
 		return size;
 	}
