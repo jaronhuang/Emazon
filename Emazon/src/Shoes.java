@@ -8,11 +8,11 @@ public class Shoes implements Items{
 	public String name;
 	public double rating;
 	public String color;
-	public int size;
+	public Double size;
 	public String image;
 	
 	public Shoes(double price, int quantity, String name,
-			double rating, String color, int size, String image)
+			double rating, String color, Double size, String image)
 	{
 		this.price = price;
 		this.quantity = quantity;
@@ -20,6 +20,7 @@ public class Shoes implements Items{
 		this.rating = rating;
 		this.color = color;
 		this.size = size;
+		this.image = image;
 	}
 	public double getPrice() {
 		return price;
@@ -36,7 +37,7 @@ public class Shoes implements Items{
 	public String getColor() {
 		return color;
 	}
-	public int getSize()
+	public double getSize()
 	{
 		return size;
 	}
