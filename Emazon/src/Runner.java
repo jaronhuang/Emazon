@@ -119,6 +119,8 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label carsLabel = new Label("Cars");
 		    	carsLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	carsLabel.setTranslateX(185);
+
 		    	
 		    	homePage.getChildren().add(carsLabel);
 		    	
@@ -271,6 +273,7 @@ public class Runner extends Application {
 		    	Label audioBookLabel = new Label("Music");
 		    	
 		    	audioBookLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	audioBookLabel.setTranslateX(185);
 		    	
 		    	homePage.getChildren().add(audioBookLabel);
 		    	
@@ -289,11 +292,10 @@ public class Runner extends Application {
 				homePage.getChildren().add(imageView);
 				
 				Label bookPrice = new Label("$"+price.get(0));
+				bookPrice.setTranslateX(190);
+				bookPrice.setTranslateY(-135);
 				homePage.getChildren().add(bookPrice);
-//<<<<<<< HEAD
-				bookPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-//=======
-				
+				bookPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));	
 
 				Button sound = new Button("play");
 				sound.setOnAction(new EventHandler<ActionEvent>() {
@@ -305,11 +307,11 @@ public class Runner extends Application {
 					  mediaPlayer.play();
 				}
 			});
+				sound.setTranslateX(190);
+				sound.setTranslateY(-135);
 				homePage.getChildren().add(sound);
 		    
-		    
-
-//>>>>>>> branch 'Frontend' of https://github.com/jaronhuang/Emazon.git
+				
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -319,6 +321,8 @@ public class Runner extends Application {
 						cartImageFiles.add(imageFiles.get(0));
 					}
 				});
+				addToCart.setTranslateX(190);
+				addToCart.setTranslateY(-135);
 				homePage.getChildren().add(addToCart); 
 				FileInputStream input2 = null;
 				try {
@@ -336,11 +340,10 @@ public class Runner extends Application {
 				
 				Label bookPrice2 = new Label("$"+price.get(8));
 				homePage.getChildren().add(bookPrice2);
-//<<<<<<< HEAD
 				bookPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-//=======
+				bookPrice2.setTranslateX(190);
+				bookPrice2.setTranslateY(-135);
 				
-
 				Button sound2 = new Button("play");
 				sound2.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -351,11 +354,10 @@ public class Runner extends Application {
 					  mediaPlayer2.play();
 				} 
 			});
+				sound2.setTranslateX(190);
+				sound2.setTranslateY(-135);
 				homePage.getChildren().add(sound2);
 		    
-		    
-
-//>>>>>>> branch 'Frontend' of https://github.com/jaronhuang/Emazon.git
 				Button addToCart2 = new Button("ADD TO CART");
 				addToCart2.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -365,6 +367,8 @@ public class Runner extends Application {
 						cartImageFiles.add(imageFiles.get(8));
 					}
 				});
+				addToCart2.setTranslateX(190);
+				addToCart2.setTranslateY(-135);
 				homePage.getChildren().add(addToCart2); 
 				
 				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
@@ -389,6 +393,7 @@ public class Runner extends Application {
 		    	Label technologyLabel = new Label("Technology");
 
 		    	technologyLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	technologyLabel.setTranslateX(165);
 
 		    	homePage.getChildren().add(technologyLabel);
 		    	
@@ -443,6 +448,7 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label clothingLabel = new Label("Clothing");
 		    	clothingLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	clothingLabel.setTranslateX(175);
 		    	homePage.getChildren().add(clothingLabel);
 		    	
 		    	FileInputStream input = null;
@@ -494,6 +500,7 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label shoesLabel = new Label("Shoes");
 		    	shoesLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	shoesLabel.setTranslateX(185);
 		    	homePage.getChildren().add(shoesLabel);
 		    	
 		    	FileInputStream input = null;
@@ -560,6 +567,7 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label shoppingCartLabel = new Label("Shopping Cart");
 		    	shoppingCartLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	shoppingCartLabel.setTranslateX(147);
 		    	homePage.getChildren().add(shoppingCartLabel);
 		    	
 		    	cartPage.getChildren().clear();
