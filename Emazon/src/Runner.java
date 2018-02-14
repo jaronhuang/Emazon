@@ -186,6 +186,7 @@ public class Runner extends Application {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 				Image image3 = new Image(input3);
 				ImageView imageView3 = new ImageView(image3);
 				imageView3.setFitHeight(150);
@@ -245,6 +246,9 @@ public class Runner extends Application {
 				addToCart4.setTranslateX(250);
 				addToCart4.setTranslateY(-400);
 				homePage.getChildren().add(addToCart4);
+
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
+
 		  }
 		});
 		
@@ -258,6 +262,7 @@ public class Runner extends Application {
      
 		audioBookButton.setGraphic(imageAudioView);//
 		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		
 		audioBookButton.setTranslateX(25);
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -361,6 +366,8 @@ public class Runner extends Application {
 					}
 				});
 				homePage.getChildren().add(addToCart2); 
+				
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
 		    } 
 		});
 		
@@ -413,6 +420,9 @@ public class Runner extends Application {
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
+
 		  }
 		});
 		
@@ -462,6 +472,9 @@ public class Runner extends Application {
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
+
 		  }
 		});
 		
@@ -525,6 +538,8 @@ public class Runner extends Application {
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
 		  }
 		});
 		
@@ -866,7 +881,7 @@ public class Runner extends Application {
 	    VBox root = new VBox();
 	   	//root.setPrefWidth(200);
 		
-		homePage.setStyle("-fx-border-color: #cc0000; -fx-border-width: 10px;");
+		homePage.setStyle("-fx-border-color: #cc0000;-fx-border-width: 10px;");	//#ffedf3
 		homePage.setPrefHeight(700);
 		homePage.setPrefWidth(200);
 		
@@ -887,6 +902,7 @@ public class Runner extends Application {
 		homePage.getChildren().add(homeText);
 		
 	    //root.setSpacing(50);
+		//root.setStyle("-fx-background-color: #f7f9f9;");
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
         Scene scene = new Scene(root, 450, 700);
