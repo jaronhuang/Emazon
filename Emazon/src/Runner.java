@@ -118,6 +118,8 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label carsLabel = new Label("Cars");
 		    	carsLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	carsLabel.setTranslateX(185);
+
 		    	
 		    	homePage.getChildren().add(carsLabel);
 		    	
@@ -185,6 +187,7 @@ public class Runner extends Application {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 				Image image3 = new Image(input3);
 				ImageView imageView3 = new ImageView(image3);
 				imageView3.setFitHeight(150);
@@ -244,6 +247,9 @@ public class Runner extends Application {
 				addToCart4.setTranslateX(250);
 				addToCart4.setTranslateY(-400);
 				homePage.getChildren().add(addToCart4);
+
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
+
 		  }
 		});
 		
@@ -257,6 +263,7 @@ public class Runner extends Application {
      
 		audioBookButton.setGraphic(imageAudioView);//
 		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		
 		audioBookButton.setTranslateX(25);
 		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -265,6 +272,7 @@ public class Runner extends Application {
 		    	Label audioBookLabel = new Label("Music");
 		    	
 		    	audioBookLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	audioBookLabel.setTranslateX(185);
 		    	
 		    	homePage.getChildren().add(audioBookLabel);
 		    	
@@ -283,11 +291,12 @@ public class Runner extends Application {
 				homePage.getChildren().add(imageView);
 				
 				Label bookPrice = new Label("$"+price.get(0));
+
+				bookPrice.setTranslateX(190);
+				bookPrice.setTranslateY(-135);
 				homePage.getChildren().add(bookPrice);
+				bookPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));	
 
-				bookPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-
-				
 
 				Button sound = new Button("play");
 				sound.setOnAction(new EventHandler<ActionEvent>() {
@@ -299,8 +308,9 @@ public class Runner extends Application {
 					  mediaPlayer.play();
 				}
 			});
+				sound.setTranslateX(190);
+				sound.setTranslateY(-135);
 				homePage.getChildren().add(sound);
-		    
 		    
 				Button addToCart = new Button("ADD TO CART");
 				addToCart.setOnAction(new EventHandler<ActionEvent>() {
@@ -311,6 +321,8 @@ public class Runner extends Application {
 						cartImageFiles.add(imageFiles.get(0));
 					}
 				});
+				addToCart.setTranslateX(190);
+				addToCart.setTranslateY(-135);
 				homePage.getChildren().add(addToCart); 
 				FileInputStream input2 = null;
 				try {
@@ -330,8 +342,9 @@ public class Runner extends Application {
 				homePage.getChildren().add(bookPrice2);
 
 				bookPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-
-
+				bookPrice2.setTranslateX(190);
+				bookPrice2.setTranslateY(-135);
+				
 				Button sound2 = new Button("play");
 				sound2.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -342,9 +355,10 @@ public class Runner extends Application {
 					  mediaPlayer2.play();
 				} 
 			});
+				sound2.setTranslateX(190);
+				sound2.setTranslateY(-135);
 				homePage.getChildren().add(sound2);
 		    
-		   
 				Button addToCart2 = new Button("ADD TO CART");
 				addToCart2.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -354,7 +368,11 @@ public class Runner extends Application {
 						cartImageFiles.add(imageFiles.get(8));
 					}
 				});
+				addToCart2.setTranslateX(190);
+				addToCart2.setTranslateY(-135);
 				homePage.getChildren().add(addToCart2); 
+				
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
 		    } 
 		});
 		
@@ -376,6 +394,7 @@ public class Runner extends Application {
 		    	Label technologyLabel = new Label("Technology");
 
 		    	technologyLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	technologyLabel.setTranslateX(165);
 
 		    	homePage.getChildren().add(technologyLabel);
 		    	
@@ -407,6 +426,9 @@ public class Runner extends Application {
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
+
 		  }
 		});
 		
@@ -427,6 +449,7 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label clothingLabel = new Label("Clothing");
 		    	clothingLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	clothingLabel.setTranslateX(175);
 		    	homePage.getChildren().add(clothingLabel);
 		    	
 		    	FileInputStream input = null;
@@ -456,6 +479,9 @@ public class Runner extends Application {
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
+
 		  }
 		});
 		
@@ -475,6 +501,7 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label shoesLabel = new Label("Shoes");
 		    	shoesLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	shoesLabel.setTranslateX(185);
 		    	homePage.getChildren().add(shoesLabel);
 		    	
 		    	FileInputStream input = null;
@@ -519,6 +546,8 @@ public class Runner extends Application {
 					}
 				});
 				homePage.getChildren().add(addToCart);
+				
+				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
 		  }
 		});
 		
@@ -539,6 +568,7 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label shoppingCartLabel = new Label("Shopping Cart");
 		    	shoppingCartLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	shoppingCartLabel.setTranslateX(147);
 		    	homePage.getChildren().add(shoppingCartLabel);
 		    	
 		    	cartPage.getChildren().clear();
@@ -761,7 +791,7 @@ public class Runner extends Application {
 	    VBox root = new VBox();
 	   	//root.setPrefWidth(200);
 		
-		homePage.setStyle("-fx-border-color: #cc0000; -fx-border-width: 10px;");
+		homePage.setStyle("-fx-border-color: #cc0000;-fx-border-width: 10px;");	//#ffedf3
 		homePage.setPrefHeight(700);
 		homePage.setPrefWidth(200);
 		
@@ -782,6 +812,7 @@ public class Runner extends Application {
 		homePage.getChildren().add(homeText);
 		
 	    //root.setSpacing(50);
+		//root.setStyle("-fx-background-color: #f7f9f9;");
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
         Scene scene = new Scene(root, 450, 700);
