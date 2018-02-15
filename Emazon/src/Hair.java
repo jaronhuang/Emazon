@@ -1,24 +1,22 @@
 /**
  * By: Jaron Huang and Kelvin Chen
  */
-public class Clothing implements Items{
+public class Hair implements Items{
 	public double price;
 	public int quantity;
 	public String name;
 	public double rating;
 	public String color;
-	public String size;
 	public String image;
 	
-	public Clothing(double price, int quantity, String name,
-			double rating, String color, String size, String image)
+	public Hair(int i)
 	{
-		this.price = price;
-		this.quantity = quantity;
-		this.name = name;
-		this.rating = rating;
-		this.color = color;
-		this.size = size;
+		this.price = Runner.price.get(i);
+		this.quantity = Runner.quantity.get(i);
+		this.name = Runner.itemNames.get(i);
+		this.rating = Runner.rating.get(i);
+		this.color = Runner.color.get(i);
+		this.image = Runner.imageFiles.get(i);
 	}
 	
 	public double getPrice() {
@@ -35,9 +33,6 @@ public class Clothing implements Items{
 	}
 	public String getColor() {
 		return color;
-	}
-	public String getSize() {
-		return size;
 	}
 
 	public String getImage() {

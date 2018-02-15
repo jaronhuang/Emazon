@@ -54,7 +54,7 @@ public class Runner extends Application {
 	static ArrayList<Double> rating = new ArrayList<Double>();
 	static ArrayList<String> model = new ArrayList<String>();
 	static ArrayList<String> color = new ArrayList<String>();
-	static ArrayList<Double> size = new ArrayList<Double>();
+	static ArrayList<String> size = new ArrayList<String>();
 	static ArrayList<String> type = new ArrayList<String>();
 	static ArrayList<Double> batteryLife = new ArrayList<Double>();
 	static ArrayList<Double> mileage = new ArrayList<Double>();
@@ -68,6 +68,8 @@ public class Runner extends Application {
 	
 	public static ArrayList<Cars> carsArrayList = new ArrayList<Cars>();
 	public static ArrayList<Songs> songsArrayList = new ArrayList<Songs>();
+	public static ArrayList<Technology> technologyArrayList = new ArrayList<Technology>();
+	public static ArrayList<Hair> hairArrayList = new ArrayList<Hair>();
 	
 	static CSVUtilities kart = null;
 	
@@ -81,7 +83,7 @@ public class Runner extends Application {
 		rating = inv.getDataDouble(3);
 		model = inv.getDataString(4);
 		color = inv.getDataString(5);
-		size = inv.getDataDouble(6);
+		size = inv.getDataString(6);
 		type = inv.getDataString(7);
 		batteryLife = inv.getDataDouble(8);
 		mileage = inv.getDataDouble(9);
@@ -122,6 +124,22 @@ public class Runner extends Application {
 		songsArrayList.add(superSaiyan);
 		Songs getOff = new Songs(1);
 		songsArrayList.add(getOff);
+		
+		//GENERATE TECHNOLOGY
+		Technology bPhone8 = new Technology(6);
+		technologyArrayList.add(bPhone8);
+		Technology bPhoneX = new Technology(7);
+		technologyArrayList.add(bPhoneX);
+		
+		//GENERATE HAIR
+		Hair lameloHair = new Hair(9);
+		hairArrayList.add(lameloHair);
+		Hair geloHair = new Hair(8);
+		hairArrayList.add(geloHair);
+		Hair lonzoHair = new Hair(10);
+		hairArrayList.add(lonzoHair);
+		Hair lavarHair = new Hair(11);
+		hairArrayList.add(lavarHair);
 		
 		Application.launch(args);
 	}
@@ -380,8 +398,9 @@ public class Runner extends Application {
 						settingItemTranslates(imageView, songName, songPrice, songLength, songRate, songRate, songRate, addToCart, playButton, 20, 24);
 						
 					}
-				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
-		    	}	    } 
+		    	}	   
+		    	homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
+		    } 
 		}); 
 		
 		//TECHNOLOGY BUTTON
@@ -406,88 +425,155 @@ public class Runner extends Application {
 
 		    	homePage.getChildren().add(technologyLabel);
 		    	
-		    	
-		    	FileInputStream input = null;
-				try {
-					input = new FileInputStream(imageFiles.get(4));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image = new Image(input);
-				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(150);
-				imageView.setFitWidth(150);
-				imageView.setTranslateX(20);
-				homePage.getChildren().add(imageView);
-				
-				Label techPrice = new Label("$"+price.get(4));
-				homePage.getChildren().add(techPrice);
-				techPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				Button addToCart = new Button("ADD TO CART");
-				addToCart.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(4), 1, price.get(4),imageFiles.get(4));
-						cartImageFiles.add(imageFiles.get(4));
+		    	for (int i=0; i<technologyArrayList.size(); i++)
+		    	{
+		    		Technology tempTech = technologyArrayList.get(i);
+		    		Label techName = new Label(tempTech.getName());
+					homePage.getChildren().add(techName);
+					techName.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+		    		FileInputStream input = null;
+		    		try {
+					input = new FileInputStream(tempTech.getImage());
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				});    
-				homePage.getChildren().add(addToCart);
-				
+					Image image = new Image(input);
+					ImageView imageView = new ImageView(image);
+					imageView.setFitHeight(150);
+					imageView.setFitWidth(150);
+					homePage.getChildren().add(imageView);
+					
+					Label techPrice = new Label("$"+tempTech.getPrice());
+					homePage.getChildren().add(techPrice);
+					techPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+
+					Label techBLife = new Label(""+tempTech.getBatteryLife());
+					homePage.getChildren().add(techBLife);
+					techBLife.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+
+					Label techRate = new Label(tempTech.getRating() + " / 5.0");
+					homePage.getChildren().add(techRate);
+					techRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					
+					Button addToCart = new Button("ADD TO CART");
+					addToCart.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent arg0) {
+							// TODO Auto-generated method stub
+							CSVUtilities.writeCSV(tempTech.getName(), 1, tempTech.getPrice(),tempTech.getImage());
+							cartImageFiles.add(tempTech.getImage());
+						}
+					});
+					homePage.getChildren().add(addToCart);
+
+					if (i==0)
+					{
+						settingItemTranslates(imageView, techName, techPrice, techBLife, techRate, techRate, techRate, addToCart, addToCart, 20, 24);
+					}
+					
+					else if (i==1)
+					{
+						settingItemTranslates(imageView, techName, techPrice, techBLife, techRate, techRate, techRate, addToCart, addToCart, 20, 40);
+					}
+					
+					else if (i==2)
+					{
+						settingItemTranslates(imageView, techName, techPrice, techBLife, techRate, techRate, techRate, addToCart, addToCart, 20, 24);
+					}
+					
+					else if (i==3)
+					{
+						settingItemTranslates(imageView, techName, techPrice, techBLife, techRate, techRate, techRate, addToCart, addToCart, 20, 24);
+						
+					}
+		    	}	   
+		    	
 				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
 
 		  }
 		});
 		
-		//CLOTHING BUTTON
-		Button clothing = new Button("");
+		//HAIR BUTTON
+		Button hair = new Button("");
 		FileInputStream  clothingImage = new FileInputStream("shirts.png") ; //
 		Image imageClothes = new Image(clothingImage) ;//
 		ImageView imageClothesView = new ImageView(imageClothes) ;//
 		imageClothesView.setFitHeight(40);//
 		imageClothesView.setFitWidth(40) ; //
      
-		clothing.setGraphic(imageClothesView);//
-		clothing.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		clothing.setTranslateX(25);
-		clothing.setOnAction(new EventHandler<ActionEvent>() {
+		hair.setGraphic(imageClothesView);//
+		hair.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		hair.setTranslateX(25);
+		hair.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
-		    	Label clothingLabel = new Label("Clothing");
-		    	clothingLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
-		    	clothingLabel.setTranslateX(175);
-		    	homePage.getChildren().add(clothingLabel);
+		    	Label hairLabel = new Label("Hair");
+		    	hairLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	hairLabel.setTranslateX(175);
+		    	homePage.getChildren().add(hairLabel);
 		    	
-		    	FileInputStream input = null;
-				try {
-					input = new FileInputStream(imageFiles.get(2));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image = new Image(input);
-				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(150);
-				imageView.setFitWidth(150);
-				imageView.setTranslateX(20);
-				homePage.getChildren().add(imageView);
-		    	
-				Label clothPrice = new Label("$"+price.get(2));
-				homePage.getChildren().add(clothPrice);
-				clothPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				Button addToCart = new Button("ADD TO CART");
-				addToCart.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(2), 1, price.get(2),imageFiles.get(2));
-						cartImageFiles.add(imageFiles.get(2));
+		    	for (int i=0; i<hairArrayList.size(); i++)
+		    	{
+		    		Hair tempHair = hairArrayList.get(i);
+		    		Label hairName = new Label(tempHair.getName());
+					homePage.getChildren().add(hairName);
+					hairName.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+		    		FileInputStream input = null;
+		    		try {
+					input = new FileInputStream(tempHair.getImage());
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				});
-				homePage.getChildren().add(addToCart);
-				
+					Image image = new Image(input);
+					ImageView imageView = new ImageView(image);
+					imageView.setFitHeight(150);
+					imageView.setFitWidth(150);
+					homePage.getChildren().add(imageView);
+					
+					Label hairPrice = new Label("$"+tempHair.getPrice());
+					homePage.getChildren().add(hairPrice);
+					hairPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+
+					Label hairRate = new Label(tempHair.getRating() + " / 5.0");
+					homePage.getChildren().add(hairRate);
+					hairRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					
+					Button addToCart = new Button("ADD TO CART");
+					addToCart.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent arg0) {
+							// TODO Auto-generated method stub
+							CSVUtilities.writeCSV(tempHair.getName(), 1, tempHair.getPrice(),tempHair.getImage());
+							cartImageFiles.add(tempHair.getImage());
+						}
+					});
+					homePage.getChildren().add(addToCart);
+
+					if (i==0)
+					{
+						settingItemTranslates(imageView, hairName, hairPrice, hairRate, hairRate, hairRate, hairRate, addToCart, addToCart, 20, 24);
+					}
+					
+					else if (i==1)
+					{
+						settingItemTranslates(imageView, hairName, hairPrice, hairRate, hairRate, hairRate, hairRate, addToCart, addToCart, 20, 50);
+					}
+					
+					else if (i==2)
+					{
+						settingItemTranslates(imageView, hairName, hairPrice, hairRate, hairRate, hairRate, hairRate, addToCart, addToCart, 250, -466);
+					}
+					
+					else if (i==3)
+					{
+						settingItemTranslates(imageView, hairName, hairPrice, hairRate, hairRate, hairRate, hairRate, addToCart, addToCart, 250, -438);
+						
+					}
+		    	}	   
+		    	
 				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
 
 		  }
@@ -655,7 +741,6 @@ public class Runner extends Application {
 		    	HBox cartPageButtonHBox = setButtonsPageHBox(cartPage);
 		    	homePage.getChildren().add(cartPageButtonHBox);
 		    	
-		    	
 		    	//DISPLAYING FIRST PAGE
 		    	if (cartImageFiles.size()>0)
 		    	{
@@ -777,7 +862,7 @@ public class Runner extends Application {
 		 * TilePane for the row of buttons that lead to other pages.
 		 * Uses setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE) to automatically even out widths of buttons horizontally.
 		 */
-		clothing.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		hair.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		carsButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		musicButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		technology.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -792,7 +877,7 @@ public class Runner extends Application {
 		tile.getChildren().add(carsButton);
 		tile.getChildren().add(musicButton);
 		tile.getChildren().add(technology);
-		tile.getChildren().add(clothing);
+		tile.getChildren().add(hair);
 		tile.getChildren().add(shoppingCartButton);
 //		shoppingCartButton.setTranslateX(173);
 		

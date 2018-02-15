@@ -13,16 +13,15 @@ public class Technology implements Items{
 	public double batteryLife;
 	public String image;
 	
-	public Technology(double price, int quantity, String name,
-			double rating, String type, double batteryLife, String image)
+	public Technology(int i)
 	{
-		this.price = price;
-		this.quantity = quantity;
-		this.name = name;
-		this.rating = rating;
-		this.type = type;
-		this.batteryLife = batteryLife;
-		this.image = image;
+		this.price = Runner.price.get(i);
+		this.quantity = Runner.quantity.get(i);
+		this.name = Runner.itemNames.get(i);
+		this.rating = Runner.rating.get(i);
+		this.type = Runner.type.get(i);
+		this.batteryLife = Runner.batteryLife.get(i);
+		this.image = Runner.imageFiles.get(i);
 	}
 	
 	public double getPrice()
