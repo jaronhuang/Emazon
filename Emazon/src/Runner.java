@@ -169,12 +169,12 @@ public class Runner extends Application {
 		FileInputStream  carImage = new FileInputStream("car.png") ; //
 		Image imageCar = new Image(carImage) ;//
 		ImageView imageCarView = new ImageView(imageCar) ;//
-		imageCarView.setFitHeight(40);//
-		imageCarView.setFitWidth(40) ; //
+		imageCarView.setFitHeight(35);//
+		imageCarView.setFitWidth(35) ; //
      
 		carsButton.setGraphic(imageCarView);//
 		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		carsButton.setTranslateX(25);
+		carsButton.setTranslateX(5);
 		carsButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -302,7 +302,7 @@ public class Runner extends Application {
 		
 		//MUSIC BUTTON
 		Button musicButton = new Button("");
-		FileInputStream  audioImage = new FileInputStream("music.png") ; 
+		FileInputStream  audioImage = new FileInputStream("music1.png") ; 
 		Image imageAudio = new Image(audioImage) ;
 		ImageView imageAudioView = new ImageView(imageAudio) ;
 		imageAudioView.setFitHeight(40);
@@ -311,7 +311,7 @@ public class Runner extends Application {
 		musicButton.setGraphic(imageAudioView);
 		musicButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
-		musicButton.setTranslateX(25);
+		musicButton.setTranslateX(5);
 		musicButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -413,21 +413,36 @@ public class Runner extends Application {
 						
 					}
 		    	}	   
+		    	FileInputStream input = null;
+				try {
+					input = new FileInputStream("lonzo.gif");
+				} 
+				catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Image image = new Image(input);
+				ImageView imageView = new ImageView(image);
+				imageView.setFitHeight(200);
+				imageView.setFitWidth(200);
+				imageView.setTranslateX(200);
+				imageView.setTranslateY(-400);
+				homePage.getChildren().add(imageView);
 		    	homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
 		    } 
 		}); 
 		
 		//TECHNOLOGY BUTTON
 		Button technology = new Button("");
-		FileInputStream  techImage = new FileInputStream("tech icon.png") ; //
+		FileInputStream  techImage = new FileInputStream("smartphone.png") ; //
 		Image imageTech = new Image(techImage) ;//
 		ImageView imageTechView = new ImageView(imageTech) ;//
-		imageTechView.setFitHeight(40);//
-		imageTechView.setFitWidth(40) ; //
+		imageTechView.setFitHeight(35);//
+		imageTechView.setFitWidth(35) ; //
      
 		technology.setGraphic(imageTechView);//
 		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		technology.setTranslateX(25);
+		technology.setTranslateX(5);
 		technology.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -512,15 +527,15 @@ public class Runner extends Application {
 		
 		//HAIR BUTTON
 		Button hair = new Button("");
-		FileInputStream  clothingImage = new FileInputStream("shirts.png") ; //
+		FileInputStream  clothingImage = new FileInputStream("haircut.png") ; //
 		Image imageClothes = new Image(clothingImage) ;//
 		ImageView imageClothesView = new ImageView(imageClothes) ;//
-		imageClothesView.setFitHeight(40);//
-		imageClothesView.setFitWidth(40) ; //
+		imageClothesView.setFitHeight(50);//
+		imageClothesView.setFitWidth(50) ; //
      
 		hair.setGraphic(imageClothesView);//
 		hair.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		hair.setTranslateX(25);
+		hair.setTranslateX(5);
 		hair.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -599,14 +614,16 @@ public class Runner extends Application {
 		
 		//SHOES BUTTON
 		Button shoes = new Button("");
-		FileInputStream  shoesImage = new FileInputStream("shoes.png") ; 
-		Image imageShoes = new Image(shoesImage) ;
-		ImageView imageShoesView = new ImageView(imageShoes) ;
-		imageShoesView.setFitHeight(40);
-		imageShoesView.setFitWidth(40) ; 
-		shoes.setGraphic(imageShoesView);
+
+		FileInputStream  shoesImage = new FileInputStream("acc.png") ; //
+		Image imageShoes = new Image(shoesImage) ;//
+		ImageView imageShoesView = new ImageView(imageShoes) ;//
+		imageShoesView.setFitHeight(35);//
+		imageShoesView.setFitWidth(35) ; //
+		shoes.setGraphic(imageShoesView);//
+    
 		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		shoes.setTranslateX(25);
+		shoes.setTranslateX(5);
 		shoes.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -731,12 +748,13 @@ public class Runner extends Application {
 		FileInputStream  cartImage = new FileInputStream("cart.png") ; //
 		Image imageCart = new Image(cartImage) ;//
 		ImageView imageCartView = new ImageView(imageCart) ;//
-		imageCartView.setFitHeight(40);//
-		imageCartView.setFitWidth(40) ; //
-		homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
+
+		imageCartView.setFitHeight(35);//
+		imageCartView.setFitWidth(35) ; //
+
 		shoppingCartButton.setGraphic(imageCartView);//
 		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
-		shoppingCartButton.setTranslateX(25);
+		shoppingCartButton.setTranslateX(5);
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
@@ -931,7 +949,7 @@ public class Runner extends Application {
 											    	
 									FileInputStream input = null;
 									try {
-										input = new FileInputStream("lavar2.jpg");
+										input = new FileInputStream("lavar.gif");
 									} 
 									catch (FileNotFoundException e) {
 										// TODO Auto-generated catch block
@@ -939,7 +957,7 @@ public class Runner extends Application {
 									}
 									Image image = new Image(input);
 									ImageView imageView = new ImageView(image);
-									imageView.setFitHeight(200);
+									imageView.setFitHeight(400);
 									imageView.setFitWidth(400);
 									imageView.setTranslateX(18);
 									imageView.setTranslateY(70);
