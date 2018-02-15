@@ -937,6 +937,15 @@ public class Runner extends Application {
 								}	
 								else
 								{
+									String bName = name.getText();
+									String bEmail = email.getText();
+									for (int i = 0; i < cartNames.size(); i++)
+									{
+										String itemN = cartNames.get(i);
+										int itemQ = 1;
+										double itemP = cartPrices.get(i);
+										CSVUtilities.writePHistory(bName, bEmail, itemN, itemQ, itemP);
+									}
 									homePage.getChildren().clear();
 										    	
 									Text thanks = new Text("Thank you for shopping with" + "\nBig Baller Brand!" 
