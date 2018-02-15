@@ -1,13 +1,13 @@
 Item Name,Quantity,Price,Rating,Model,Color,Size,Type,Blife,Milage,Length,Audio File,Picture File
-Super Saiyan - Lonzo Ball,10000000,5.99,4.2,null,null,0,null,0,0,330,null,albumCover.jpg
-Get Off,10000000,5.99,4.3,null,null,0,null,0,0,324,null,getoff.jpg
-LaMelo Ball's Black 2017 Lamborghini Gallardo,1,249999.94,5,null,Black,0,null,0,17,0,null,blackLambo.jpg
+Super Saiyan - Lonzo Ball,10000000,5.99,4.2,null,null,0,null,0,0,3 min 30 sec,supersaiyan.mp3,albumCover.jpg
+Get Off,10000000,5.99,4.3,null,null,0,null,0,0,3 min 24 sec,getofflonzo.mp3,getoff.jpg
+LaMelo's Lamborghini,1,249999.94,5,null,Black,0,null,0,17,0,null,blackLambo.jpg
 LiAngelo's Ferrari 458,1,299999.94,5,null,White,0,null,0,20,0,null,ferrari.jpg
 Lonzo's G-Wagon,1,239999.94,5,null,Arctic White,0,null,0,14,0,null,g-wagon.jpg
 Lavar's Rolls Royce Dawn,1,449999.94,5,null,Black,0,null,0,18,0,null,rolls.jpg
-ZO2 Prime Remix,2000,501.95,4.8,null,Black,10,null,0,0,0,null,zo2.jpg
-ZO2 Slides,2000,229.99,4.9,null,Black,10,null,0,0,0,null,zo2s.jpg
-Classic BBB T-shirt LA Sho'time,6000,52.99,4.5,null,Black/Blue,0,null,0,0,0,null,bbbShirt.jpg
-Saints Classic BBB Hoodie,6000,64.99,4.8,null,Black/Gold,0,null,0,0,0,null,schoodie.jpg
 bPhone 8 by Lavar,1000000,899.99,4.9,null,Black,0,null,9999.99,0,0,null,bbbTech.jpg
 bPhone X by Lavar,1000000,1374.99,5,null,Black/Gold,0,null,9999.99,0,0,null,bphonex.jpg
+Liangelo's Hair,3,199.99,4,null,null,0,null,0,0,0,null,gelohair.PNG
+Lamelo's Hair,1,49999999.99,6,null,null,0,null,0,0,0,null,lamelohair.PNG
+Lonzo's Hair,7,19.99,3.7,null,null,0,null,0,0,0,null,lonzohair.jpg
+Lavar's Hair,200,2.99,3,null,null,0,null,0,0,0,null,lavarhair.PNG
