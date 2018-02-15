@@ -5,6 +5,9 @@
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,6 +16,10 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -51,13 +58,16 @@ public class Runner extends Application {
 	static ArrayList<String> type = new ArrayList<String>();
 	static ArrayList<Double> batteryLife = new ArrayList<Double>();
 	static ArrayList<Double> mileage = new ArrayList<Double>();
-	static ArrayList<Integer> length = new ArrayList<Integer>();
+	static ArrayList<String> length = new ArrayList<String>();
 	static ArrayList<String> audioFile = new ArrayList<String>();
 	static ArrayList<String> imageFiles = new ArrayList<String>();
 	
 	static ArrayList<String> cartImageFiles = new ArrayList<String>();
 	static ArrayList<ArrayList<String>> cartPages = new ArrayList<ArrayList<String>>();
 	static ArrayList<Button> cartPageButtonArrayList = new ArrayList<Button>();
+	
+	public static ArrayList<Cars> carsArrayList = new ArrayList<Cars>();
+	public static ArrayList<Songs> songsArrayList = new ArrayList<Songs>();
 	
 	static CSVUtilities kart = null;
 	
@@ -75,25 +85,46 @@ public class Runner extends Application {
 		type = inv.getDataString(7);
 		batteryLife = inv.getDataDouble(8);
 		mileage = inv.getDataDouble(9);
-		length = inv.getDataInteger(10);
+		length = inv.getDataString(10);
 		audioFile = inv.getDataString(11);
 		imageFiles = inv.getDataString(12);
-		//
 		
 		//CART FILE
 		File cart = new File("cart.csv");
 		kart = new CSVUtilities(cart);	
-		if (kart.getCSVData().size()!=1)
+		
+		for (int i=0; i<kart.getCSVData().size(); i++)
+		{
+			System.out.print(kart.getCSVData().get(i)+", ");
+		}
+		System.out.println(""+kart.getCSVData().size());
+		if (kart.getCSVData().size()!=5)
 		{
 			cartImageFiles = kart.getDataString(3);
 		}
 		
 		//PURCHASE HISTORY FILE
 		File purchase = new File("phistory.csv");
-		CSVUtilities history = new CSVUtilities(purchase);	
+		CSVUtilities history = new CSVUtilities(purchase);
+		
+		//GENERATING CARS
+		Cars lameloLambo = new Cars(2);
+		carsArrayList.add(lameloLambo);
+		Cars liangeloRari = new Cars(3);
+		carsArrayList.add(liangeloRari);
+		Cars lonzoG = new Cars(4);
+		carsArrayList.add(lonzoG);
+		Cars lavarRoll = new Cars(5);
+		carsArrayList.add(lavarRoll);
+		
+		//GENERATING MUSIC
+		Songs superSaiyan = new Songs(0);
+		songsArrayList.add(superSaiyan);
+		Songs getOff = new Songs(1);
+		songsArrayList.add(getOff);
 		
 		Application.launch(args);
- 	}
+	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -122,150 +153,136 @@ public class Runner extends Application {
 
 		    	
 		    	homePage.getChildren().add(carsLabel);
-		    	
-		    	FileInputStream input = null;
-				try {
-					input = new FileInputStream(imageFiles.get(1));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image = new Image(input);
-				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(150);
-				imageView.setFitWidth(150);
-				imageView.setTranslateX(20);
-				homePage.getChildren().add(imageView);
-		    	
-				Label carPrice = new Label("$"+price.get(1));
-				homePage.getChildren().add(carPrice);
-				carPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				
-				Button addToCart = new Button("ADD TO CART");
-				addToCart.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(1), 1, price.get(1),imageFiles.get(1));
-						cartImageFiles.add(imageFiles.get(1));
+		  
+		    	for (int i=0; i<carsArrayList.size(); i++)
+		    	{
+		    		Cars tempCar = carsArrayList.get(i);
+		    		Label carName = new Label(tempCar.getName());
+					homePage.getChildren().add(carName);
+					carName.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+		    		FileInputStream input = null;
+		    		try {
+					input = new FileInputStream(tempCar.getImage());
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				});
-				homePage.getChildren().add(addToCart);
-				
-				FileInputStream input2 = null;
-				try {
-					input2 = new FileInputStream(imageFiles.get(5));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image2 = new Image(input2);
-				ImageView imageView2 = new ImageView(image2);
-				imageView2.setFitHeight(150);
-				imageView2.setFitWidth(150);
-				imageView2.setTranslateX(20);
-				homePage.getChildren().add(imageView2);
-				
-				Label carPrice2 = new Label("$"+price.get(5));
-				homePage.getChildren().add(carPrice2);
-				carPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				
-				Button addToCart2 = new Button("ADD TO CART");
-				addToCart2.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(5), 1, price.get(5),imageFiles.get(5));
-						cartImageFiles.add(imageFiles.get(5));
+					Image image = new Image(input);
+					ImageView imageView = new ImageView(image);
+					imageView.setFitHeight(150);
+					imageView.setFitWidth(150);
+					homePage.getChildren().add(imageView);
+					imageView.onMouseEnteredProperty();
+					
+					
+					Label carPrice = new Label("$"+tempCar.getPrice());
+					homePage.getChildren().add(carPrice);
+					carPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+
+					Label carColor = new Label(tempCar.getColor());
+					homePage.getChildren().add(carColor);
+					carColor.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+
+					Label carModel = new Label(tempCar.getModel());
+					homePage.getChildren().add(carModel);
+					carModel.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+
+					Label carMlg = new Label(tempCar.getMilage() + "miles per gallon");
+					homePage.getChildren().add(carMlg);
+					carMlg.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+
+					Label carRate = new Label(tempCar.getRating() + " / 5.0");
+					homePage.getChildren().add(carRate);
+					carRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					
+					Button addToCart = new Button("ADD TO CART");
+					addToCart.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent arg0) {
+							// TODO Auto-generated method stub
+							CSVUtilities.writeCSV(tempCar.getName(), 1, tempCar.getPrice(),tempCar.getImage());
+							cartImageFiles.add(tempCar.getImage());
+						}
+					});
+					homePage.getChildren().add(addToCart);
+
+					if (i==0)
+					{
+						settingItemTranslates(imageView, carName, carPrice, carColor, carModel, carMlg, carRate, addToCart, addToCart, 20, 24);
 					}
-				});
-				homePage.getChildren().add(addToCart2);
-				FileInputStream input3 = null;
-				try {
-					input3 = new FileInputStream(imageFiles.get(6));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				Image image3 = new Image(input3);
-				ImageView imageView3 = new ImageView(image3);
-				imageView3.setFitHeight(150);
-				imageView3.setFitWidth(150);
-				imageView3.setTranslateX(250);
-				imageView3.setTranslateY(-400);
-				homePage.getChildren().add(imageView3);
-				
-				Label carPrice3 = new Label("$"+price.get(6));
-				homePage.getChildren().add(carPrice3);
-				carPrice3.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				carPrice3.setTranslateX(250);
-				carPrice3.setTranslateY(-400);
-				
-				Button addToCart3 = new Button("ADD TO CART");
-				addToCart3.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(6), 1, price.get(6),imageFiles.get(6));
-						cartImageFiles.add(imageFiles.get(6));
+					
+					else if (i==1)
+					{
+						settingItemTranslates(imageView, carName, carPrice, carColor, carModel, carMlg, carRate, addToCart, addToCart, 20, 50);
 					}
-				});
-				addToCart3.setTranslateX(250);
-				addToCart3.setTranslateY(-400);
-				homePage.getChildren().add(addToCart3);
-				FileInputStream input4 = null;
-				try {
-					input4 = new FileInputStream(imageFiles.get(7));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image4 = new Image(input4);
-				ImageView imageView4 = new ImageView(image4);
-				imageView4.setFitHeight(150);
-				imageView4.setFitWidth(150);
-				imageView4.setTranslateX(250);
-				imageView4.setTranslateY(-400);
-				homePage.getChildren().add(imageView4);
-				
-				Label carPrice4 = new Label("$"+price.get(7));
-				homePage.getChildren().add(carPrice4);
-				carPrice4.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				carPrice4.setTranslateX(250);
-				carPrice4.setTranslateY(-400);
-				
-				Button addToCart4 = new Button("ADD TO CART");
-				addToCart4.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(7), 1, price.get(7),imageFiles.get(7));
-						cartImageFiles.add(imageFiles.get(7));
+					
+					else if (i==2)
+					{
+						settingItemTranslates(imageView, carName, carPrice, carColor, carModel, carMlg, carRate, addToCart, addToCart, 250, -591);
 					}
-				});
-				addToCart4.setTranslateX(250);
-				addToCart4.setTranslateY(-400);
-				homePage.getChildren().add(addToCart4);
+					
+					else if (i==3)
+					{
+						settingItemTranslates(imageView, carName, carPrice, carColor, carModel, carMlg, carRate, addToCart, addToCart, 250, -565);
+						
+					}
+		/*			JButton jbuttonImg = new JButton();
+					jbuttonImg.setIcon(new ImageIcon(tempCar.getName()));
+					jbuttonImg.addMouseListener(new MouseListener() {
+
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							// TODO Auto-generated method stub
+							
+						}
+
+						@Override
+						public void mouseEntered(MouseEvent e) {
+							// TODO Auto-generated method stub
+							jbuttonImg.setIcon(new ImageIcon("lamelolambo.jpg"));
+						}
+
+						@Override
+						public void mouseExited(MouseEvent e) {
+							// TODO Auto-generated method stub
+							jbuttonImg.setIcon(new ImageIcon(tempCar.getName()));
+						}
+
+						@Override
+						public void mousePressed(MouseEvent e) {
+							// TODO Auto-generated method stub
+							
+						}
+
+						@Override
+						public void mouseReleased(MouseEvent e) {
+							// TODO Auto-generated method stub
+							
+						}
+						
+						
+					});
+			    	*/					
+		    	} 
 
 				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
 
 		  }
 		});
 		
-		//AUDIO BOOK BUTTON
-		Button audioBookButton = new Button("");
-		FileInputStream  audioImage = new FileInputStream("music.png") ; //
-		Image imageAudio = new Image(audioImage) ;//
-		ImageView imageAudioView = new ImageView(imageAudio) ;//
-		imageAudioView.setFitHeight(40);//
-		imageAudioView.setFitWidth(40) ; //
+		//MUSIC BUTTON
+		Button musicButton = new Button("");
+		FileInputStream  audioImage = new FileInputStream("music.png") ; 
+		Image imageAudio = new Image(audioImage) ;
+		ImageView imageAudioView = new ImageView(imageAudio) ;
+		imageAudioView.setFitHeight(40);
+		imageAudioView.setFitWidth(40) ; 
      
-		audioBookButton.setGraphic(imageAudioView);//
-		audioBookButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		musicButton.setGraphic(imageAudioView);
+		musicButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		
-		audioBookButton.setTranslateX(25);
-		audioBookButton.setOnAction(new EventHandler<ActionEvent>() {
+		musicButton.setTranslateX(25);
+		musicButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
@@ -276,105 +293,96 @@ public class Runner extends Application {
 		    	
 		    	homePage.getChildren().add(audioBookLabel);
 		    	
-		    	FileInputStream input = null;
-				try {
-					input = new FileInputStream(imageFiles.get(0));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image = new Image(input);
-				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(150);
-				imageView.setFitWidth(150);
-				imageView.setTranslateX(20);
-				homePage.getChildren().add(imageView);
-				
-				Label bookPrice = new Label("$"+price.get(0));
-
-				bookPrice.setTranslateX(190);
-				bookPrice.setTranslateY(-135);
-				homePage.getChildren().add(bookPrice);
-				bookPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));	
-
-
-				Button sound = new Button("play");
-				sound.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				  public void handle(ActionEvent event) {
-					  String bip = "supersaiyan.mp3";
-					  Media hit = new Media(new File(bip).toURI().toString());
-					  MediaPlayer mediaPlayer = new MediaPlayer(hit);
-					  mediaPlayer.play();
-				}
-			});
-				sound.setTranslateX(190);
-				sound.setTranslateY(-135);
-				homePage.getChildren().add(sound);
-		    
-				Button addToCart = new Button("ADD TO CART");
-				addToCart.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(0), 1, price.get(0),imageFiles.get(0));
-						cartImageFiles.add(imageFiles.get(0));
+		    	for (int i=0; i<songsArrayList.size(); i++)
+		    	{
+		    		Songs tempSong = songsArrayList.get(i);
+		    		Label songName = new Label(tempSong.getName());
+					homePage.getChildren().add(songName);
+					songName.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+		    		FileInputStream input = null;
+		    		try {
+					input = new FileInputStream(tempSong.getImage());
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				});
-				addToCart.setTranslateX(190);
-				addToCart.setTranslateY(-135);
-				homePage.getChildren().add(addToCart); 
-				FileInputStream input2 = null;
-				try {
-					input2 = new FileInputStream(imageFiles.get(8));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image2 = new Image(input2);
-				ImageView imageView2 = new ImageView(image2);
-				imageView2.setFitHeight(150);
-				imageView2.setFitWidth(150);
-				imageView2.setTranslateX(20);
-				homePage.getChildren().add(imageView2);
-				
-				Label bookPrice2 = new Label("$"+price.get(8));
-				homePage.getChildren().add(bookPrice2);
+					Image image = new Image(input);
+					ImageView imageView = new ImageView(image);
+					imageView.setFitHeight(150);
+					imageView.setFitWidth(150);
+					homePage.getChildren().add(imageView);
+					imageView.onMouseEnteredProperty();
+					
+					Label songPrice = new Label("$"+tempSong.getPrice());
+					homePage.getChildren().add(songPrice);
+					songPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 
-				bookPrice2.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				bookPrice2.setTranslateX(190);
-				bookPrice2.setTranslateY(-135);
+					Label songLength = new Label(tempSong.getLength());
+					homePage.getChildren().add(songLength);
+					songLength.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+
+					Label songRate = new Label(tempSong.getRating() + " / 5.0");
+					homePage.getChildren().add(songRate);
+					songRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					
+					Button playButton = new Button("play");
 				
-				Button sound2 = new Button("play");
-				sound2.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				  public void handle(ActionEvent event) {
-					  String bip2 = "getofflonzo.mp3";
-					  Media hit2 = new Media(new File(bip2).toURI().toString());
-					  MediaPlayer mediaPlayer2 = new MediaPlayer(hit2);
-					  mediaPlayer2.play();
-				} 
-			});
-				sound2.setTranslateX(190);
-				sound2.setTranslateY(-135);
-				homePage.getChildren().add(sound2);
-		    
-				Button addToCart2 = new Button("ADD TO CART");
-				addToCart2.setOnAction(new EventHandler<ActionEvent>() {
+					playButton.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
-					public void handle(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(8), 1, price.get(8),imageFiles.get(8));
-						cartImageFiles.add(imageFiles.get(8));
+					  public void handle(ActionEvent event) {
+						  String bip = tempSong.getSoundFile();
+						  Media hit = new Media(new File(bip).toURI().toString());
+						  MediaPlayer mediaPlayer = new MediaPlayer(hit);
+						  mediaPlayer.play();
+						  Button stopButton = new Button("stop");
+						  stopButton.setTranslateX(300);
+						  stopButton.setTranslateY(-300);
+						  stopButton.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent arg0) {
+								mediaPlayer.stop();
+								homePage.getChildren().remove(stopButton);
+							}
+						  });
+						  homePage.getChildren().add(stopButton);
+						}
+					});
+					homePage.getChildren().add(playButton);
+					
+					Button addToCart = new Button("ADD TO CART");
+					addToCart.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent arg0) {
+							// TODO Auto-generated method stub
+							CSVUtilities.writeCSV(tempSong.getName(), 1, tempSong.getPrice(),tempSong.getImage());
+							cartImageFiles.add(tempSong.getImage());
+						}
+					});
+					homePage.getChildren().add(addToCart);
+
+					if (i==0)
+					{
+						settingItemTranslates(imageView, songName, songPrice, songLength, songRate, songRate, songRate, addToCart, playButton, 20, 24);
 					}
-				});
-				addToCart2.setTranslateX(190);
-				addToCart2.setTranslateY(-135);
-				homePage.getChildren().add(addToCart2); 
-				
+					
+					else if (i==1)
+					{
+						settingItemTranslates(imageView, songName, songPrice, songLength, songRate, songRate, songRate, addToCart, playButton, 20, 24);
+					}
+					
+					else if (i==2)
+					{
+						settingItemTranslates(imageView, songName, songPrice, songLength, songRate, songRate, songRate, addToCart, playButton, 20, 24);
+					}
+					
+					else if (i==3)
+					{
+						settingItemTranslates(imageView, songName, songPrice, songLength, songRate, songRate, songRate, addToCart, playButton, 20, 24);
+						
+					}
 				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
-		    } 
-		});
+		    	}	    } 
+		}); 
 		
 		//TECHNOLOGY BUTTON
 		Button technology = new Button("");
@@ -424,7 +432,7 @@ public class Runner extends Application {
 						CSVUtilities.writeCSV(itemNames.get(4), 1, price.get(4),imageFiles.get(4));
 						cartImageFiles.add(imageFiles.get(4));
 					}
-				});
+				});    
 				homePage.getChildren().add(addToCart);
 				
 				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
@@ -771,7 +779,7 @@ public class Runner extends Application {
 		 */
 		clothing.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		carsButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		audioBookButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		musicButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		technology.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		shoes.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		
@@ -782,7 +790,7 @@ public class Runner extends Application {
 		
 		tile.getChildren().add(shoes);
 		tile.getChildren().add(carsButton);
-		tile.getChildren().add(audioBookButton);
+		tile.getChildren().add(musicButton);
 		tile.getChildren().add(technology);
 		tile.getChildren().add(clothing);
 		tile.getChildren().add(shoppingCartButton);
@@ -815,13 +823,14 @@ public class Runner extends Application {
 		//root.setStyle("-fx-background-color: #f7f9f9;");
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
-        Scene scene = new Scene(root, 450, 700);
+        Scene scene = new Scene(root, 450, 825);
         //scene.getStylesheets().add("/Emazon/stylesheet.css");
         primaryStage.setTitle("Emazon");
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
 		
 	}
+
 	
 	public static HBox setButtonsPageHBox(VBox cartPage)
 	{
@@ -900,6 +909,28 @@ public class Runner extends Application {
     	price.setTranslateX(350);
     	price.setTranslateY(-40);
     	cartPage.getChildren().add(price);
+	}
+	
+	public static void settingItemTranslates(ImageView img, Label lb1, Label lb2, Label lb3, Label lb4, Label lb5, Label lb6, Button addToCart, Button play, int x, int y)
+	{
+		img.setTranslateX(x);
+		img.setTranslateY(y);
+		lb1.setTranslateX(x);
+		lb1.setTranslateY(y);
+		lb2.setTranslateX(x);
+		lb2.setTranslateY(y);
+		lb3.setTranslateX(x);
+		lb3.setTranslateY(y);
+		lb4.setTranslateX(x);
+		lb4.setTranslateY(y);
+		lb5.setTranslateX(x);
+		lb5.setTranslateY(y);
+		lb6.setTranslateX(x);
+		lb6.setTranslateY(y);
+		addToCart.setTranslateX(x);
+		addToCart.setTranslateY(y);
+		play.setTranslateX(x);
+		play.setTranslateY(y);
 	}
 	
 }

@@ -3,28 +3,26 @@
 
  */
 
-
-public class Audiobooks implements Items {
+public class Songs implements Items {
 
 	public double price;
 	public int quantity;
 	public String name;
 	public double rating;
 	public String soundFile;
-	public int length;
+	public String length;
 	public String image;
 
 	
-	public Audiobooks(double price, int quantity, String name,
-			double rating, String soundFile, int length, String image)
+	public Songs(int i)
 	{
-		this.price = price;
-		this.quantity = quantity;
-		this.name = name;
-		this.rating = rating;
-		this.soundFile = soundFile;
-		this.length = length;
-		this.image = image;
+		this.price = Runner.price.get(i);
+		this.quantity = Runner.quantity.get(i);
+		this.name = Runner.itemNames.get(i);
+		this.rating = Runner.rating.get(i);
+		this.soundFile = Runner.audioFile.get(i);
+		this.length = Runner.length.get(i);
+		this.image = Runner.imageFiles.get(i);
 	}
 	public double getPrice() {
 		return price;
@@ -41,7 +39,7 @@ public class Audiobooks implements Items {
 	public String getSoundFile() {
 		return soundFile;
 	}
-	public int getLength() {
+	public String getLength() {
 		return length;
 	}
 
