@@ -5,9 +5,6 @@
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,23 +13,15 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -42,12 +31,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 
 public class Runner extends Application { 
-	//ARRAY LISTS CONTAINING EACH INFORMATION FROM EACH COLUMN IN THE INVENTORY.
+	//ARRAY LISTS CONTAINING INFORMATION FROM EACH COLUMN IN THE INVENTORY.
 	static ArrayList<String> itemNames = new ArrayList<String>();
 	static ArrayList<Integer> quantity = new ArrayList<Integer>();
 	static ArrayList<Double> price = new ArrayList<Double>();
@@ -62,18 +50,19 @@ public class Runner extends Application {
 	static ArrayList<String> audioFile = new ArrayList<String>();
 	static ArrayList<String> imageFiles = new ArrayList<String>();
 	
+	//ARRAYLISTS FOR INFO ON ITEMS IN THE CART
 	static ArrayList<String> cartImageFiles = new ArrayList<String>();
 	static ArrayList<Double> cartPrices = new ArrayList<Double>();
 	static ArrayList<String> cartNames = new ArrayList<String>();
 	static ArrayList<ArrayList<String>> cartPages = new ArrayList<ArrayList<String>>();
 	static ArrayList<Button> cartPageButtonArrayList = new ArrayList<Button>();
 	
+	//ARRAYLISTS FOR THE ITEMS FROM INVENTORY
 	public static ArrayList<Cars> carsArrayList = new ArrayList<Cars>();
 	public static ArrayList<Songs> songsArrayList = new ArrayList<Songs>();
 	public static ArrayList<Technology> technologyArrayList = new ArrayList<Technology>();
 	public static ArrayList<Hair> hairArrayList = new ArrayList<Hair>();
 	public static ArrayList<Accessories> accessArrayList = new ArrayList<Accessories>();
-	
 	
 	static CSVUtilities kart = null;
 	
@@ -164,15 +153,15 @@ public class Runner extends Application {
 		primaryStage.setTitle("Emazon");
 		VBox homePage = new VBox();
 		
-		//CARS BUTTON
-		Button carsButton = new Button("");// do the same for each category
-		FileInputStream  carImage = new FileInputStream("car.png") ; //
-		Image imageCar = new Image(carImage) ;//
-		ImageView imageCarView = new ImageView(imageCar) ;//
-		imageCarView.setFitHeight(35);//
-		imageCarView.setFitWidth(35) ; //
+		//CARS PAGE
+		Button carsButton = new Button("");
+		FileInputStream  carImage = new FileInputStream("car.png") ; 
+		Image imageCar = new Image(carImage) ;
+		ImageView imageCarView = new ImageView(imageCar) ;
+		imageCarView.setFitHeight(35);
+		imageCarView.setFitWidth(35) ; 
      
-		carsButton.setGraphic(imageCarView);//
+		carsButton.setGraphic(imageCarView);
 		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
 		carsButton.setTranslateX(5);
 		carsButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -183,7 +172,6 @@ public class Runner extends Application {
 		    	carsLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	carsLabel.setTranslateX(185);
 
-		    	
 		    	homePage.getChildren().add(carsLabel);
 		  
 		    	for (int i=0; i<carsArrayList.size(); i++)
@@ -256,43 +244,7 @@ public class Runner extends Application {
 						settingItemTranslates(imageView, carName, carPrice, carColor, carColor, carMlg, carRate, addToCart, addToCart, 250, -523);
 						
 					}
-		/*			JButton jbuttonImg = new JButton();
-					jbuttonImg.setIcon(new ImageIcon(tempCar.getName()));
-					jbuttonImg.addMouseListener(new MouseListener() {
-
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							// TODO Auto-generated method stub
-							
-						}
-
-						@Override
-						public void mouseEntered(MouseEvent e) {
-							// TODO Auto-generated method stub
-							jbuttonImg.setIcon(new ImageIcon("lamelolambo.jpg"));
-						}
-
-						@Override
-						public void mouseExited(MouseEvent e) {
-							// TODO Auto-generated method stub
-							jbuttonImg.setIcon(new ImageIcon(tempCar.getName()));
-						}
-
-						@Override
-						public void mousePressed(MouseEvent e) {
-							// TODO Auto-generated method stub
-							
-						}
-
-						@Override
-						public void mouseReleased(MouseEvent e) {
-							// TODO Auto-generated method stub
-							
-						}
 						
-						
-					});
-			    	*/					
 		    	} 
 
 		    	homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
@@ -695,48 +647,6 @@ public class Runner extends Application {
 					}
 		    	}	   
 		    	
-		   /* 	FileInputStream input = null;
-				try {
-					input = new FileInputStream(imageFiles.get(3));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Image image = new Image(input);
-				ImageView imageView = new ImageView(image);
-				imageView.setFitHeight(150);
-				imageView.setFitWidth(150);
-				imageView.setTranslateX(20);
-				homePage.getChildren().add(imageView);
-		    	
-				Label shoePrice = new Label("$"+price.get(3));
-				homePage.getChildren().add(shoePrice);
-				shoePrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				
-				Label shoeColor = new Label("Color : "+color.get(3));
-				homePage.getChildren().add(shoeColor);
-				shoeColor.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				
-				Label shoeSize = new Label("Size : "+size.get(3));
-				homePage.getChildren().add(shoeSize);
-				shoeSize.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				
-				Label shoeRating = new Label("Rating : "+rating.get(3) + "/ 5.0");
-				homePage.getChildren().add(shoeRating);
-				shoeRating.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
-				
-				
-				
-				Button addToCart = new Button("ADD TO CART");
-				addToCart.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						CSVUtilities.writeCSV(itemNames.get(3), 1, price.get(3),imageFiles.get(3));
-						cartImageFiles.add(imageFiles.get(3));
-					}
-				});
-				homePage.getChildren().add(addToCart); */
 				
 				homePage.setPadding(new Insets(0,0,-500,0)); // This is for the border problem
 		  }
@@ -745,14 +655,14 @@ public class Runner extends Application {
 		//SHOPPING CART AND CHECKOUT
 		VBox cartPage = new VBox();
 		Button shoppingCartButton = new Button("");
-		FileInputStream  cartImage = new FileInputStream("cart.png") ; //
-		Image imageCart = new Image(cartImage) ;//
-		ImageView imageCartView = new ImageView(imageCart) ;//
+		FileInputStream  cartImage = new FileInputStream("cart.png") ; 
+		Image imageCart = new Image(cartImage) ;
+		ImageView imageCartView = new ImageView(imageCart) ;
 
-		imageCartView.setFitHeight(35);//
-		imageCartView.setFitWidth(35) ; //
+		imageCartView.setFitHeight(35);
+		imageCartView.setFitWidth(35) ; 
 
-		shoppingCartButton.setGraphic(imageCartView);//
+		shoppingCartButton.setGraphic(imageCartView);
 		shoppingCartButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		shoppingCartButton.setTranslateX(5);
 		shoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -772,7 +682,6 @@ public class Runner extends Application {
 		    	
 		    	setCartTitle(cartPage);  
 		    	
-			 
 		    	Button checkoutButton = new Button("Checkout");
 		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
 		    	
@@ -840,11 +749,13 @@ public class Runner extends Application {
 		    	});
 		    	homePage.getChildren().add(clearCartButton);
 		    	
-		    	//CART PAGE BUTTON HBOX
 		    	HBox cartPageButtonHBox = setButtonsPageHBox(cartPage);
 		    	homePage.getChildren().add(cartPageButtonHBox);
 		    	
-		    	//DISPLAYING FIRST PAGE
+		    	/*
+		    		Displaying the items on the first page of the cart when the user opens the cart for 
+		    		the first time.
+		    	*/
 		    	if (cartImageFiles.size()>0)
 		    	{
 		    		for (int i = 0; i <cartImageFiles.size(); i++)
@@ -994,22 +905,20 @@ public class Runner extends Application {
 		tile.setPadding(new Insets(20, 10, 20, 0));
 		tile.setHgap(0.0);
 		tile.setVgap(8.0);
-		
 		tile.getChildren().add(shoes);
 		tile.getChildren().add(carsButton);
 		tile.getChildren().add(musicButton);
 		tile.getChildren().add(technology);
 		tile.getChildren().add(hair);
 		tile.getChildren().add(shoppingCartButton);
-//		shoppingCartButton.setTranslateX(173);
-		
-	    VBox root = new VBox();
-	   	//root.setPrefWidth(200);
-		
+	   	
 		homePage.setStyle("-fx-border-color: #cc0000;-fx-border-width: 10px;");	//#ffedf3
 		homePage.setPrefHeight(1000);
 		homePage.setPrefWidth(200);
 		
+		/*
+		 * Setting main BBB picture on homePage.
+		 */
 		FileInputStream input = new FileInputStream("bbb.jpg");
 		Image image = new Image(input);
 		ImageView imageView = new ImageView(image);
@@ -1019,6 +928,11 @@ public class Runner extends Application {
 		imageView.setTranslateY(20);
 		homePage.getChildren().add(imageView);
 		
+		/*
+		 * Text homeText
+		 * Text for the title of the application.
+		 * Put in the homePage VBox.
+		 */
 		Text homeText = new Text("Big Baller Brand");
 		homeText.setFont(Font.font("Comic Sans",FontWeight.BOLD,FontPosture.ITALIC,30));
 		homeText.setFill(Color.BLUEVIOLET);
@@ -1026,8 +940,14 @@ public class Runner extends Application {
 		homeText.setTranslateY(50);
 		homePage.getChildren().add(homeText);
 		
+		/*
+		 * VBox root
+		 * Contains everything on the page.
+		 */
+		VBox root = new VBox();
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
+	    root.setStyle("-fx-background-color: black");
         Scene scene = new Scene(root, 450, 825);
         primaryStage.setTitle("Emazon");
 	    primaryStage.setScene(scene);
@@ -1035,13 +955,17 @@ public class Runner extends Application {
 		
 	}
 
-	
+	/*
+	 * setButtonsPageHBox(VBox)
+	 * Creates the HBox that has the dynamically changing buttons for each page in the cart
+	 * by using ArrayLists to organize the products in the cart.
+	 * @param VBox cartPage -  The VBox that the HBox will be added to.
+	 * @return HBox cartPageButtonHBox - HBox that the function creates.
+	 */
 	public static HBox setButtonsPageHBox(VBox cartPage)
 	{
 		cartPageButtonArrayList.clear();
-		//CART PAGE BUTTON HBOX
     	HBox cartPageButtonHBox = new HBox();
-    	
     	
     	//CREATING CART PAGES
     	int pageNumber = 1;
@@ -1059,6 +983,7 @@ public class Runner extends Application {
     		}
     		cartPages.add(page);
     		
+    		//ADDING THE ITEM INFO TO CART
     		CartPageButton pageButtonCart = new CartPageButton(pageNumber);
     		Button pageButton = pageButtonCart.getButtonPage();
     		pageButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -1095,6 +1020,7 @@ public class Runner extends Application {
     		pageNumber++;
     	}
     	
+    	//ADDING TO THE HBOX
     	for (int i=0; i < cartPageButtonArrayList.size(); i++)
     	{
     		cartPageButtonHBox.getChildren().add(cartPageButtonArrayList.get(i));
@@ -1103,6 +1029,11 @@ public class Runner extends Application {
     	return cartPageButtonHBox;
 	}
 	
+	/*
+	 * setCartTitle(VBox)
+	 * Creates the headings of the cart: "Item... Name... Price".
+	 * @param VBox cartPage - The VBox that the text is added to.
+	 */
 	public static void setCartTitle(VBox cartPage)
 	{
 		Text itemName = new Text("Item");
@@ -1125,6 +1056,21 @@ public class Runner extends Application {
     	cartPage.getChildren().add(price);
 	}
 	
+	/*
+	 * settingItemTranslates(ImageView, Label, Label, Label, Label, Label, Label, Button, int, int)
+	 * Translates Buttons, Images, Labels for each item page by the same x and y value.
+	 * @param ImageView img - Item Image
+	 * @param Label lb1 - Item info.
+	 * @param Label lb2 - Item info.
+	 * @param Label lb3 - Item info.
+	 * @param Label lb4 - Item info.
+	 * @param Label lb5 - Item info.
+	 * @param Label lb6 - Item info.
+	 * @param Button addToCart - Button that adds item to cart.
+	 * @param Button play - Button that plays audio for certain items.
+	 * @param int x - x value for the translations.
+	 * @param int y - y value for the translations.
+	 */
 	public static void settingItemTranslates(ImageView img, Label lb1, Label lb2, Label lb3, Label lb4, Label lb5, Label lb6, Button addToCart, Button play, int x, int y)
 	{
 		img.setTranslateX(x);
