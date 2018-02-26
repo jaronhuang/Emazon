@@ -150,7 +150,7 @@ public class Runner extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Runner runner = new Runner();
-		primaryStage.setTitle("Emazon");
+		primaryStage.setTitle("BIG BALLER");
 		VBox homePage = new VBox();
 		
 		//CARS PAGE
@@ -162,7 +162,7 @@ public class Runner extends Application {
 		imageCarView.setFitWidth(35) ; 
      
 		carsButton.setGraphic(imageCarView);
-		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		carsButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc0000");
 		carsButton.setTranslateX(5);
 		carsButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -170,6 +170,7 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label carsLabel = new Label("Cars");
 		    	carsLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	carsLabel.setTextFill(Color.WHITE);
 		    	carsLabel.setTranslateX(185);
 
 		    	homePage.getChildren().add(carsLabel);
@@ -178,6 +179,7 @@ public class Runner extends Application {
 		    	{
 		    		Cars tempCar = carsArrayList.get(i);
 		    		Label carName = new Label(tempCar.getName());
+		    		carName.setTextFill(Color.WHITE);
 					homePage.getChildren().add(carName);
 					carName.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 		    		FileInputStream input = null;
@@ -198,18 +200,22 @@ public class Runner extends Application {
 					Label carPrice = new Label("$"+tempCar.getPrice());
 					homePage.getChildren().add(carPrice);
 					carPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					carPrice.setTextFill(Color.WHITE);
 
 					Label carColor = new Label(tempCar.getColor());
 					homePage.getChildren().add(carColor);
 					carColor.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					carColor.setTextFill(Color.WHITE);
 
 					Label carMlg = new Label(tempCar.getMilage() + "miles per gallon");
 					homePage.getChildren().add(carMlg);
 					carMlg.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					carMlg.setTextFill(Color.WHITE);
 
 					Label carRate = new Label(tempCar.getRating() + " / 5.0");
 					homePage.getChildren().add(carRate);
 					carRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					carRate.setTextFill(Color.WHITE);
 					
 					Button addToCart = new Button("ADD TO CART");
 					addToCart.setOnAction(new EventHandler<ActionEvent>() {
@@ -261,7 +267,7 @@ public class Runner extends Application {
 		imageAudioView.setFitWidth(40) ; 
      
 		musicButton.setGraphic(imageAudioView);
-		musicButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		musicButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc0000");
 		
 		musicButton.setTranslateX(5);
 		musicButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -269,6 +275,7 @@ public class Runner extends Application {
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label audioBookLabel = new Label("Music");
+		    	audioBookLabel.setTextFill(Color.WHITE);
 		    	
 		    	audioBookLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	audioBookLabel.setTranslateX(185);
@@ -279,6 +286,7 @@ public class Runner extends Application {
 		    	{
 		    		Songs tempSong = songsArrayList.get(i);
 		    		Label songName = new Label(tempSong.getName());
+		    		songName.setTextFill(Color.WHITE);
 					homePage.getChildren().add(songName);
 					songName.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 		    		FileInputStream input = null;
@@ -298,14 +306,17 @@ public class Runner extends Application {
 					Label songPrice = new Label("$"+tempSong.getPrice());
 					homePage.getChildren().add(songPrice);
 					songPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					songPrice.setTextFill(Color.WHITE);
 
 					Label songLength = new Label(tempSong.getLength());
 					homePage.getChildren().add(songLength);
 					songLength.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					songLength.setTextFill(Color.WHITE);
 
 					Label songRate = new Label(tempSong.getRating() + " / 5.0");
 					homePage.getChildren().add(songRate);
 					songRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					songRate.setTextFill(Color.WHITE);
 					
 					Button playButton = new Button("play");
 				
@@ -393,13 +404,14 @@ public class Runner extends Application {
 		imageTechView.setFitWidth(35) ; //
      
 		technology.setGraphic(imageTechView);//
-		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		technology.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc0000");
 		technology.setTranslateX(5);
 		technology.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label technologyLabel = new Label("Technology");
+		    	technologyLabel.setTextFill(Color.WHITE);
 
 		    	technologyLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	technologyLabel.setTranslateX(165);
@@ -410,6 +422,7 @@ public class Runner extends Application {
 		    	{
 		    		Technology tempTech = technologyArrayList.get(i);
 		    		Label techName = new Label(tempTech.getName());
+		    		techName.setTextFill(Color.WHITE);
 					homePage.getChildren().add(techName);
 					techName.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 		    		FileInputStream input = null;
@@ -428,14 +441,17 @@ public class Runner extends Application {
 					Label techPrice = new Label("$"+tempTech.getPrice());
 					homePage.getChildren().add(techPrice);
 					techPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					techPrice.setTextFill(Color.WHITE);
 
 					Label techBLife = new Label(""+tempTech.getBatteryLife());
 					homePage.getChildren().add(techBLife);
 					techBLife.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					techBLife.setTextFill(Color.WHITE);
 
 					Label techRate = new Label(tempTech.getRating() + " / 5.0");
 					homePage.getChildren().add(techRate);
 					techRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					techRate.setTextFill(Color.WHITE);
 					
 					Button addToCart = new Button("ADD TO CART");
 					addToCart.setOnAction(new EventHandler<ActionEvent>() {
@@ -486,13 +502,14 @@ public class Runner extends Application {
 		imageClothesView.setFitWidth(50) ; //
      
 		hair.setGraphic(imageClothesView);//
-		hair.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
+		hair.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc0000");
 		hair.setTranslateX(5);
 		hair.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
 		    	Label hairLabel = new Label("Hair");
+		    	hairLabel.setTextFill(Color.WHITE);
 		    	hairLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	hairLabel.setTranslateX(175);
 		    	homePage.getChildren().add(hairLabel);
@@ -501,6 +518,7 @@ public class Runner extends Application {
 		    	{
 		    		Hair tempHair = hairArrayList.get(i);
 		    		Label hairName = new Label(tempHair.getName());
+		    		hairName.setTextFill(Color.WHITE);
 					homePage.getChildren().add(hairName);
 					hairName.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 		    		FileInputStream input = null;
@@ -519,10 +537,12 @@ public class Runner extends Application {
 					Label hairPrice = new Label("$"+tempHair.getPrice());
 					homePage.getChildren().add(hairPrice);
 					hairPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					hairPrice.setTextFill(Color.WHITE);
 
 					Label hairRate = new Label(tempHair.getRating() + " / 5.0");
 					homePage.getChildren().add(hairRate);
 					hairRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					hairRate.setTextFill(Color.WHITE);
 					
 					Button addToCart = new Button("ADD TO CART");
 					addToCart.setOnAction(new EventHandler<ActionEvent>() {
@@ -564,23 +584,24 @@ public class Runner extends Application {
 		  }
 		});
 		
-		//SHOES BUTTON
-		Button shoes = new Button("");
+		//ACCESSORIES BUTTON
+		Button accessories = new Button("");
 
 		FileInputStream  shoesImage = new FileInputStream("acc.png") ; //
 		Image imageShoes = new Image(shoesImage) ;//
 		ImageView imageShoesView = new ImageView(imageShoes) ;//
 		imageShoesView.setFitHeight(35);//
 		imageShoesView.setFitWidth(35) ; //
-		shoes.setGraphic(imageShoesView);//
+		accessories.setGraphic(imageShoesView);//
     
-		shoes.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc00cc");
-		shoes.setTranslateX(5);
-		shoes.setOnAction(new EventHandler<ActionEvent>() {
+		accessories.setStyle("-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #cc0000");
+		accessories.setTranslateX(5);
+		accessories.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
 		    	homePage.getChildren().clear();
-		    	Label shoesLabel = new Label("Shoes");
+		    	Label shoesLabel = new Label("Accessories");
+		    	shoesLabel.setTextFill(Color.WHITE);
 		    	shoesLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
 		    	shoesLabel.setTranslateX(185);
 		    	homePage.getChildren().add(shoesLabel);
@@ -589,6 +610,7 @@ public class Runner extends Application {
 		    	{
 		    		Accessories tempAccess = accessArrayList.get(i);
 		    		Label accessName = new Label(tempAccess.getName());
+		    		accessName.setTextFill(Color.WHITE);
 					homePage.getChildren().add(accessName);
 					accessName.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
 		    		FileInputStream input = null;
@@ -607,10 +629,12 @@ public class Runner extends Application {
 					Label accessPrice = new Label("$"+tempAccess.getPrice());
 					homePage.getChildren().add(accessPrice);
 					accessPrice.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					accessPrice.setTextFill(Color.WHITE);
 
 					Label accessRate = new Label(tempAccess.getRating() + " / 5.0");
 					homePage.getChildren().add(accessRate);
 					accessRate.setFont(Font.font("Comic Sans",FontWeight.BOLD,15));
+					accessRate.setTextFill(Color.WHITE);
 					
 					Button addToCart = new Button("ADD TO CART");
 					addToCart.setOnAction(new EventHandler<ActionEvent>() {
@@ -653,12 +677,10 @@ public class Runner extends Application {
 		});
 		
 		//SHOPPING CART AND CHECKOUT
-		VBox cartPage = new VBox();
 		Button shoppingCartButton = new Button("");
 		FileInputStream  cartImage = new FileInputStream("cart.png") ; 
 		Image imageCart = new Image(cartImage) ;
 		ImageView imageCartView = new ImageView(imageCart) ;
-
 		imageCartView.setFitHeight(35);
 		imageCartView.setFitWidth(35) ; 
 
@@ -671,19 +693,24 @@ public class Runner extends Application {
 		    	homePage.getChildren().clear();
 		    	Label shoppingCartLabel = new Label("Shopping Cart");
 		    	shoppingCartLabel.setFont(Font.font("Comic Sans",FontWeight.BOLD,20));
+		    	shoppingCartLabel.setTextFill(Color.WHITE);
 		    	shoppingCartLabel.setTranslateX(147);
 		    	homePage.getChildren().add(shoppingCartLabel);
-		    	
-		    	cartPage.getChildren().clear();
+
+		    	VBox cartPage = new VBox();
 		    	cartPage.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px;");
 		    	cartPage.setPrefHeight(1000);
 		    	cartPage.setPrefWidth(200);
 		    	homePage.getChildren().add(cartPage);
 		    	
+		    	VBox cartButtons = new VBox();
+		    	cartButtons.setStyle("-fx-border-color: #ffff00; -fx-border-width: 2px;");
+		    	homePage.getChildren().add(cartButtons);
+		    	
 		    	setCartTitle(cartPage);  
 		    	
-		    	Button checkoutButton = new Button("Checkout");
-		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		    	HBox cartPageButtonHBox = setButtonsPageHBox(homePage,cartPage);
+		    	cartButtons.getChildren().add(cartPageButtonHBox);
 		    	
 		    	//CLEAR BUTTON
 		    	Button clearCartButton = new Button("Clear Cart");
@@ -725,33 +752,12 @@ public class Runner extends Application {
 		    			cartNames.clear();
 		    			cartPages.clear();
 		    			
-		    			Text itemName = new Text("Item");
-				    	itemName.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
-				    	itemName.setFill(Color.DARKSLATEGRAY);
-				    	itemName.setTranslateX(20);
-				    	itemName.setTranslateY(0);
-				    	cartPage.getChildren().add(itemName);
 				    	
-				    	Text name = new Text("Name");
-				    	name.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
-				    	name.setFill(Color.DARKSLATEGRAY);
-				    	name.setTranslateX(175);
-				    	name.setTranslateY(-20);
-				    	cartPage.getChildren().add(name);
-				    	
-				    	Text price = new Text("Price");
-				    	price.setFont(Font.font("Comic Sans",FontPosture.ITALIC,14));
-				    	price.setFill(Color.DARKSLATEGRAY);
-				    	price.setTranslateX(350);
-				    	price.setTranslateY(-40);
-				    	cartPage.getChildren().add(price);    
+				    	setCartTitle(cartPage);
 		    		}
 		    	});
-		    	homePage.getChildren().add(clearCartButton);
-		    	
-		    	HBox cartPageButtonHBox = setButtonsPageHBox(cartPage);
-		    	homePage.getChildren().add(cartPageButtonHBox);
-		    	
+		    	cartButtons.getChildren().add(clearCartButton);
+		    
 		    	/*
 		    		Displaying the items on the first page of the cart when the user opens the cart for 
 		    		the first time.
@@ -785,42 +791,52 @@ public class Runner extends Application {
 		    	else
 		    	{
 		    		Label cartMessage = new Label("No Items in Cart");
-		    		homePage.getChildren().add(cartMessage);
+		    		cartMessage.setTextFill(Color.WHITE);
+		    		cartPage.getChildren().add(cartMessage);
 		    	} 
 		    	
-		    	homePage.getChildren().add(checkoutButton);
+		    	//CHECKOUT BUTTON
+		    	Button checkoutButton = new Button("Checkout");
+		    	checkoutButton.setStyle("-fx-background-color: #ffffff; -fx-border-width: 5px; -fx-border-color: #cc0000");
+		    	cartButtons.getChildren().add(checkoutButton);
 		    	checkoutButton.setOnAction(new EventHandler<ActionEvent>() 
 		    	{
 		    		@Override
 		    		public void handle(ActionEvent event) {
 		    			homePage.getChildren().clear();
 		    			Label checkoutLabel = new Label("Checkout");
+		    			checkoutLabel.setTextFill(Color.WHITE);
 		    			homePage.getChildren().add(checkoutLabel);
 				    	
 		    			Label checkoutName = new Label("Name:");
+		    			checkoutName.setTextFill(Color.WHITE);
 		    			TextField name = new TextField();
 		    			name.setMaxSize(250, 20);
 		    			name.setPromptText("Enter your name here.");
 		    			homePage.getChildren().addAll(checkoutName, name);			    	
 		    			Label checkoutAddress = new Label("Address:");
+		    			checkoutAddress.setTextFill(Color.WHITE);
 		    			TextField address = new TextField();
 		    			address.setMaxSize(250, 20);
 		    			address.setPromptText("Enter your address here.");
 		    			homePage.getChildren().addAll(checkoutAddress, address);
 				    	
 		    			Label checkoutEmail = new Label("Email:");
+		    			checkoutEmail.setTextFill(Color.WHITE);
 		    			TextField email = new TextField();
 		    			email.setMaxSize(250, 20);
 		    			email.setPromptText("Enter your email here.");
 		    			homePage.getChildren().addAll(checkoutEmail, email);
 				    	
 		    			Label checkoutCard = new Label("Card #:");
+		    			checkoutCard.setTextFill(Color.WHITE);
 		    			TextField card = new TextField();
 		    			card.setMaxSize(250, 20);
 		    			card.setPromptText("Enter your card number here.");
 		    			homePage.getChildren().addAll(checkoutCard, card);
 				    	
 		    			Label checkoutExpiration = new Label("EXP. Date:");
+		    			checkoutExpiration.setTextFill(Color.WHITE);
 		    			TextField expiration = new TextField();
 		    			expiration.setMaxSize(250, 20);
 						expiration.setPromptText("Enter your expiration date here.");
@@ -832,6 +848,7 @@ public class Runner extends Application {
 						homePage.getChildren().add(payButton);
 						    
 						Text CheckoutNameError = new Text("*Enter all the required fields*");
+						CheckoutNameError.setFill(Color.RED);
 						
 						payButton.setOnAction(new EventHandler<ActionEvent>() 
 						{
@@ -899,20 +916,20 @@ public class Runner extends Application {
 		carsButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		musicButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		technology.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		shoes.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		accessories.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		
 		TilePane tile = new TilePane(Orientation.HORIZONTAL);
 		tile.setPadding(new Insets(20, 10, 20, 0));
 		tile.setHgap(0.0);
 		tile.setVgap(8.0);
-		tile.getChildren().add(shoes);
+		tile.getChildren().add(accessories);
 		tile.getChildren().add(carsButton);
 		tile.getChildren().add(musicButton);
 		tile.getChildren().add(technology);
 		tile.getChildren().add(hair);
 		tile.getChildren().add(shoppingCartButton);
 	   	
-		homePage.setStyle("-fx-border-color: #cc0000;-fx-border-width: 10px;");	//#ffedf3
+		//homePage.setStyle("-fx-border-color: #cc0000;-fx-border-width: 10px;");	//#ffedf3
 		homePage.setPrefHeight(1000);
 		homePage.setPrefWidth(200);
 		
@@ -948,7 +965,7 @@ public class Runner extends Application {
 	    root.getChildren().add(tile);
 	    root.getChildren().add(homePage);
 	    root.setStyle("-fx-background-color: black");
-        Scene scene = new Scene(root, 450, 825);
+        Scene scene = new Scene(root, 450, 875);
         primaryStage.setTitle("Emazon");
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
@@ -962,7 +979,7 @@ public class Runner extends Application {
 	 * @param VBox cartPage -  The VBox that the HBox will be added to.
 	 * @return HBox cartPageButtonHBox - HBox that the function creates.
 	 */
-	public static HBox setButtonsPageHBox(VBox cartPage)
+	public static HBox setButtonsPageHBox(VBox homePage, VBox cartPage)
 	{
 		cartPageButtonArrayList.clear();
     	HBox cartPageButtonHBox = new HBox();
@@ -989,11 +1006,10 @@ public class Runner extends Application {
     		pageButton.setOnAction(new EventHandler<ActionEvent>() {
 	    		public void handle(ActionEvent event)
 	    		{	
-	    			System.out.println("PageNumber="+pageButtonCart.getPageNum());
 	    			cartPage.getChildren().clear();
 	    			ArrayList<String> pageNow = cartPages.get(pageButtonCart.getPageNum()-1);
-	    			setCartTitle(cartPage);
-	    			for (int k = 0; k <pageNow.size(); k++)
+	    			setCartTitle(homePage);
+	    			for (int k = 0; k < pageNow.size(); k++)
 	    			{
 	    				Image image = new Image(cartImageFiles.get(k));
 		    			ImageView imageView = new ImageView(image);
